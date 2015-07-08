@@ -1,4 +1,4 @@
-class RegistrationController < ApplicationController
+class RegistrationsController < ApplicationController
   before_action :find_registration, only: [:edit, :update, :show]
   before_action :find_vehicle
   before_action :authenticate_user!

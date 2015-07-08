@@ -1,4 +1,4 @@
-class InsuranceController < ApplicationController
+class InsurancesController < ApplicationController
   before_action :find_insurance, only: [:edit, :update, :show]
   before_action :find_vehicle
   before_action :authenticate_user!
