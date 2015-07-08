@@ -1,0 +1,3 @@
+class Trailer < Vehicle
+
+end

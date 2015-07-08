@@ -1,0 +1,3 @@
+class ATV < Vehicle
+
+end
