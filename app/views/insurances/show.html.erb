@@ -1,0 +1,14 @@
+<% if @insurance.image.present? %>  
+  <%= image_tag(@insurance.iimage.url(:medium), :class => "img-thumbnail") %>
+  <br/>
+<% end %>
+
+<h1><%= @insurance.company %> </h1>
+<h2><%= @insurance.policy_number %></h2>
+<h3><%= @insurance.expiration_date %></h3>
+<h3><%= @insurance.renewal_date %></h3>
+<h3>Cost: $ <%= @insurance.cost %> </h3>
+
+<br><br>
+
+<a href="<%= edit_vehicle_insurance_path(@vehicle.id, @insurance.id) %>" class="btn btn-info"><span class = "glyphicon glyphicon-pencil"></span></a>
