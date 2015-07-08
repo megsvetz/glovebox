@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150708181243) do
+ActiveRecord::Schema.define(version: 20150708182328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,10 +21,14 @@ ActiveRecord::Schema.define(version: 20150708181243) do
     t.string   "company"
     t.integer  "cost"
     t.integer  "vehicle_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.date     "expiration_date"
     t.date     "renewal_date"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "registrations", force: :cascade do |t|
@@ -32,8 +36,12 @@ ActiveRecord::Schema.define(version: 20150708181243) do
     t.date     "expiration"
     t.integer  "cost"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "repairs", force: :cascade do |t|
@@ -80,9 +88,13 @@ ActiveRecord::Schema.define(version: 20150708181243) do
     t.string   "license_plate"
     t.string   "state"
     t.integer  "user_id"
-    t.boolean  "selling",       default: false
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.boolean  "selling",            default: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
 end
