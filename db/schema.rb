@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150708173433) do
+ActiveRecord::Schema.define(version: 20150708174932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "insurances", force: :cascade do |t|
+    t.string   "policy_number"
+    t.string   "company"
+    t.string   "expiration_date"
+    t.string   "renewal_date"
+    t.integer  "cost"
+    t.integer  "vehicle_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -33,5 +44,21 @@ ActiveRecord::Schema.define(version: 20150708173433) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "vehicles", force: :cascade do |t|
+    t.string   "type"
+    t.string   "make"
+    t.string   "model"
+    t.integer  "year"
+    t.integer  "mileage"
+    t.string   "name"
+    t.string   "vin"
+    t.string   "license_plate"
+    t.string   "state"
+    t.integer  "user_id"
+    t.boolean  "selling",       default: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
 
 end

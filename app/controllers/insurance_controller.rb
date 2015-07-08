@@ -1,0 +1,2 @@
+class InsuranceController < ApplicationController
+end
