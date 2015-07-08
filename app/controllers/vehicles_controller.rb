@@ -15,7 +15,7 @@ class VehiclesController < ApplicationController
   def create
     @vehicle = Vehicle.new(vehicle_params)
     if @vehicle.save
-      redirect_to @vehicles_path, notice: "#{type} was successfully created."
+      redirect_to vehicles_path, notice: "#{@vehicle.type} was successfully created."
     else
       render action: 'new'
     end
