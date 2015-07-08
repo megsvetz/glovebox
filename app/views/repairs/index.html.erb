@@ -1,0 +1,12 @@
+<h1><%= @vehicle %> Reapirs</h1>
+<% @repairs.each do |repair|%>
+  <%= repair.type %>
+  <%= repair.repair_description %>
+  <%= repair.repair_date %>
+  <%= repair.repair_cost %>
+  <%= image_tag(repair.repair_image.url(:thumb), :class => "") %>
+  <%= repair.repair_place %>
+  <%= link_to 'Show', sti_repair_path(@vehicle, repair.type, repair) %>
+  <%= link_to 'Edit', sti_repair_path(@vehicle, repair.type, repair, :edit) %>
+  <%= link_to 'Destroy', sti_repair_path(@vehicle, repair.type, repair), method: :delete, data: {confirm: 'Are you sure?'} %>
+<% end %>
