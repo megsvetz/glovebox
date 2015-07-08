@@ -1,0 +1,8 @@
+<% @insurances.each do |insurance| %>
+  <%= link_to(insurance.vehicle_id.name, vehicle_path(insurance.vehicle_id)) %>
+  <%= insurance.policy_number %> 
+  <%= insurance.company %>
+  <%= insurance.expiration_date %>
+  <%= insurance.renewal_date %>
+  $ <%= insurance.cost %>
+<% end %>
