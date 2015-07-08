@@ -36,6 +36,21 @@ ActiveRecord::Schema.define(version: 20150708175958) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "repairs", force: :cascade do |t|
+    t.string   "type"
+    t.text     "repair_description"
+    t.date     "repair_date"
+    t.decimal  "repair_cost",               precision: 6, scale: 2
+    t.string   "repair_image_file_name"
+    t.string   "repair_image_content_type"
+    t.integer  "repair_image_file_size"
+    t.datetime "repair_image_updated_at"
+    t.string   "repair_place"
+    t.integer  "vehicle_id"
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
