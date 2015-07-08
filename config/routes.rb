@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root "welcome#home"
   resources :vehicles do
     resources :repairs
+    resources :insurances
+    resources :registrations
   end
   resources :cars, controller: 'vehicles', type: 'Car'
   resources :trucks, controller: 'vehicles', type: 'Truck'
@@ -12,10 +14,9 @@ Rails.application.routes.draw do
   resources :motorcycles, controller: 'vehicles', type: 'Motorcycle'
   resources :waverunners, controller: 'vehicles', type: 'Waverunner'
   resources :dunebuggies, controller: 'vehicles', type: 'Dunebuggy'
+  resources :other, controller: 'vehicles', type: 'Other'
   resources :oilchanges, controller: 'repairs', type: 'Oilchange'
   resources :tirerotations, controller: 'repairs', type: 'Tirerotation'
   resources :inspections, controller: 'repairs', type: 'Inspection'
   resources :alignments, controller: 'repairs', type: 'Alignment'
-  resources :insurances
-  resources :registrations
 end

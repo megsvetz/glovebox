@@ -5,7 +5,7 @@ class Vehicle < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
 	def self.type
-	  %w(Car Truck Boat Trailer ATV Motorcycle Waverunner Dunebuggy)
+	  %w(Car Truck Boat Trailer ATV Motorcycle Waverunner Dunebuggy Other)
 	end
 
 	#scopes
@@ -14,31 +14,35 @@ class Vehicle < ActiveRecord::Base
 	end
 
 	def self.truck
-		where(race: 'Truck')
+		where(type: 'Truck')
 	end
 
 	def self.boat
-		where(race: 'Boat')
+		where(type: 'Boat')
 	end
 
 	def self.trailer
-		where(race: 'Trailer')
+		where(type: 'Trailer')
 	end
 
   def self.atv
-    where(race: 'ATV')
+    where(type: 'ATV')
   end
 
   def self.motorcycle
-    where(race: 'motoryclce')
+    where(type: 'motoryclce')
   end
 
   def self.waverunner
-    where(race: 'waverunner')
+    where(type: 'waverunner')
   end
 
   def self.dunebuggy
-    where(race: 'dunebuggy')
+    where(type: 'dunebuggy')
+  end
+
+  def self.other
+    where(type: 'other')
   end
 
 	def talk

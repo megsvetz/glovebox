@@ -1,0 +1,13 @@
+<%= form_for @vehicle do |f| %>
+<%= f.select :type, Vehicle.type, {:include_blank => "Select Vehicle Type"} %>
+<% dates = 1900..Date.today.year %>
+<p><%= f.select :year, (Time.zone.now.year - 100)..(Time.zone.now.year + 1), {:include_blank => "Select Vehicle Year"} %></p>
+<p><%= f.text_field :make, class: "form-control", :placeholder => "Vehicle Make" %></p>
+<p><%= f.text_field :model, class: "form-control", :placeholder => "Vehicle Model" %></p>
+<p><%= f.text_field :mileage, class: "form-control", :placeholder => "Vehicle Mileage" %></p>
+<p><%= f.text_field :name, class: "form-control", :placeholder => "Vehicle Name" %></p>
+<p><%= f.text_field :vin, class: "form-control", :placeholder => "Vehicle Vin" %></p>
+<p><%= f.text_field :license_plate, class: "form-control", :placeholder => "Vehicle License Plate" %></p>
+<p><%= f.text_field :state, class: "form-control", :placeholder => "State registered in" %></p>
+<p><%= f.submit %>
+<% end %>

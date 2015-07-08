@@ -33,4 +33,8 @@ class VehiclesController < ApplicationController
     params.require(:vehicle).permit(:type, :make, :model, :year, :mileage, :name, :vin, :license_plate, :state, :user_id, :image)
   end
 
+  def find_vehicle
+    @vehicle = Vehicle.find_by(params[:id])
+  end
+
 end
