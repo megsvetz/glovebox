@@ -31,6 +31,11 @@ gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 
 gem 'devise'
 
+#makes fake names and stuff
+gem 'faker'
+#makes super amounts of entries in table
+gem 'populator'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -34,7 +34,7 @@ class VehiclesController < ApplicationController
   end
 
   def find_vehicle
-    @vehicle = Vehicle.find_by(params[:id])
+    @vehicle = Vehicle.find_by(id: params[:id])
   end
 
 end
