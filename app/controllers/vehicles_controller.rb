@@ -23,9 +23,15 @@ class VehiclesController < ApplicationController
 
 
   def update
+    if @vehicle.update(vehicle_params)
+      redirect_to vehicles_path, notice: "#{@vehicle.type} was successfully updated."
+    else
+      render action: 'new'
+    end
   end
 
   def destroy
+    @vehicle.destroy
   end
 
   private

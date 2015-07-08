@@ -42,6 +42,7 @@ class RepairsController < ApplicationController
 	private
     def set_vehicle
       @vehicle = Vehicle.find_by(id: params[:vehicle_id])
+		end
 
 	   def set_repair
 	     @repair = repair_type_class.find_by(id: params[:id])

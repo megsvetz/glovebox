@@ -1,0 +1,15 @@
+<%= form_for @repair, url: vehicle_repairs_path(@vehicle) do |f| %>
+  <%= f.label 'Type' %>
+  <%= f.select :type, Repair.type, {}, disabled: @type != "Repair" %>
+  <%= f.label "Description" %>
+  <%= f.text_area :repair_description %>
+  <%= f.label 'Date' %>
+  <%= f.datetime_select :repair_date %>
+  <%= f.label 'Cost' %>
+  <%= f.text_field :repair_cost %>
+  <%= f.label 'Image' %>
+  <%= f.file_field :repair_image%>
+  <%= f.location 'Place' %>
+  <%= f.text_field :repair_place %>
+  <%= f.submit %>
+<% end %>
