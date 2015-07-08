@@ -3,17 +3,21 @@ class InsuranceController < ApplicationController
   before_action :find_vehicle
   before_action :authenticate_user!
 
+  def index
+    @insurances = Insurance.where(@vehicles.user_id == current_user.id)
+  end
+
   def new
-    @insurance = Insurance.new
+    @insurance = @vehicle.insurances.build
   end
 
   def create
-    @insurance = Insurance.new(insurance_params)
+    @insurance = @vehicle.insurances.build(insurance_params)
     if @insurance.save
-      redirect_to(vehicle_insurance_path(:vehicle_id, :id))
+      redirect_to(vehicle_insurance_path(@vehicle.id, @insurance.id))
       flash[:notice] = "Insurance was added successfully!"
     else
-      flash[:error]="Insurance was not added."
+      flash[:error] = "Insurance was not added."
       render :new
     end
   end
@@ -24,7 +28,7 @@ class InsuranceController < ApplicationController
   def update
     if @insurance.update(insurance_params)
       flash[:notice] = "Insurance was successfully updated."
-      redirect_to(vehicle_insurance_path(:vehicle_id, :id))
+      redirect_to(vehicle_insurance_path(@vehicle.id, @insurance.id))
     else
       flash[:error] = "Insurance was not successfully updated."
       render :edit
@@ -48,8 +52,7 @@ class InsuranceController < ApplicationController
   end
 
   def find_vehicle
-    @vehicle = Vehicle.find(params[:vehicle_id])
+    @vehicle = Vehicle.find_by(id: params[:vehicle_id])
   end
 
 end
-
