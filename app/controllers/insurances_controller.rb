@@ -4,7 +4,7 @@ class InsurancesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @insurances = Insurance.where(@vehicles.user_id == current_user.id)
+    @insurances = Insurance.where(@insurance.vehicle.user_id == current_user.id)
   end
 
   def new

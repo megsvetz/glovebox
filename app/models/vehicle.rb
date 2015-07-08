@@ -1,4 +1,7 @@
 class Vehicle < ActiveRecord::Base
+  has_one :insurance
+  has_one :registration
+  belongs_to :user
 
 	self.inheritance_column = :type
   has_attached_file :image, styles: { large: "500x500>", medium: "150x150>", thumb: "50x50>"}

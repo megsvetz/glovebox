@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  get 'welcome/home'
-
+  
   devise_for :users
-  root "welcome#home"
+  root "welcomes#home"
   resources :vehicles do
     resources :repairs
     resources :insurances
