@@ -1,2 +1,0 @@
-class MaintenanceController < ApplicationController
-end
