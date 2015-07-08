@@ -1,0 +1,3 @@
+class Dunebuggy < Vehicle
+
+end
