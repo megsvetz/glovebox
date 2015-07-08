@@ -1,0 +1,3 @@
+class Waverunner < Vehicle
+
+end

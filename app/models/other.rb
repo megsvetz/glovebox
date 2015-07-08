@@ -1,0 +1,3 @@
+class Other < Vehicle
+
+end
