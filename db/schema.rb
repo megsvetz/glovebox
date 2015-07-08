@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150708175958) do
+ActiveRecord::Schema.define(version: 20150708181243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,12 +19,12 @@ ActiveRecord::Schema.define(version: 20150708175958) do
   create_table "insurances", force: :cascade do |t|
     t.string   "policy_number"
     t.string   "company"
-    t.string   "expiration_date"
-    t.string   "renewal_date"
     t.integer  "cost"
     t.integer  "vehicle_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.date     "expiration_date"
+    t.date     "renewal_date"
   end
 
   create_table "registrations", force: :cascade do |t|
@@ -34,6 +34,21 @@ ActiveRecord::Schema.define(version: 20150708175958) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "repairs", force: :cascade do |t|
+    t.string   "type"
+    t.text     "repair_description"
+    t.date     "repair_date"
+    t.decimal  "repair_cost",               precision: 6, scale: 2
+    t.string   "repair_image_file_name"
+    t.string   "repair_image_content_type"
+    t.integer  "repair_image_file_size"
+    t.datetime "repair_image_updated_at"
+    t.string   "repair_place"
+    t.integer  "vehicle_id"
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
   end
 
   create_table "users", force: :cascade do |t|
