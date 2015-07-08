@@ -22,7 +22,14 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
+
 gem 'devise'
+
+# adds cool css and stuff
+gem 'bootstrap-sass', '~> 3.3.5'
+#used to upload photos/pictures/images/viewablefileintheformatofseeing
+gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -33,9 +40,19 @@ gem 'devise'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+group :test do
+  gem 'simplecov', :require => false
+  gem 'shoulda-matchers'
+  gem "factory_girl_rails", "~> 4.0"
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  #used to stop execution and debug.  I like it better than byebug
+  gem 'pry'
+  #for testing purposes
+  gem 'rspec-rails', '~> 3.0'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
