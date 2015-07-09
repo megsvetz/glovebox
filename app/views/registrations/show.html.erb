@@ -1,0 +1,12 @@
+<% if @registration.image.present? %>
+  <%= image_tag(@registration.image.url(:medium), :class => "img-thumbnail") %>
+  <br/>
+<% end %>
+
+<h1><%= @registration.state %> </h1>
+<h3><%= @registration.expiration %></h3>
+<h3>Cost: $ <%= @registration.cost %> </h3>
+
+<br><br>
+
+<%= link_to 'Edit Vehicle Registration', edit_vehicle_registration_path(@vehicle.id, @registration.id), :class => "btn btn-info" %>

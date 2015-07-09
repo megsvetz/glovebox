@@ -4,11 +4,11 @@ class RegistrationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @registrations = Vehicle.find(params[:vehicle_id]).registration
+    @registration = @vehicle.registration
   end
 
   def new
-    @registration = @vehicle.registrations.build
+    @registration = Registration.new
   end
 
   def create
