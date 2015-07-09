@@ -1,0 +1,3 @@
+class Tirerotation < Repair
+
+end

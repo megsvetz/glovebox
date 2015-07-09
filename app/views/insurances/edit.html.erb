@@ -1,0 +1,30 @@
+<h1 class="text-center">Edit Insurance</h1>
+
+<%= form_for @insurance, url: vehicle_insurance_path, :html => { :multipart => true }  do |f| %>
+  <% if @insurance.image.present? %>
+    <%= image_tag(@insurance.image.url(:medium)) %>
+  <% else %>
+    <p>Please upload a photo</p>
+  <% end %>
+
+  <h2>Company:
+    <%= f.text_field :company, class: "form-control", :placeholder => "Company", :style => "width:100%;" %></h4>
+  <br>
+  <h3>Policy Number:
+    <%= f.text_field :policy_number, class: "form-control", :placeholder => "Policy Number", :style => "width:100%;" %></h3>
+  <br>
+  <h4>Expiration Date:
+    <%= f.datetime_select :expiration_date, class: "form-control", :placeholder => "Expiration Date", :style => "width:100%;" %></h4>
+  <br>
+  <h4>Renewal Date:
+    <%= f.datetime_select :renewal_date, class: "form-control", :placeholder => "Renewal Date", :style => "width:100%;" %></h4>
+  <br>
+  <h4>Cost:
+    <%= f.number_field :cost, class: "form-control", :placeholder => "Cost of Policy", :style => "width:100%" %></h4>
+  <br>
+  <%= f.file_field :image %>
+  <br>
+  <%= f.submit("Update Insurance") %>
+  <br><br>
+
+<% end %>

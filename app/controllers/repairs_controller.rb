@@ -1,10 +1,12 @@
 class RepairsController < ApplicationController
-	before_action :set_repair_type
+	before_action :set_repair_type, only: [:index, :new]
   before_action :set_vehicle
 	before_action :set_repair, only: [:show, :edit, :update, :destroy]
+	before_action :set_repair_type2, except: [:index, :new]
 
 	def index
-		@repairs = @vehicle.repair_type
+		# @repairs = @vehicle.oilchanges
+		@repairs = @vehicle.repairs.send(repair_type)
 	end
 
 	def show
@@ -27,13 +29,13 @@ class RepairsController < ApplicationController
 	end
 
 	def new
-		@repair = @vehicle.repair_type.build
+		@repair = @vehicle.repairs.build
 	end
 
 	def create
-		@repair = @vehicle.repair_type.build(repair_params)
+		@repair = @vehicle.repairs.build(repair_params)
     if @repair.save
-      redirect_to vehicle_repairs_path(@vehicle.id), notice: "#{type} was successfully created."
+      redirect_to vehicle_repairs_path(@vehicle.id), notice: "#{@type} was successfully created."
     else
       render action: 'new'
     end
@@ -42,25 +44,34 @@ class RepairsController < ApplicationController
 	private
     def set_vehicle
       @vehicle = Vehicle.find_by(id: params[:vehicle_id])
+		end
 
 	   def set_repair
 	     @repair = repair_type_class.find_by(id: params[:id])
 	   end
 
-	  def set_repair_type
-      @type = type
+		def set_repair_type
+			@type = type()
+		end
+
+		def set_repair_type2
+			@type = type2()
+		end
+
+    def type()
+      Repair.types.include?(params[:type]) ? params[:type] : "All"
     end
 
-    def type
-      Repair.types.include?(params[:type]) ? params[:type] : "Repair"
-    end
+		def type2()
+			Repair.types.include?(params[:repair][:type]) ? params[:repair][:type] : "All"
+		end
 
     def repair_type
-      type.pluralize
-    end
-
-    def repair_type_class
-      type.constantize
+			if type == "All"
+      	type.downcase
+			else
+				type.pluralize
+			end
     end
 
     def repair_params

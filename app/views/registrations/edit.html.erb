@@ -1,0 +1,24 @@
+<h1 class="text-center">Edit Registration</h1>
+
+<%= form_for @registration, url: vehicle_registration_path, :html => { :multipart => true }  do |f| %>
+  <% if @registration.image.present? %>
+    <%= image_tag(@registration.image.url(:medium)) %>
+  <% else %>
+    <p>Please upload a photo</p>
+  <% end %>
+
+  <h2>State:
+    <%= f.text_field :state, class: "form-control", :placeholder => "State", :style => "width:100%;" %></h4>
+  <br>
+  <h4>Expiration Date:
+    <%= f.datetime_select :expiration, class: "form-control", :placeholder => "Expiration Date", :style => "width:100%;" %></h4>
+  <br>
+  <h4>Cost:
+    <%= f.number_field :cost, class: "form-control", :placeholder => "Cost of Registration", :style => "width:100%" %></h4>
+  <br>
+  <%= f.file_field :image %>
+  <br>
+  <%= f.submit("Update Registration") %>
+  <br><br>
+
+<% end %>

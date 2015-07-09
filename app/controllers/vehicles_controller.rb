@@ -1,8 +1,8 @@
 class VehiclesController < ApplicationController
-  before_action :find_vehicle, only: [:show, :edit, :update, :destory]
+  before_action :find_vehicle, only: [:show, :edit, :update, :destroy]
 
   def index
-    @vehicles = Vehicle.all
+    @vehicles = current_user.vehicles.all
   end
 
   def show
@@ -21,11 +21,17 @@ class VehiclesController < ApplicationController
     end
 	end
 
-
   def update
+    if @vehicle.update(vehicle_params)
+      redirect_to vehicles_path, notice: "#{@vehicle.type} was successfully updated."
+    else
+      render action: 'new'
+    end
   end
 
   def destroy
+    @vehicle.destroy
+    redirect_to vehicles_path
   end
 
   private
@@ -34,7 +40,7 @@ class VehiclesController < ApplicationController
   end
 
   def find_vehicle
-    @vehicle = Vehicle.find_by(params[:id])
+    @vehicle = Vehicle.find_by(id: params[:id])
   end
 
 end

@@ -1,0 +1,12 @@
+<% if @insurance.image.present? %>
+  <%= image_tag(@insurance.image.url(:medium)) %>
+<% else %>
+  <p>Please upload a photo</p>
+<% end %>
+
+<%= link_to(@vehicle.name, vehicle_path(@insurance.vehicle_id)) %>
+<%= @insurance.policy_number %> 
+<%= @insurance.company %>
+<%= @insurance.expiration_date %>
+<%= @insurance.renewal_date %>
+$ <%= @insurance.cost %>
