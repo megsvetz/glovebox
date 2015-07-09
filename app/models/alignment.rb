@@ -1,0 +1,3 @@
+class Alignment < Repair
+
+end
