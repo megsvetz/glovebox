@@ -1,0 +1,11 @@
+<% if @registration.image.present? %>
+    <%= image_tag(@registration.image.url(:medium)) %>
+<% else %>
+    <p>Please upload a photo</p>
+<% end %>
+  
+<%= link_to(@vehicle.name, vehicle_path(@registration.vehicle_id)) %>
+<%= @registration.state %> 
+<%= @registration.expiration %>
+$ <%= @registration.cost %>
+
