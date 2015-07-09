@@ -2,7 +2,7 @@ class VehiclesController < ApplicationController
   before_action :find_vehicle, only: [:show, :edit, :update, :destroy]
 
   def index
-    @vehicles = Vehicle.all
+    @vehicles = current_user.vehicles.all
   end
 
   def show
