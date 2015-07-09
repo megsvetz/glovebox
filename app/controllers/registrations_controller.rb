@@ -4,7 +4,7 @@ class RegistrationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @registrations = Registration.where(@vehicle.user_id == current_user.id)
+    @registrations = Vehicle.find(params[:vehicle_id]).registration
   end
 
   def new
