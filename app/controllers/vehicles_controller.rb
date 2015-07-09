@@ -21,7 +21,6 @@ class VehiclesController < ApplicationController
     end
 	end
 
-
   def update
     if @vehicle.update(vehicle_params)
       redirect_to vehicles_path, notice: "#{@vehicle.type} was successfully updated."
