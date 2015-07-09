@@ -1,9 +1,9 @@
 <h1 class="text-center">Edit Insurance</h1>
 
 <%= form_for @insurance, url: vehicle_insurance_path, :html => { :multipart => true }  do |f| %>
-  <%= if @insurance.image.present? %>
+  <% if @insurance.image.present? %>
     <%= image_tag(@insurance.image.url(:medium)) %>
-  <%= else %>
+  <% else %>
     <p>Please upload a photo</p>
   <% end %>
 

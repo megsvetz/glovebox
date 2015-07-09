@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<% if @insurance.image.present? %>  
-=======
 <% if @insurance.image.present? %>
->>>>>>> 3f58b0959ddf072217456a90ac1e6bc0b3de2fa4
   <%= image_tag(@insurance.image.url(:medium), :class => "img-thumbnail") %>
   <br/>
 <% end %>
@@ -15,4 +11,4 @@
 
 <br><br>
 
-<a href="<%= edit_vehicle_insurance_path(@vehicle.id, @insurance.id) %>" class="btn btn-info"><span class = "glyphicon glyphicon-pencil"></span></a>
+<%= link_to 'Edit Vehicle Insurance', edit_vehicle_insurance_path(@vehicle.id, @insurance.id), :class => "btn btn-info" %>

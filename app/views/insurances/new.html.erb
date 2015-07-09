@@ -1,6 +1,6 @@
 <h1 class="text-center">New Insurance</h1>
 
-<%= form_for @insurance, url: vehicle_insurance_path(:id), :html => { :multipart => true }  do |f| %>
+<%= form_for @insurance, url: vehicle_insurance_path(:vehicle_id, :id), :html => { :multipart => true }  do |f| %>
 
   <h2>Company:
     <%= f.text_field :company, class: "form-control", :placeholder => "Company", :style => "width:100%;" %></h4>
@@ -18,7 +18,7 @@
     <%= f.number_field :cost, class: "form-control", :placeholder => "Cost of Policy", :style => "width:100%" %></h4>
   <br>
   <%= f.file_field :image %>
-  <%= f.hidden_field :vehicle_id, value @vehicle.id %>
+  <%= f.hidden_field :vehicle_id, value: @vehicle.id %>
   <br>
   <%= f.submit("Update Insurance") %>
   <br><br>
