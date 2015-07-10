@@ -12,9 +12,9 @@ class InsurancesController < ApplicationController
   end
 
   def create
-    @insurance = @vehicle.insurances.build(insurance_params)
+    @insurance = Insurance.new(insurance_params)
     if @insurance.save
-      redirect_to(vehicle_insurance_path(@vehicle.id, @insurance.id))
+      redirect_to(vehicle_insurance_path(@insurance.vehicle_id, @insurance.id))
       flash[:notice] = "Insurance was added successfully!"
     else
       flash[:error] = "Insurance was not added."
@@ -40,7 +40,7 @@ class InsurancesController < ApplicationController
 
   private
   def insurance_params
-    params.require(:insurance).permit(:policy_number, :company, :expiration_date, :cost, :image)
+    params.require(:insurance).permit(:policy_number, :company, :expiration_date, :cost, :image, :vehicle_id)
   end
 
   def find_insurance

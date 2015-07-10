@@ -1,17 +1,28 @@
-<% if @insurance.image.present? %>
-  <%= image_tag(@insurance.image.url(:medium), :class => "img-thumbnail") %>
-  <br/>
-<% end %>
+<div class="container">
+  <h1 class="text-center">Insurance for <%= @vehicle.name.capitalize %></h1>
+  <hr>
+  <div class="row">
+    <div class="col-md-7 text-center">   
+      <% if @insurance.image.present? %>
+        <%= link_to image_tag(@insurance.image.url(:large), :class => "img-thumbnail"), vehicle_path(@insurance.vehicle_id) %>
+      <% else %>
+        <img class="img-responsive" src="http://placehold.it/700x300" alt="">
+      <% end %>
+      <br/>
+    </div>
+    <div class="col-md-5 text-center">
+      <h1><%= @insurance.company %> </h1>
+      <h2><%= @insurance.policy_number %></h2>
+      <h3><%= @insurance.expiration_date %></h3>
+      <h3><%= @insurance.renewal_date %></h3>
+      <h3>Cost: $ <%= @insurance.cost %> </h3>
+      <br>
+      <%= link_to 'Edit Vehicle Insurance', edit_vehicle_insurance_path(@insurance.vehicle_id, @insurance.id), :class => "btn btn-danger" %>
+    </div>
+  </div>
+</div>
+<br>
 
-<h1><%= @insurance.company %> </h1>
-<h2><%= @insurance.policy_number %></h2>
-<h3><%= @insurance.expiration_date %></h3>
-<h3><%= @insurance.renewal_date %></h3>
-<h3>Cost: $ <%= @insurance.cost %> </h3>
-
-<br><br>
-
-<%= link_to 'Edit Vehicle Insurance', edit_vehicle_insurance_path(@vehicle.id, @insurance.id), :class => "btn btn-info" %>
 
 
 
