@@ -4,3 +4,7 @@ Mileage: <%= @vehicle.mileage %><br>
 Vin: <%= @vehicle.vin %><br>
 License Plate: <%= @vehicle.license_plate %><br>
 Registered in <%= @vehicle.state %><br>
+Registration Expires: <%= @vehicle.registration.expiration %><br>
+Insurance Expires: <%= @vehicle.insurance.expiration_date %><br>
+<%= link_to 'Edit', edit_vehicle_path(@vehicle.id) %>
+<%= link_to 'Delete', vehicle_path(@vehicle.id), method: :delete %>
