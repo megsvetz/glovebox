@@ -4,7 +4,7 @@ class InsurancesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @insurance = @vehicle.insurance
+    @insurance = Insurance.all
   end
 
   def new
