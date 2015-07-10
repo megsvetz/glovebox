@@ -12,7 +12,7 @@ class InsurancesController < ApplicationController
   end
 
   def create
-    @insurance = @vehicle.insurances.build(insurance_params)
+    @insurance = @vehicle.build_insurance(insurance_params)
     if @insurance.save
       redirect_to(vehicle_insurance_path(@vehicle.id, @insurance.id))
       flash[:notice] = "Insurance was added successfully!"

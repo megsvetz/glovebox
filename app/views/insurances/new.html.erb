@@ -1,26 +1,31 @@
-<h1 class="text-center">New Insurance</h1>
+<div class="container">
+  <h1 class="text-center">New Insurance for <%= @vehicle.name.capitalize %></h1>
+  <hr>
+  <div style="text-align:center;">
 
-<%= form_for @insurance, url: vehicle_insurance_path(:vehicle_id, :id), :html => { :multipart => true }  do |f| %>
+    <%= form_for @insurance, url: vehicle_insurances_path(:vehicle_id), :html => { :multipart => true }  do |f| %>
 
-  <h2>Company:
-    <%= f.text_field :company, class: "form-control", :placeholder => "Company", :style => "width:100%;" %></h4>
-  <br>
-  <h3>Policy Number:
-    <%= f.text_field :policy_number, class: "form-control", :placeholder => "Policy Number", :style => "width:100%;" %></h3>
-  <br>
-  <h4>Expiration Date:
-    <%= f.datetime_select :expiration_date, class: "form-control", :placeholder => "Expiration Date", :style => "width:100%;" %></h4>
-  <br>
-  <h4>Renewal Date:
-    <%= f.datetime_select :renewal_date, class: "form-control", :placeholder => "Renewal Date", :style => "width:100%;" %></h4>
-  <br>
-  <h4>Cost:
-    <%= f.number_field :cost, class: "form-control", :placeholder => "Cost of Policy", :style => "width:100%" %></h4>
-  <br>
-  <%= f.file_field :image %>
-  <%= f.hidden_field :vehicle_id, value: @vehicle.id %>
-  <br>
-  <%= f.submit("Update Insurance") %>
-  <br><br>
+      <h2>Company:<br>
+        <%= f.text_field :company, class: "form-control form-align", :placeholder => "Company", :style => "width:400px;" %></h4>
+      <br>
+      <h3>Policy Number:<br>
+        <%= f.text_field :policy_number, class: "form-control form-align", :placeholder => "Policy Number", :style => "width:250px;" %></h3>
+      <br>
+      <h4>Expiration Date:<br>
+        <%= f.date_select :expiration_date, class: "form-control", :placeholder => "Expiration Date", :style => "width:60%;" %></h4>
+      <br>
+      <h4>Renewal Date:<br>
+        <%= f.date_select :renewal_date, class: "form-control", :placeholder => "Renewal Date", :style => "width:60%;" %></h4>
+      <br>
+      <h4>Cost ($):<br>
+        <%= f.number_field :cost, class: "form-control form-align", :placeholder => "Cost of Policy", :style => "width:150px" %></h4>
+      <br>
+      <%= f.file_field :image, class: "form-align" %>
+      <%= f.hidden_field :vehicle_id, value: @vehicle.id %>
+      <br>
+      <%= f.submit "Update Insurance", class: "form-align" %>
+      <br><br>
 
-<% end %>
+    <% end %>
+  </div>
+</div>
