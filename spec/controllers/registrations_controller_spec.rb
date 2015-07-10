@@ -1,25 +1,32 @@
 require 'rails_helper'
 
+
 RSpec.describe RegistrationsController, type: :controller do
+  login_user
+
+  before(:each) do 
+    @vehicle = FactoryGirl.create(:vehicle)
+  end
+
   let(:registration) {FactoryGirl.create(:registration)}
 
   describe "GET #index" do
     it "returns http success" do
-      get :index
+      get :index , vehicle_id: @vehicle.id
       expect(response).to have_http_status(:success)
     end
   end
   describe "GET #new" do
     it "returns http success" do
-      get :new
+      get :new, vehicle_id: @vehicle.id
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "POST #create" do
     it "created successfully" do
-      post :create, registration: {state:'California' }
-      expect(response).to redirect_to(vehicle_registration_path)
+      post :create, vehicle_id: @vehicle.id, registration: {state:'California' }
+      expect(response).to redirect_to(new_vehicle_registration_path)
     end
 
     it "was NOT created" do
