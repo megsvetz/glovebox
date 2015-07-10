@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe RegistrationController, type: :controller do
+RSpec.describe RegistrationsController, type: :controller do
   let(:registration) {FactoryGirl.create(:registration)}
 
   describe "GET #index" do
@@ -48,7 +48,7 @@ RSpec.describe RegistrationController, type: :controller do
 
   describe "GET #edit" do
     it "Edits registration" do
-      get :edit, id:registration.id, registration:{state:'rNew State'}
+      get :edit, id:registration.id, registration:{state:'New State'}
       expect(response).to have_http_status(:success)
     end
 
