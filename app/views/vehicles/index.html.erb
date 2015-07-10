@@ -1,12 +1,30 @@
+<div class='vehicle-header text-center'>Your Vehicles</div>
+  <hr />
 <div class="row">
   <% @vehicles.each do |a| %>
   <div class="col-sm-6 col-md-4">
     <div class="thumbnail vehicle_show">
       <%= image_tag a.image.url(:medium) %>
       <div class="caption">
-        <h4><%= link_to a.make + ' ' + a.model, vehicle_path(a.id), class: 'pull-left' %></h4><br>
-        <%= link_to 'Add Repair', new_vehicle_repair_path(a.id), class: 'btn btn-default pull-left' %>
-
+        <div class='vehicle-text pull-left'><%= link_to a.make + ' ' + a.model, vehicle_path(a.id) %>
+          <br>
+        <% if a.registration.present? %>
+          Reg Expires: <%= a.registration.expiration %>
+        <% else %>
+          No registration entered!
+        <% end %>
+        <br>
+        <% if a.insurance.present? %>
+          Insurance Expires: <%= a.insurance.expiration_date %>
+        <% else %>
+          No Insurance entered!
+        <% end %>
+        <br>
+        Mileage: <%= a.mileage %>
+        </div>
+        <div class='pull-right vehicle-buttons'>
+          <%= link_to 'Add Repair', new_vehicle_repair_path(a.id), class: 'btn btn-default'%>
+        </div>
       </div>
     </div>
   </div>
