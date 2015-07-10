@@ -39,7 +39,6 @@ class InsurancesController < ApplicationController
   end
 
   private
-
   def insurance_params
     params.require(:insurance).permit(:policy_number, :company, :expiration_date, :cost, :image)
   end

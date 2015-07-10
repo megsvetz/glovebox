@@ -1,12 +1,14 @@
+<div class="row">
+  <% @vehicles.each do |a| %>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail vehicle_show">
+      <%= image_tag a.image.url(:medium) %>
+      <div class="caption">
+        <h4><%= link_to a.make + ' ' + a.model, vehicle_path(a.id), class: 'pull-left' %></h4><br>
+        <%= link_to 'Add Repair', new_vehicle_repair_path(a.id), class: 'btn btn-default pull-left' %>
 
-<% @vehicles.each do |a| %>
-  <table class='table'>
-    <tr>
-      <td><%= image_tag a.image.url(:thumb) %></td>
-      <td><%= link_to a.make + ' ' + a.model, vehicle_path(a.id) %></td><br>
-      <td><%= link_to 'Add Repair', new_vehicle_repair_path(a.id) %></td>
-      <td></td>
-    </tr>
-  </table>
-  <%= link_to 'Add Vehicle', new_vehicle_path %>
-<% end %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
