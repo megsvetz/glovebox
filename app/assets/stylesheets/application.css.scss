@@ -1,2 +1,94 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import url(http://fonts.googleapis.com/css?family=Oswald);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+@import url(http://fonts.googleapis.com/css?family=Abril+Fatface);
+
+body {
+  font-family: 'Oswald', sans-serif;
+}
+li {
+  padding-top:.30%;
+}
+li a {
+  color:white;
+}
+.footer_list {
+  color:#A3A3A3;
+  display:inline;
+}
+.footer_list li {
+  display:inline;
+  padding-left:6%;
+  padding-right:6%;
+}
+.extra {
+  margin-left:10%;
+  margin-right:10%;
+}
+.details {
+  background-color:#EDEDEC;
+}
+.features {
+  margin-left:10%;
+  margin-right:10%;
+  margin-bottom:3%;
+  padding-bottom:2%;
+}
+.features span {
+  padding-bottom:1%;
+}
+.details h4 {
+  font-size:15px;
+}
+.details td {
+  padding-right:5%;
+}
+.arrow {
+  width:15%;
+  text-align:right;
+}
+.sentence {
+  text-align:left;
+  padding-left:2%;
+}
+.road_header {
+  background-image: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.3)
+    ),
+    url("road.jpg");
+  background-size:cover;
+  background-repeat:no-repeat;
+}
+.road_header h1 {
+  font-family: 'Abril Fatface', sans-serif;
+  margin:0;
+  color:white;
+  font-size:6vmax;
+  padding-top:8%;
+  padding-bottom:1%;
+  padding-right:30%;
+  padding-left:5%;
+}
+.road_header h3 {
+  color:white;
+  font-size:2.2vmax;
+  padding-bottom:7%;
+}
+.navbar {
+  border-radius:0px;
+  margin-bottom:0px;
+}
+.nav {
+  margin-bottom:0px;
+}
+.navbar-inverse {
+  margin-bottom:0px;
+}
+.features td {
+  width: 25%;
+  margin-left:5%;
+}
+
