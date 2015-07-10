@@ -25,12 +25,12 @@ RSpec.describe RegistrationsController, type: :controller do
 
   describe "POST #create" do
     it "created successfully" do
-      post :create, vehicle_id: @vehicle.id, registration: {state:'California' }
-      expect(response).to redirect_to(new_vehicle_registration_path)
+      post :create, vehicle_id: @vehicle.id, registration: {state:'California' , expiration: Faker::Date.between(2.days.ago, Date.today), cost: 2000 }
+      expect(response).to have_http_status(:redirect)
     end
 
     it "was NOT created" do
-     post :create, registration: {state: nil}
+     post :create, vehicle_id: @vehicle.id,  registration: {state: nil}
      expect(response).to_not have_http_status(:redirect)
      expect(flash[:error]).to be_present
     end
@@ -39,51 +39,39 @@ RSpec.describe RegistrationsController, type: :controller do
   describe "PUT #update" do
    it "updated successfully!" do
      new_state = "new state"
-     put :update, id: vehicle.id, registration: {state: 'new state'}
+     put :update, vehicle_id: @vehicle.id, id: registration.id, registration: {state: 'new state'}
      expect(response).to have_http_status(:redirect)
      updated_registration = registration.reload
-     expect(updated_registration.description).to eq(new_state)
+     expect(updated_registration.state).to eq(new_state)
      expect(flash[:notice]).to be_present
    end
 
    it "did NOT update!" do
-     put :update, id: registration.id, registration:{name: nil}
-     expect(flash[:error]).to be_present
+     new_state = "new state"
+     put :update, vehicle_id: @vehicle.id, id: registration.id, registration: {state: nil}
      expect(response).to render_template(:edit)
+     updated_registration = registration.reload
+     expect(updated_registration.state).to_not eq(new_state)
+     expect(flash[:error]).to be_present
    end 
  end
 
   describe "GET #edit" do
     it "Edits registration" do
-      get :edit, id:registration.id, registration:{state:'New State'}
+      get :edit, vehicle_id: @vehicle.id, id:registration.id, registration:{state:'New State'}
       expect(response).to have_http_status(:success)
     end
 
     it 'doesnt edit' do
-      get :edit, id:'1'
-      expect(response).to have_http_status(:not_found)
+      get :edit, vehicle_id: @vehicle.id, id: 60000 , registration:{state:'New State'}
+      expect(response).to_not have_http_status(:success)
     end
 
-    it "doesnt edit without a state" do
-      get :edit, id:registration.id, registration:{name: nil }
-      expect(response).to have_http_status(:success)
-      expect(registration.reload.state).to_not be_nil
-      expect(response).to render_template(:edit)
-    end
   end
-
-  describe "DELETE #destroy" do
-    it "deletes registration" do
-      delete :destroy, id:registration.id 
-      expect(registration.count).to eq(0)
-    end
-  end
-
-  
 
   describe "GET #show" do
     it "returns http success" do
-      get :show, id: registration.id
+      get :show, vehicle_id: @vehicle.id, id: registration.id
       expect(response).to have_http_status(:success)
     end
   end
