@@ -56,6 +56,9 @@ group :development, :test do
   gem 'byebug'
   #used to stop execution and debug.  I like it better than byebug
   gem 'pry'
+
+  gem 'better_errors'
+  
   #for testing purposes
   gem 'rspec-rails', '~> 3.0'
 

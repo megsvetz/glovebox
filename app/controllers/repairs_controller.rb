@@ -1,11 +1,10 @@
 class RepairsController < ApplicationController
-	before_action :set_repair_type, only: [:index, :new]
+	before_action :set_repair_type
   before_action :set_vehicle
 	before_action :set_repair, only: [:show, :edit, :update, :destroy]
-	before_action :set_repair_type2, except: [:index, :new]
+	# before_action :set_repair_type2, except: [:index, :new]
 
 	def index
-		# @repairs = @vehicle.oilchanges
 		@repairs = @vehicle.repairs.send(repair_type)
 	end
 
@@ -17,7 +16,7 @@ class RepairsController < ApplicationController
 
 	def update
 		if @repair.update(repair_params)
-		  redirect_to @repair, notice: "#{type} was successfully updated."
+		  redirect_to vehicle_repairs_path(@vehicle.id), notice: "#{@type} was successfully updated."
 		else
 		  render action: 'edit'
 		end
@@ -46,35 +45,40 @@ class RepairsController < ApplicationController
       @vehicle = Vehicle.find_by(id: params[:vehicle_id])
 		end
 
-	   def set_repair
-	     @repair = repair_type_class.find_by(id: params[:id])
-	   end
+	  def set_repair
+	    @repair = repair_type_class.find_by(id: params[:id])
+	  end
+
+		def repair_type_class
+      type.constantize
+    end
 
 		def set_repair_type
 			@type = type()
 		end
 
-		def set_repair_type2
-			@type = type2()
-		end
+		# def set_repair_type2
+		# 	@type = type2()
+		# end
 
     def type()
-      Repair.types.include?(params[:type]) ? params[:type] : "All"
+      Repair.types.include?(params[:type]) ? params[:type] : "Repair"
     end
 
-		def type2()
-			Repair.types.include?(params[:repair][:type]) ? params[:repair][:type] : "All"
-		end
+		# def type2()
+		# 	Repair.types.include?(params[:repair][:type]) ? params[:repair][:type] : "All"
+		# end
 
     def repair_type
-			if type == "All"
-      	type.downcase
+			if type() == "Repair"
+      	"all"
 			else
-				type.pluralize
+				type.downcase.pluralize
 			end
     end
 
     def repair_params
+
       params.require(type.underscore.to_sym).permit(:type, :repair_description, :repair_date, :repair_cost, :repair_image, :repair_place)
     end
 end
