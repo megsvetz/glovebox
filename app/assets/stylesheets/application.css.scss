@@ -19,8 +19,8 @@ li a {
 }
 .footer_list li {
   display:inline;
-  padding-left:3%;
-  padding-right:3%;
+  padding-left:6%;
+  padding-right:6%;
 }
 .extra {
   margin-left:10%;
@@ -32,9 +32,17 @@ li a {
 .features {
   margin-left:10%;
   margin-right:10%;
+  margin-bottom:3%;
+  padding-bottom:2%;
+}
+.features span {
+  padding-bottom:1%;
 }
 .details h4 {
-  font-size:2vw;
+  font-size:15px;
+}
+.details td {
+  padding-right:5%;
 }
 .arrow {
   width:15%;
@@ -58,13 +66,15 @@ li a {
   font-family: 'Abril Fatface', sans-serif;
   margin:0;
   color:white;
-  font-size:6vw;
+  font-size:6vmax;
   padding-top:8%;
   padding-bottom:1%;
+  padding-right:30%;
+  padding-left:5%;
 }
 .road_header h3 {
   color:white;
-  font-size:2.0vw;
+  font-size:2.2vmax;
   padding-bottom:7%;
 }
 .navbar {
