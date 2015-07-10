@@ -6,7 +6,7 @@
     <div class="thumbnail vehicle_show">
       <%= image_tag a.image.url(:medium) %>
       <div class="caption">
-        <div class='vehicle-text pull-left'><%= link_to a.make + ' ' + a.model, vehicle_path(a.id) %>
+        <div class='vehicle-text'><%= link_to a.make + ' ' + a.model, vehicle_path(a.id) %>
           <br>
         <% if a.registration.present? %>
           Reg Expires: <%= a.registration.expiration %>
@@ -20,11 +20,11 @@
           No Insurance entered!
         <% end %>
         <br>
-        Mileage: <%= a.mileage %>
+        Mileage: <%= a.mileage %><br>
         </div>
-        <div class='pull-right vehicle-buttons'>
-          <%= link_to 'Add Repair', new_vehicle_repair_path(a.id), class: 'btn btn-default'%>
-        </div>
+        <p>
+        <div class='text-center'><%= link_to 'Add Repair', new_vehicle_repair_path(a.id), class: 'btn btn-default'%></div>
+        </p>
       </div>
     </div>
   </div>
