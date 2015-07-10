@@ -1,0 +1,27 @@
+<div class="nav nav-justified text-center" style="background-color:#40403F">
+  <div class="col-sm-12">
+    <div style="background-color:#40403F">
+      <br><br>
+      <ul class="footer_list text-center">
+        <li><%= link_to 'What is GLOVEBOX?', root_path %>
+        </li>|
+        <li><%= link_to 'Sign Up', new_user_registration_path %>
+        </li>|
+        <li>About Us
+        </li>|
+        <li>Contact
+        </li>|
+        <li>FAQ
+        </li>
+      <ul>
+      <footer class="text-center" style="color:#6B6B6B">
+        Copyright &copy; <%= Time.now.year %>
+        <br>
+      </footer>
+      <br>
+      <br>
+    </div>
+  </div>
+</div>
+
+<%= link_to( 'See My Vehicles', vehicles_path ) %>
