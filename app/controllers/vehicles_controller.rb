@@ -2,7 +2,7 @@ class VehiclesController < ApplicationController
   before_action :find_vehicle, only: [:show, :edit, :update, :destroy]
 
   def index
-    @vehicles = current_user.vehicles.all
+    @vehicles = current_user.vehicles.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 9)
   end
 
   def show
