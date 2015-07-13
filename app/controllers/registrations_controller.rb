@@ -4,7 +4,7 @@ class RegistrationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @registration = @vehicle.registration
+    @registration = Registration.all
   end
 
   def new
