@@ -22,8 +22,11 @@
               <br>
               Mileage: <%= a.mileage %><br>
             </div>
+            <br>
             <p>
-            <div class='text-center'><%= link_to 'Add Repair', new_vehicle_repair_path(a.id), class: 'btn btn-default'%></div>
+            <div class='text-center'><%= link_to 'Add Repair', new_vehicle_repair_path(a.id), class: 'btn btn-default'%></div></p>
+            <p><div class='text-center'><%= link_to 'See Insurance', vehicle_insurance_path(a.id, a.insurance.id ), class: 'btn btn-default', style: 'font-size:.75em' %>
+            <%= link_to 'See Registration', vehicle_registration_path(a.id, a.insurance.id), class: 'btn btn-default', style: 'font-size:.75em' %></div>
             </p>
           </div>
         </div>
