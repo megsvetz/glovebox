@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'gas/index'
+
   devise_for :users
   root "welcomes#home"
   resources :vehicles do
