@@ -1,12 +1,22 @@
-<% if @registration.image.present? %>
-  <%= image_tag(@registration.image.url(:medium), :class => "img-thumbnail") %>
-  <br/>
-<% end %>
-
-<h1><%= @registration.state %> </h1>
-<h3><%= @registration.expiration %></h3>
-<h3>Cost: $ <%= @registration.cost %> </h3>
-
-<br><br>
-
-<%= link_to 'Edit Vehicle Registration', edit_vehicle_registration_path(@vehicle.id, @registration.id), :class => "btn btn-info" %>
+<div class="container">
+  <h1 class="text-center">Registration for <%= @vehicle.name.capitalize %></h1>
+  <hr>
+  <div class="row">
+    <div class="col-md-7 text-center">   
+      <% if @registration.image.present? %>
+        <%= link_to image_tag(@insurance.image.url(:large), :class => "img-thumbnail"), vehicle_path(@registration.vehicle_id) %>
+      <% else %>
+        <img class="img-responsive" src="http://placehold.it/700x300" alt="">
+      <% end %>
+      <br/>
+    </div>
+    <div class="col-md-5 text-center">
+      <h1><%= @registration.state %> </h1>
+      <h3><%= @registration.expiration %></h3>
+      <h3>Cost: $ <%= @registration.cost %> </h3>
+      <br>
+      <%= link_to 'Edit Vehicle Registration', edit_vehicle_registration_path(@vehicle.id, @registration.id), :class => "btn btn-danger" %>
+    </div>
+  </div>
+</div>
+<br>

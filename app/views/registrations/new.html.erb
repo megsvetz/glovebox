@@ -1,20 +1,25 @@
-<h1 class="text-center">New Registration</h1>
+<div class="container">
+  <h1 class="text-center">New Registration for <%= @vehicle.name.capitalize %></h1>
+  <hr>
+  <div style="text-align:center;">
 
-<%= form_for @registration, url: vehicle_registration_path(:vehicle_id, :id), :html => { :multipart => true }  do |f| %>
+    <%= form_for @registration, url: vehicle_registrations_path(:vehicle_id), :html => { :multipart => true }  do |f| %>
 
-  <h2>State:
-    <%= f.text_field :state, class: "form-control", :placeholder => "State", :style => "width:100%;" %></h4>
-  <br>
-  <h4>Expiration Date:
-    <%= f.datetime_select :expiration, class: "form-control", :placeholder => "Expiration Date", :style => "width:100%;" %></h4>
-  <br>
-  <h4>Cost:
-    <%= f.number_field :cost, class: "form-control", :placeholder => "Cost of Policy", :style => "width:100%" %></h4>
-  <br>
-  <%= f.file_field :image %>
-  <%= f.hidden_field :vehicle_id, value: @vehicle.id %>
-  <br>
-  <%= f.submit("Update Registration") %>
-  <br><br>
+      <h2>State:<br>
+        <%= f.text_field :state, class: "form-control form-align", :placeholder => "State", :style => "width:400px;" %></h4>
+      <br>
+      <h4>Expiration Date:<br>
+        <%= f.date_select :expiration, class: "form-control", :placeholder => "Expiration Date", :style => "width:60%;" %></h4>
+      <br>
+      <h4>Cost ($):<br>
+        <%= f.number_field :cost, class: "form-control form-align", :placeholder => "Cost of Registration", :style => "width:150px" %></h4>
+      <br>
+      <%= f.file_field :image, class: "form-align" %>
+      <%= f.hidden_field :vehicle_id, value: @vehicle.id %>
+      <br>
+      <%= f.submit "Update Registration", class: "form-align" %>
+      <br><br>
 
-<% end %>
+    <% end %>
+  </div>
+</div>
