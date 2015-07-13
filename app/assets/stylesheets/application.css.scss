@@ -104,4 +104,23 @@ li a {
   margin-right: 10%;
   margin-left: 22%;
 }
-
+.form-align {
+  margin-left:auto;
+  margin-right:auto;
+}
+.contact-form-fields{
+  border: none;
+  box-shadow: none;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: #F7F7F6;
+  border-radius: 50px;
+  padding: 14px 24px 14px 24px;
+  width: 100%;
+  margin-bottom: 30px;
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
