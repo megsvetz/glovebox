@@ -6,16 +6,16 @@
       <%= f.select :type, Vehicle.type, {:include_blank => "Select Vehicle Type"} %><br><br>
       <% dates = 1900..Date.today.year %>
       <p><%= f.select :year, (Time.zone.now.year - 100)..(Time.zone.now.year + 1), {:include_blank => "Select Vehicle Year"} %></p><br>
-      <p><%= f.text_field :make, class: "form-control", :placeholder => "Vehicle Make", :style => "width:40%;" %></p>
-      <p><%= f.text_field :model, class: "form-control", :placeholder => "Vehicle Model", :style => "width:40%;" %></p>
-      <p><%= f.text_field :mileage, class: "form-control", :placeholder => "Vehicle Mileage", :style => "width:40%;" %></p>
-      <p><%= f.text_field :name, class: "form-control", :placeholder => "Vehicle Name", :style => "width:40%;" %></p>
-      <p><%= f.text_field :vin, class: "form-control", :placeholder => "Vehicle Vin", :style => "width:40%;" %></p>
-      <p><%= f.text_field :license_plate, class: "form-control", :placeholder => "Vehicle License Plate", :style => "width:40%;" %></p>
-      <p><%= f.text_field :state, class: "form-control", :placeholder => "State registered in", :style => "width:40%;" %></p>
+      <p><%= f.text_field :make, class: "form-control", :placeholder => "Vehicle Make", :style => "width:100%;" %></p>
+      <p><%= f.text_field :model, class: "form-control", :placeholder => "Vehicle Model", :style => "width:100%;" %></p>
+      <p><%= f.text_field :mileage, class: "form-control", :placeholder => "Vehicle Mileage", :style => "width:100%;" %></p>
+      <p><%= f.text_field :name, class: "form-control", :placeholder => "Vehicle Name", :style => "width:100%;" %></p>
+      <p><%= f.text_field :vin, class: "form-control", :placeholder => "Vehicle Vin", :style => "width:100%;" %></p>
+      <p><%= f.text_field :license_plate, class: "form-control", :placeholder => "Vehicle License Plate", :style => "width:100%;" %></p>
+      <p><%= f.text_field :state, class: "form-control", :placeholder => "State registered in", :style => "width:100%;" %></p>
       <p><%= f.file_field :image %></p><br>
       <%= f.hidden_field :user_id, :value => current_user.id %>
-      <p><%= f.submit :style => "margin-right:8%" %> <%= button_to 'Cancel', vehicles_path, type: "submit"%></p>
+      <p><%= f.submit :class => "myButton", :style => "margin-right:13%;" %> <%= link_to 'Cancel', vehicles_path, :class => "myButton", :method => :get %></p>
     <% end %>
   </div>
 </div>
