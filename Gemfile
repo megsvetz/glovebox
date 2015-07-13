@@ -35,6 +35,8 @@ gem 'devise'
 gem 'faker'
 #makes super amounts of entries in table
 gem 'populator'
+#adds pagination
+gem 'will_paginate', '~> 3.0.6'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -7,6 +7,7 @@
 
 body {
   font-family: 'Oswald', sans-serif;
+  min-height:300px; 
 }
 li {
   padding-top:.30%;
@@ -96,8 +97,6 @@ li a {
 .vehicle_show {
   height: 260px;
   width: 300px;
-  margin-left: 10%;
-  margin-right: 10%;
 }
 
 .vehicle-header{

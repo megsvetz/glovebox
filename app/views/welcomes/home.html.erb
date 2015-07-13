@@ -1,9 +1,11 @@
 <div class="road_header text-center">
   <h1>GLOVEBOX</h1>
   <h3>All your vehicle information at your fingertips</h3>
-
-  <%= link_to 'LOGIN', new_user_session_path, :class => "btn btn-default", :style => "margin-right: 5%; margin-bottom:5%;padding-left:1%;padding-right:1%;" %>
-  <%= link_to 'SIGN UP!', new_user_registration_path, :class => "btn btn-default", :style => "margin-bottom:5%;padding-left:1%;padding-right:1%;" %>
+  <% if user_signed_in? %>
+  <% else %>
+    <%= link_to 'LOGIN', new_user_session_path, :class => "btn btn-default", :style => "margin-right: 5%; margin-bottom:5%;padding-left:1%;padding-right:1%;" %>
+    <%= link_to 'SIGN UP!', new_user_registration_path, :class => "btn btn-default", :style => "margin-bottom:5%;padding-left:1%;padding-right:1%;" %>
+  <% end %>
 </div>
 <hr>
 <div class="text-center container">
