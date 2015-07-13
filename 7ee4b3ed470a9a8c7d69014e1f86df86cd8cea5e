@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ad9bd40_d81d3f68",
+        "filename": "new_file.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1005691
+      },
+      "writtenOn": "2015-07-13T20:44:26Z",
+      "side": 1,
+      "message": "This file makes no sense.  \nGet rid of it.  NOW!",
+      "revId": "7ee4b3ed470a9a8c7d69014e1f86df86cd8cea5e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
