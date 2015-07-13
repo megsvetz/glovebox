@@ -4,15 +4,15 @@ class RegistrationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @registrations = Vehicle.find(params[:vehicle_id]).registration
+    @registration = @vehicle.registration
   end
 
   def new
-    @registration = @vehicle.registrations.build
+    @registration = Registration.new
   end
 
   def create
-    @registration = @vehicle.registrations.build(registration_params)
+    @registration = @vehicle.build_registration(registration_params)
     if @registration.save
       redirect_to(vehicle_registration_path(@vehicle.id, @registration.id))
       flash[:notice] = "Registration was added successfully!"
