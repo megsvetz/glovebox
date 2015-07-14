@@ -1,5 +1,9 @@
 <div class='vehicle-header text-center'>Your Vehicles</div>
   <hr />
+  <div class="text-center"><p><%= link_to 'See All Vehicle Insurances', vehicle_insurances_path(@vehicles.first.id), class: 'btn btn-default', style: 'font-size:.75em; margin-right:5%;' %>
+  <%= link_to 'See All Vehicle Registrations', vehicle_registrations_path(@vehicles.first.id), class: 'btn btn-default', style: 'font-size:.75em' %></p>
+</div>
+  <hr>
   <div class="row">
     <% @vehicles.each do |a| %>
       <div class="col-sm-6 col-md-4">
