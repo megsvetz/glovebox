@@ -28,7 +28,7 @@
             </div>
             <br>
             <p>
-            <div class='text-center'><%= link_to 'Add Repair', new_vehicle_repair_path(a.id), class: 'btn btn-default'%></div></p>
+            <div class='text-center'><%= link_to 'See Repairs', vehicle_repairs_path(a.id), class: 'btn btn-default'%></div></p>
             <% if a.insurance.present? %>
               <p><div class='text-center'><%= link_to 'See Insurance', vehicle_insurance_path(a.id, a.insurance.id ), class: 'btn btn-default', style: 'font-size:.75em' %>
             <% else %>

@@ -7,3 +7,27 @@
 <%= @repair.repair_place %>
 <%= link_to 'Edit', sti_repair_path(@vehicle, @repair.type, @repair, :edit) %>
 <%= link_to 'Destroy', sti_repair_path(@vehicle, @repair.type, @repair), method: :delete, data: {confirm: 'Are you sure?'} %>
+
+
+<div class="container">
+  <h1 class="text-center">Registration for <%= @repair.type %></h1>
+  <hr>
+  <div class="row">
+    <div class="col-md-7 text-center">   
+      <% if @registration.image.present? %>
+        <%= link_to image_tag(@insurance.image.url(:large), :class => "img-thumbnail"), vehicle_path(@registration.vehicle_id) %>
+      <% else %>
+        <img class="img-responsive" src="http://placehold.it/700x300" alt="">
+      <% end %>
+      <br/>
+    </div>
+    <div class="col-md-5 text-center">
+      <h1><%= @registration.state %> </h1>
+      <h3><%= @registration.expiration %></h3>
+      <h3>Cost: $ <%= @registration.cost %> </h3>
+      <br>
+      <p><%= link_to 'Edit', edit_vehicle_registration_path(@registration.vehicle_id, @registration.id), :class => "myButton", :style => "margin-right:13%;" %> <%= link_to 'Cancel', vehicles_path, :class => "myButton", :method => :get %></p>
+    </div>
+  </div>
+</div>
+<br>
