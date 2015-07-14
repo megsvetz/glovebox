@@ -1,3 +1,4 @@
+@import "font-awesome";
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import url(http://fonts.googleapis.com/css?family=Oswald);
@@ -6,7 +7,7 @@
 
 body {
   font-family: 'Oswald', sans-serif;
-  min-height:300px; 
+  min-height:300px;
 }
 li {
   padding-top:.30%;
@@ -113,6 +114,7 @@ li a {
   margin-right:auto;
 }
 
+
 .contact-form-fields{
   border: none;
   box-shadow: none;
@@ -129,4 +131,12 @@ select:focus,
 textarea:focus,
 button:focus {
     outline: none;
+}
+
+.social_media_buttons {
+padding-top: 10px;
+padding-left: 10px;
+padding-right: 10px;
+color: grey;
+float: right;
 }
