@@ -1,12 +1,31 @@
-<h1><%= @vehicle.name %> Repairs</h1>
-<% @repairs.each do |repair|%>
-  <%= repair.type %>
-  <%= repair.repair_description %>
-  <%= repair.repair_date %>
-  <%= repair.repair_cost %>
-  <%= image_tag(repair.repair_image.url(:thumb), :class => "") %>
-  <%= repair.repair_place %>
-  <%= link_to 'Show', sti_repair_path(@vehicle, repair.type, repair) %>
-  <%= link_to 'Edit', sti_repair_path(@vehicle, repair.type, repair, :edit) %>
-  <%= link_to 'Destroy', sti_repair_path(@vehicle, repair.type, repair), method: :delete, data: {confirm: 'Are you sure?'} %>
-<% end %>
+<div class="text-center container">
+  <h1><%= @vehicle.name.capitalize %> Repairs</h1><hr>
+    <p><%= link_to 'Add New Repair', new_vehicle_repair_path, :class => "myButton", :method => :get, :style => "margin-right:12%;" %><%= link_to 'Back to My Vehicles', vehicles_path, :class => "myButton", :method => :get %></p>
+  <hr />
+  <table class="table table-hover table-striped container">
+    <thead>
+      <tr>
+        <th class="text-center">Type</th>
+        <th class="text-center">Description</th>
+        <th class="text-center">Date</th>
+        <th class="text-center">Place</th>
+        <th class="text-center">Cost</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @repairs.each do |repair|%>
+        <tr>
+          <% if repair.present? %>
+            <td><%= link_to(repair.type, vehicle_repair_path(repair.vehicle_id, repair.id)) %></td>
+            <td><%= repair.repair_description %></td>
+            <td><%= repair.repair_date %></td>
+            <td><%= repair.repair_place %></td>
+            <td>$ <%= repair.repair_cost %></td>
+            <td><%= link_to 'Show', sti_repair_path(@vehicle, repair.type, repair) %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
