@@ -79,6 +79,6 @@ class RepairsController < ApplicationController
 
     def repair_params
 
-      params.require(type.underscore.to_sym).permit(:type, :repair_description, :repair_date, :repair_cost, :repair_image, :repair_place)
+      params.require(type.underscore.to_sym).permit(:type, :repair_description, :repair_date, :repair_cost, :repair_image, :repair_place, :vehicle_id)
     end
 end
