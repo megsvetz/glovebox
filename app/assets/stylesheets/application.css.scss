@@ -93,28 +93,27 @@ li a {
   width: 25%;
   margin-left:5%;
 }
-
 .vehicle_show {
-  height: 260px;
+  height: 300px;
   width: 300px;
 }
-
 .vehicle-header{
   margin-top: 1%;
   font-size: 3.5em;
 }
-
 .vehicle-text {
   margin-right: 10%;
   margin-left: 22%;
 }
-
 .form-align {
   margin-left:auto;
   margin-right:auto;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 48798736168af66686aee52823ea98250eb59905
 .form {
     display: inline-block;
     text-align: center;
@@ -137,7 +136,6 @@ li a {
   color: white
 }
 
-
 input:focus,
 select:focus,
 textarea:focus,
@@ -151,6 +149,7 @@ padding-left: 10px;
 padding-right: 10px;
 color: grey;
 float: right;
+
 }
 
 .myButton {
@@ -190,4 +189,13 @@ float: right;
 .myButton:active {
   position:relative;
   top:1px;
+}
+
+.social_media_buttons {
+padding-top: 10px;
+padding-left: 10px;
+padding-right: 10px;
+color: grey;
+float: right;
+
 }
