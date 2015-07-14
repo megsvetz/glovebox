@@ -15,7 +15,7 @@
       <h3><%= @registration.expiration %></h3>
       <h3>Cost: $ <%= @registration.cost %> </h3>
       <br>
-      <%= link_to 'Edit Vehicle Registration', edit_vehicle_registration_path(@vehicle.id, @registration.id), :class => "btn btn-danger" %>
+      <p><%= link_to 'Edit', edit_vehicle_registration_path(@registration.vehicle_id, @registration.id), :class => "myButton", :style => "margin-right:13%;" %> <%= link_to 'Cancel', vehicles_path, :class => "myButton", :method => :get %></p>
     </div>
   </div>
 </div>
