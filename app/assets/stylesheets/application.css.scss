@@ -1,3 +1,4 @@
+@import "font-awesome";
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import url(http://fonts.googleapis.com/css?family=Oswald);
@@ -167,3 +168,11 @@ button:focus {
   top:1px;
 }
 
+.social_media_buttons {
+padding-top: 10px;
+padding-left: 10px;
+padding-right: 10px;
+color: grey;
+float: right;
+
+}
