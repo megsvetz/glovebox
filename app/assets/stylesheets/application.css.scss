@@ -7,7 +7,7 @@
 
 body {
   font-family: 'Oswald', sans-serif;
-  min-height:300px; 
+  min-height:300px;
 }
 li {
   padding-top:.30%;
@@ -129,6 +129,16 @@ textarea:focus,
 button:focus {
     outline: none;
 }
+
+.social_media_buttons {
+padding-top: 10px;
+padding-left: 10px;
+padding-right: 10px;
+color: grey;
+float: right;
+
+}
+
 .myButton {
   -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
   -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -176,3 +186,4 @@ color: grey;
 float: right;
 
 }
+
