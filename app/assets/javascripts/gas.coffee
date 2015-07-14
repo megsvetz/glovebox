@@ -3,7 +3,8 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready ->
 
-  $.ajax 'http://maps.googleapis.com/maps/api/geocode/json?address=84095&sensor=false',
+  zip_code = $('.test-it-out').data('zipcode')
+  $.ajax 'http://maps.googleapis.com/maps/api/geocode/json?address=' + zip_code + '&sensor=false',
   type: 'GET'
   success: (data) ->
     lat = data.results[0].geometry.location.lat
@@ -19,12 +20,18 @@ $(document).ready ->
       type: 'GET'
       success: (data) ->
         #$('.change-me').html('Cheapest gas near you is: $' + cheapgas + '<br>' + station + '<br>' + address )
+        gasstations = 10
         i = 0
-        while i < 10
+        while i < gasstations
           cheapgas = data.stations[i].reg_price
-          station = data.stations[i].station
-          address = data.stations[i].address
-          $('.change-me').append '$' + cheapgas + '<br>' + station + '<br>' + address + '<br><br>'
+          if cheapgas is 'N/A'
+            gasstations += 1
+          else
+            station = data.stations[i].station
+            address = data.stations[i].address
+            city = data.stations[i].city
+            state = data.stations[i].region
+            $('.change-me').append '$' + cheapgas + '<br>' + station + '<br>' + address + '<br>' + city + ', ' + state + '<br><br>'
           i++
       error: (data) ->
         console.log data
