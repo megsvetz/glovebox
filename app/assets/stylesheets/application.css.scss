@@ -112,20 +112,11 @@ li a {
 
 
 
-.social_media_buttons {
-padding-top: 10px;
-padding-left: 10px;
-padding-right: 10px;
-color: grey;
-float: right;
-
-}
-
-
 .form {
     display: inline-block;
     text-align: center;
 }
+
 .btn-form-submit,
 .contact-form-fields{
   border: none;
@@ -137,10 +128,12 @@ float: right;
   width: 100%;
   margin-bottom: 30px;
 }
+
 .btn-form-submit{
   background: red;
   color: white
 }
+
 input:focus,
 select:focus,
 textarea:focus,
@@ -188,4 +181,12 @@ button:focus {
   position:relative;
   top:1px;
 }
+
+
+.social_media_buttons {
+padding-top: 10px;
+padding-left: 10px;
+padding-right: 10px;
+color: grey;
+float: right;
 
