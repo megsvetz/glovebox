@@ -1,15 +1,30 @@
-<%= form_for @repair, url: vehicle_repairs_path(@vehicle) do |f| %>
-  <%= f.label 'Type' %>
-  <%= f.select :type, Repair.types, {}%>
-  <%= f.label "Description" %>
-  <%= f.text_area :repair_description %>
-  <%= f.label 'Date' %>
-  <%= f.datetime_select :repair_date %>
-  <%= f.label 'Cost' %>
-  <%= f.text_field :repair_cost %>
-  <%= f.label 'Image' %>
-  <%= f.file_field :repair_image%>
-  <%= f.label 'Place' %>
-  <%= f.text_field :repair_place %>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <h1 class="text-center">New Repair for <%= @vehicle.name.capitalize %></h1>
+  <hr>
+  <div style="text-align:center;">
+
+    <%= form_for @repair, url: vehicle_repairs_path(@vehicle) do |f| %>
+
+      <h3>Type of Vehicle:<br>
+        <%= f.select :type, [['Oil Change', 'Oilchange'],['Alignment', 'Alignment'],['Inspection', 'Inspection'], ['Tire Rotation', 'Tirerotation']], {:include_blank => "Select Repair Type"}, :class => "form-control", :style => "width:150px; display:inline-block;"%></h3>
+      <br>
+      <h3>Repair Description:<br>
+        <%= f.text_area :repair_description, :placeholder => "Description of the repair", :class => "form-control" , :style => "width:250px; display:inline-block;" %></h3>
+      <br>
+      <h4>Date of Repair:<br>
+        <%= f.date_select :repair_date, :class => "form-control" %></h4>
+      <br>
+      <h4>Place of Service<br>
+        <%= f.text_field :repair_place, :placeholder => "Where was the repair done?", :class => "form-control", style: "width:60%; display:inline-block;" %></h4><br>
+      <h4>Cost ($):<br>
+        <%= f.number_field :repair_cost, :placeholder => "Repair cost", :class => "form-control", :style => "width:150px; display:inline-block" %></h4>
+      <br>
+      <%= f.file_field :repair_image, :class => "form-control", style: "width:250px; display:inline-block;" %>
+      <%= f.hidden_field :vehicle_id, value: @vehicle.id %>
+      <br><br><br>
+      <p><%= f.submit :class => "myButton", :style => "margin-right:13%;" %> <%= link_to 'Cancel', vehicles_path, :class => "myButton", :method => :get %></p>
+      <br><br>
+
+    <% end %>
+  </div>
+</div>

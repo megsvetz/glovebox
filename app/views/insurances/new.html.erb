@@ -6,7 +6,7 @@
     <%= form_for @insurance, url: vehicle_insurances_path(:vehicle_id), :html => { :multipart => true }  do |f| %>
 
       <h2>Company:<br>
-        <%= f.text_field :company, class: "form-control form-align", :placeholder => "Company", :style => "width:400px;" %></h4>
+        <%= f.text_field :company, class: "form-control form-align", :placeholder => "Company", :style => "width:400px;" %></h2>
       <br>
       <h3>Policy Number:<br>
         <%= f.text_field :policy_number, class: "form-control form-align", :placeholder => "Policy Number", :style => "width:250px;" %></h3>
@@ -22,8 +22,8 @@
       <br>
       <%= f.file_field :image, class: "form-align" %>
       <%= f.hidden_field :vehicle_id, value: @vehicle.id %>
-      <br>
-      <%= f.submit "Update Insurance", class: "form-align" %>
+      <br><br>
+      <p><%= f.submit :class => "myButton", :style => "margin-right:13%;" %> <%= link_to 'Cancel', vehicles_path, :class => "myButton", :method => :get %></p>
       <br><br>
 
     <% end %>

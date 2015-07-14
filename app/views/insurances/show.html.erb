@@ -17,7 +17,7 @@
       <h3><%= @insurance.renewal_date %></h3>
       <h3>Cost: $ <%= @insurance.cost %> </h3>
       <br>
-      <%= link_to 'Edit Vehicle Insurance', edit_vehicle_insurance_path(@insurance.vehicle_id, @insurance.id), :class => "btn btn-danger" %>
+      <p><%= link_to 'Edit', edit_vehicle_insurance_path(@insurance.vehicle_id, @insurance.id), :class => "myButton", :style => "margin-right:13%;" %> <%= link_to 'Cancel', vehicles_path, :class => "myButton", :method => :get %></p>
     </div>
   </div>
 </div>
