@@ -1,32 +1,49 @@
 <div class='vehicle-header text-center'>Your Vehicles</div>
   <hr />
-<div class="row">
-  <% @vehicles.each do |a| %>
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail vehicle_show">
-      <%= image_tag a.image.url(:medium) %>
-      <div class="caption">
-        <div class='vehicle-text'><%= link_to a.make + ' ' + a.model, vehicle_path(a.id) %>
-          <br>
-        <% if a.registration.present? %>
-          Reg Expires: <%= a.registration.expiration %>
-        <% else %>
-          No registration entered!
-        <% end %>
-        <br>
-        <% if a.insurance.present? %>
-          Insurance Expires: <%= a.insurance.expiration_date %>
-        <% else %>
-          No Insurance entered!
-        <% end %>
-        <br>
-        Mileage: <%= a.mileage %><br>
+  <div class="text-center"><p><%= link_to 'See All Vehicle Insurances', vehicle_insurances_path(@vehicles.first.id), class: 'btn btn-default', style: 'font-size:.75em; margin-right:5%;' %>
+  <%= link_to 'See All Vehicle Registrations', vehicle_registrations_path(@vehicles.first.id), class: 'btn btn-default', style: 'font-size:.75em' %></p>
+</div>
+  <hr>
+  <div class="row">
+    <% @vehicles.each do |a| %>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail vehicle_show" style="margin-left:auto; margin-right:auto;">
+          <%= link_to(image_tag(a.image.url(:medium)), vehicle_path(a.id)) %>
+          <div class="caption">
+            <div class='vehicle-text'><%= link_to a.make + ' ' + a.model, vehicle_path(a.id) %>
+              <br>
+              <% if a.registration.present? %>
+                Reg Expires: <%= a.registration.expiration %>
+              <% else %>
+                No registration entered!
+              <% end %>
+              <br>
+              <% if a.insurance.present? %>
+                Insurance Expires: <%= a.insurance.expiration_date %>
+              <% else %>
+                No Insurance entered!
+              <% end %>
+              <br>
+              Mileage: <%= a.mileage %><br>
+            </div>
+            <br>
+            <p>
+            <div class='text-center'><%= link_to 'Add Repair', new_vehicle_repair_path(a.id), class: 'btn btn-default'%></div></p>
+            <% if a.insurance.present? %>
+              <p><div class='text-center'><%= link_to 'See Insurance', vehicle_insurance_path(a.id, a.insurance.id ), class: 'btn btn-default', style: 'font-size:.75em' %>
+            <% else %>
+              <p><div class='text-center'><%= link_to 'Add Insurance', new_vehicle_insurance_path(a.id), class: 'btn btn-default', style: 'font-size:.75em' %>
+            <% end %>
+            <% if a.registration.present? %>
+              <%= link_to 'See Registration', vehicle_registration_path(a.id, a.insurance.id), class: 'btn btn-default', style: 'font-size:.75em' %></div>
+            <% else %>
+              <%= link_to 'Add Registration', new_vehicle_registration_path(a.id), class: 'btn btn-default', style: 'font-size:.75em' %></div>
+            <% end %>
+            </p>
+          </div>
         </div>
-        <p>
-        <div class='text-center'><%= link_to 'Add Repair', new_vehicle_repair_path(a.id), class: 'btn btn-default'%></div>
-        </p>
       </div>
-    </div>
+    <% end %>
   </div>
-  <% end %>
+  <%= will_paginate @vehicles %>
 </div>
