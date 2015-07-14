@@ -114,6 +114,7 @@ li a {
   margin-right:auto;
 }
 
+.btn-form-submit,
 .contact-form-fields{
   border: none;
   box-shadow: none;
@@ -124,6 +125,12 @@ li a {
   width: 100%;
   margin-bottom: 30px;
 }
+
+.btn-form-submit{
+  background: red;
+  color: white
+}
+
 
 input:focus,
 select:focus,
