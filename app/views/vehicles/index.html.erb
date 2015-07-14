@@ -1,5 +1,9 @@
 <div class='vehicle-header text-center'>Your Vehicles</div>
   <hr />
+  <div class="text-center"><p><%= link_to 'See All Vehicle Insurances', vehicle_insurances_path(@vehicles.first.id), class: 'btn btn-default', style: 'font-size:.75em; margin-right:5%;' %>
+  <%= link_to 'See All Vehicle Registrations', vehicle_registrations_path(@vehicles.first.id), class: 'btn btn-default', style: 'font-size:.75em' %></p>
+</div>
+  <hr>
   <div class="row">
     <% @vehicles.each do |a| %>
       <div class="col-sm-6 col-md-4">
@@ -22,8 +26,19 @@
               <br>
               Mileage: <%= a.mileage %><br>
             </div>
+            <br>
             <p>
-            <div class='text-center'><%= link_to 'Add Repair', new_vehicle_repair_path(a.id), class: 'btn btn-default'%></div>
+            <div class='text-center'><%= link_to 'Add Repair', new_vehicle_repair_path(a.id), class: 'btn btn-default'%></div></p>
+            <% if a.insurance.present? %>
+              <p><div class='text-center'><%= link_to 'See Insurance', vehicle_insurance_path(a.id, a.insurance.id ), class: 'btn btn-default', style: 'font-size:.75em' %>
+            <% else %>
+              <p><div class='text-center'><%= link_to 'Add Insurance', new_vehicle_insurance_path(a.id), class: 'btn btn-default', style: 'font-size:.75em' %>
+            <% end %>
+            <% if a.registration.present? %>
+              <%= link_to 'See Registration', vehicle_registration_path(a.id, a.insurance.id), class: 'btn btn-default', style: 'font-size:.75em' %></div>
+            <% else %>
+              <%= link_to 'Add Registration', new_vehicle_registration_path(a.id), class: 'btn btn-default', style: 'font-size:.75em' %></div>
+            <% end %>
             </p>
           </div>
         </div>

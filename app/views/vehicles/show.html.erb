@@ -1,20 +1,35 @@
-<div class='pull-left'><%= image_tag @vehicle.image.url(:large) %></div>
-<%=@vehicle.year %> <%= @vehicle.make %> <%= @vehicle.model %><br>
-Mileage: <%= @vehicle.mileage %><br>
-Vin: <%= @vehicle.vin %><br>
-License Plate: <%= @vehicle.license_plate %><br>
-Registered in <%= @vehicle.state %><br>
-<% if @vehicle.registration.present? %>
-  Reg Expires: <%= @vehicle.registration.expiration %>
-<% else %>
-  No registration entered!
-<% end %>
-<br>
-<% if @vehicle.insurance.present? %>
-  Insurance Expires: <%= @vehicle.insurance.expiration_date %>
-<% else %>
-  No Insurance entered!
-<% end %>
-<br>
-<%= link_to 'Edit', edit_vehicle_path(@vehicle.id) %>
-<%= link_to 'Delete', vehicle_path(@vehicle.id), method: :delete %>
+<div class="container">
+  <h1 class="text-center"><%= @vehicle.name.capitalize %></h1>
+  <hr>
+  <div class="row">
+    <div class="col-md-7 text-center"> 
+      <% if @vehicle.image.present? %>
+        <%= link_to image_tag(@vehicle.image.url(:large), :class => "img-thumbnail") %>
+      <% else %>
+        <img class="img-responsive" src="http://placehold.it/700x300" alt="">
+      <% end %> 
+    </div><br><br>
+
+    <div class="col-md-5 text-center">
+      <%=@vehicle.year %> <%= @vehicle.make %> <%= @vehicle.model %><br>
+      Mileage: <%= @vehicle.mileage %><br>
+      Vin: <%= @vehicle.vin %><br>
+      License Plate: <%= @vehicle.license_plate %><br>
+      Registered in <%= @vehicle.state %><br>
+      <% if @vehicle.registration.present? %>
+        Reg Expires: <%= @vehicle.registration.expiration %>
+      <% else %>
+        No registration entered!
+      <% end %>
+      <br>
+      <% if @vehicle.insurance.present? %>
+        Insurance Expires: <%= @vehicle.insurance.expiration_date %>
+      <% else %>
+        No Insurance entered!
+      <% end %>
+      <br><br>
+      <%= link_to 'Edit', edit_vehicle_path(@vehicle.id), class: "myButton", style: "margin-right:11%;" %>
+      <%= link_to 'Delete', vehicle_path(@vehicle.id), method: :delete, class: "myButton" %>
+    </div>
+  </div>
+</div>
