@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  
-  get 'gas/index'
+
+  get '/gas' => 'gas#index'
+  get '/gas/coords' => 'gas#get_coords'
 
   devise_for :users
   root "welcomes#home"
