@@ -53,7 +53,7 @@ gem 'gmaps4rails'
 group :test do
   gem 'simplecov', :require => false
   gem 'shoulda-matchers'
-  gem "factory_girl_rails", "~> 4.0"
+  gem 'factory_girl_rails', '~> 4.0'
 end
 
 group :development, :test do
