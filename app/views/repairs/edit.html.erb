@@ -17,7 +17,7 @@
       <h4>Place of Service<br>
         <%= f.text_field :repair_place, :placeholder => "Where was the repair done?", :class => "form-control", style: "width:60%; display:inline-block;" %></h4><br>
       <h4>Cost ($):<br>
-        <%= f.number_field :repair_cost, :placeholder => "Repair cost", :class => "form-control", :style => "width:150px; display:inline-block" %></h4>
+        <%= f.text_field :repair_cost, :placeholder => "Repair cost", :class => "form-control", :style => "width:150px; display:inline-block" %></h4>
       <br>
       <%= f.file_field :repair_image, :class => "form-control", style: "width:250px; display:inline-block;" %>
       <%= f.hidden_field :vehicle_id, value: @vehicle.id %>
