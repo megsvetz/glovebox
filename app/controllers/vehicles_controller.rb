@@ -8,6 +8,9 @@ class VehiclesController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
   def new
     @vehicle = Vehicle.new
   end
@@ -35,8 +38,12 @@ class VehiclesController < ApplicationController
   end
 
   private
+  def find_type
+    Vehicle.type.include?(params[:type]) ? params[:type] : "Vehicle"
+  end
+
   def vehicle_params
-    params.require(:vehicle).permit(:type, :make, :model, :year, :mileage, :name, :vin, :license_plate, :state, :user_id, :image)
+    params.require(find_type.underscore.to_sym).permit(:type, :make, :model, :year, :mileage, :name, :vin, :license_plate, :state, :user_id, :image)
   end
 
   def find_vehicle

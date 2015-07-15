@@ -12,9 +12,9 @@ class RegistrationsController < ApplicationController
   end
 
   def create
-    @registration = @vehicle.build_registration(registration_params)
+    @registration = Registration.new(registration_params)
     if @registration.save
-      redirect_to(vehicle_registration_path(@vehicle.id, @registration.id))
+      redirect_to(vehicle_registration_path(@registration.vehicle_id, @registration.id))
       flash[:notice] = "Registration was added successfully!"
     else
       flash[:error]="Registration was not added."
@@ -41,7 +41,7 @@ class RegistrationsController < ApplicationController
   private
 
   def registration_params
-    params.require(:registration).permit(:state, :expiration, :cost, :image)
+    params.require(:registration).permit(:state, :expiration, :cost, :image, :vehicle_id)
   end
 
   def find_registration
