@@ -37,7 +37,7 @@
                 <p><div class='text-center'><%= link_to 'Add Insurance', new_vehicle_insurance_path(a.id), class: 'btn btn-default', style: 'font-size:.75em' %>
               <% end %>
               <% if a.registration.present? %>
-                <%= link_to 'See Registration', vehicle_registration_path(a.id, a.insurance.id), class: 'btn btn-default', style: 'font-size:.75em' %></div>
+                <%= link_to 'See Registration', vehicle_registration_path(a.id, a.registration.id), class: 'btn btn-default', style: 'font-size:.75em' %></div>
               <% else %>
                 <%= link_to 'Add Registration', new_vehicle_registration_path(a.id), class: 'btn btn-default', style: 'font-size:.75em' %></div>
               <% end %>
