@@ -16,15 +16,17 @@
     <tbody>
       <% @vehicles.each do |i| %>
         <tr>
-          <td><%= link_to(i.name, vehicle_path(i.id)) %></td>
-          <td><%= i.insurance.company %></td>
-          <td><%= i.insurance.policy_number %></td>
-          <td><%= i.insurance.expiration_date %></td>
-          <td><%= i.insurance.renewal_date %></td>
-          <td>$ <%= i.insurance.cost %></td>
+          <% if i.insurance.present? %>
+            <td><%= link_to(i.name, vehicle_path(i.id)) %></td>
+            <td><%= i.insurance.company %></td>
+            <td><%= i.insurance.policy_number %></td>
+            <td><%= i.insurance.expiration_date %></td>
+            <td><%= i.insurance.renewal_date %></td>
+            <td>$ <%= i.insurance.cost %></td>
 
-          <td><a href="<%= edit_vehicle_insurance_path(i.id, i.insurance.id) %>" class="btn btn-info"><span class = "glyphicon glyphicon-pencil"></span></a>
-          </td>
+            <td><a href="<%= edit_vehicle_insurance_path(i.id, i.insurance.id) %>" class="btn btn-info"><span class = "glyphicon glyphicon-pencil"></span></a>
+            </td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
