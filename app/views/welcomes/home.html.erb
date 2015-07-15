@@ -76,6 +76,7 @@
     <span id="steve" class="bio col-sm-3 col-xs-12" data-toggle="popover" data-placement="bottom" title="Stephen Thomas" data-content="And here's some amazing content about Stephen. It's very engaging. Right?"><%= image_tag("Steve.jpg", width: "135px", alt: "Stephen") %><h4 style="font-size:15px;">Stephen Thomas</h4></span>
   </div>
   <br>
+
 </div>
 <hr>
 <div class="text-center">
@@ -110,9 +111,8 @@
       </div>
       <div class="row">
           <div class="col-md-6 col-sm-8 col-sm-offset-2 col-md-offset-3">
-            <%= f.submit "Send Now", class: "btn btn-default myButton"  %>
-            <!-- <input class="btn btn-default" type="submit" value="Send Now"> -->
-            <a id="clear_form" class="btn btn-default myButton" href="/">Cancel</a>
+            <div class="myButton" id='send_button'>Send Now!!!</div>
+            <a id="clear_form" class="myButton" href="/">Cancel</a>
           </div>
       </div>
     <!-- </form> -->

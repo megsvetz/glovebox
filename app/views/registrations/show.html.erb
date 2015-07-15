@@ -12,7 +12,7 @@
     </div>
     <div class="col-md-5 text-center">
       <h1><%= @registration.state %> </h1>
-      <h3><%= @registration.expiration %></h3>
+      <h3><%= @registration.expiration.strftime('%b %d, %Y') %></h3>
       <h3>Cost: $ <%= sprintf('%.2f', @registration.cost) %> </h3>
       <br>
       <p><%= link_to 'Edit', edit_vehicle_registration_path(@registration.vehicle_id, @registration.id), :class => "myButton" %> <%= link_to 'See This Vehicle', vehicle_path(@vehicle.id), :class => "myButton", :method => :get %></p>
