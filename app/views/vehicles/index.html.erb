@@ -17,13 +17,13 @@
                 <% if a.registration.present? %>
                   Reg Expires: <%= a.registration.expiration.strftime('%b %d, %Y') %>
                 <% else %>
-                  No registration entered!
+                  No Registration Entered!
                 <% end %>
                 <br>
                 <% if a.insurance.present? %>
                   Insurance Expires: <%= a.insurance.expiration_date.strftime('%b %d, %Y') %>
                 <% else %>
-                  No Insurance entered!
+                  No Insurance Entered!
                 <% end %>
                 <br>
                 Mileage: <%= a.mileage %><br>

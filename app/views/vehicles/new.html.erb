@@ -15,7 +15,7 @@
       <p><%= f.text_field :state, class: "form-control", :placeholder => "State registered in", :style => "width:100%;" %></p>
       <p><%= f.file_field :image %></p><br>
       <%= f.hidden_field :user_id, :value => current_user.id %>
-      <p><%= f.submit :class => "myButton", :style => "margin-right:13%;" %> <%= link_to 'Cancel', vehicles_path, :class => "myButton", :method => :get %></p>
+      <p><%= f.submit :class => "myButton" %> <%= link_to 'Cancel', vehicles_path, :class => "myButton", :method => :get %></p>
     <% end %>
   </div>
 </div>

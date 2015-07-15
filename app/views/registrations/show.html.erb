@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class="text-center">Registration for <% @vehicle.name.capitalize %></h1>
+  <h1 class="text-center">Registration</h1>
   <hr>
   <div class="row">
     <div class="col-md-7 text-center">
@@ -15,7 +15,7 @@
       <h3><%= @registration.expiration.strftime('%b %d, %Y') %></h3>
       <h3>Cost: $ <%= sprintf('%.2f', @registration.cost) %> </h3>
       <br>
-      <p><%= link_to 'Edit', edit_vehicle_registration_path(@registration.vehicle_id, @registration.id), :class => "myButton", :style => "margin-right:13%;" %> <%= link_to 'Cancel', vehicles_path, :class => "myButton", :method => :get %></p>
+      <p><%= link_to 'Edit', edit_vehicle_registration_path(@registration.vehicle_id, @registration.id), :class => "myButton" %> <%= link_to 'Back', vehicles_path, :class => "myButton", :method => :get %></p>
     </div>
   </div>
 </div>

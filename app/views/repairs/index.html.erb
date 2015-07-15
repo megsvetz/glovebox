@@ -1,10 +1,11 @@
 <div class="text-center container">
-  <h1><%= @vehicle.name.capitalize %> Repairs</h1><hr>
-    <p><%= link_to 'Add New Repair', new_vehicle_repair_path, :class => "myButton", :method => :get, :style => "margin-right:12%;" %><%= link_to 'Back to My Vehicles', vehicles_path, :class => "myButton", :method => :get %></p>
+  <h1>All Vehicle Repairs</h1><hr>
+    <p><%= link_to 'Vehicle Details', vehicle_path(@vehicle.id), :class => "myButton pull-left", :style => "margin-top:0; margin-bottom:0;", :method => :get %></p><br>
   <hr />
   <table class="table table-hover table-striped container">
     <thead>
       <tr>
+        <th class="text-center">Vehicle</th>
         <th class="text-center">Type</th>
         <th class="text-center">Description</th>
         <th class="text-center">Date</th>
@@ -13,19 +14,32 @@
         <th></th>
       </tr>
     </thead>
+    <% total = 0 %>
     <tbody>
       <% @repairs.each do |repair|%>
         <tr>
           <% if repair.present? %>
-            <td><%= link_to(repair.type, vehicle_repair_path(repair.vehicle_id, repair.id)) %></td>
+            <td><%= link_to(repair.vehicle.name, vehicle_repair_path(repair.vehicle_id, repair.id)) %></td>
+            <td><%= repair.type %></td>
             <td><%= repair.repair_description %></td>
             <td><%= repair.repair_date %></td>
             <td><%= repair.repair_place %></td>
             <td>$ <%= sprintf('%.2f', repair.repair_cost) %></td>
             <td><%= link_to 'Show', sti_repair_path(@vehicle, repair.type, repair) %></td>
           <% end %>
+          <% total += repair.repair_cost %>
         </tr>
       <% end %>
     </tbody>
   </table>
+  <br>
+  <p class="pull-right" style="font-size:26px;">Total Cost of All Repairs: $ <%= total %>  </p><%= link_to 'Add New Repair', new_vehicle_repair_path, :class => "myButton pull-left", :method => :get, :style => "margin-top:0; margin-bottom:0; margin-right:12%;display:inline-block" %><br>
 </div>
+<div class="text-center container">
+  <hr>
+  <h2>Repair Costs</h2>
+  <h4>In Dollars</h4>
+  <div><%= pie_chart @vehicle.repairs.group(:type).sum(:repair_cost) %></div>
+  <hr>
+</div>
+

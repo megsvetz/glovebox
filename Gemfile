@@ -40,6 +40,12 @@ gem 'will_paginate', '~> 3.0.6'
 
 #google maps, baby
 gem 'gmaps4rails'
+#charts for repairs
+gem 'googlecharts'
+
+gem 'mattetti-googlecharts'
+
+gem "chartkick"
 
 #gems for the mail contact us form
 gem 'mail_form'

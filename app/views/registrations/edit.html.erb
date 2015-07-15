@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class="text-center">Edit Registration for <%= @vehicle.name.capitalize %></h1>
+  <h1 class="text-center">Edit Registration</h1>
   <hr>
   <div style="text-align:center;">
     <%= form_for @registration, url: vehicle_registration_path, :html => { :multipart => true }  do |f| %>
@@ -20,7 +20,7 @@
       <br>
       <%= f.file_field :image, :style => " display:inline-block;" %>
       <br><br><br><br>
-      <p><%= f.submit :class => "myButton", :style => "margin-right:13%;" %> <%= link_to 'Cancel', vehicles_path, :class => "myButton", :method => :get %></p>
+      <p><%= f.submit :class => "myButton" %> <%= link_to 'Cancel', vehicles_path, :class => "myButton", :method => :get %></p>
       <br><br>
 
     <% end %>
