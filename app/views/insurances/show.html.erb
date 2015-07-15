@@ -17,7 +17,7 @@
       <h3><%= @insurance.renewal_date %></h3>
       <h3>Cost: $ <%= sprintf('%.2f', @insurance.cost) %> </h3>
       <br>
-      <p><%= link_to 'Edit', edit_vehicle_insurance_path(@insurance.vehicle_id, @insurance.id), :class => "myButton", :style => "margin-right:13%;" %> <%= link_to 'Cancel', vehicles_path, :class => "myButton", :method => :get %></p>
+      <p><%= link_to 'Edit', edit_vehicle_insurance_path(@insurance.vehicle_id, @insurance.id), :class => "myButton", :style => "margin-right:13%;" %> <%= link_to 'Back', vehicles_path, :class => "myButton", :method => :get %></p>
     </div>
   </div>
 </div>

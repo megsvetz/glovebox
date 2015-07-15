@@ -1,6 +1,4 @@
- 
-
-<div class="container">
+ <div class="container">
   <h1 class="text-center"><%= @vehicle.name.capitalize %></h1>
   <hr>
   <div class="row">
@@ -42,14 +40,15 @@
         No Insurance entered!
       <% end %>
       <br><br>
-      <%= link_to 'View Repairs', vehicle_repairs_path(@vehicle.id), class: "myButton" %>
-      <%= link_to 'Add Repair', new_vehicle_repair_path(@vehicle.id), class: "myButton" %><br><br>
-   
       <%= link_to 'Edit Vehicle', edit_vehicle_path(@vehicle.id), class: "myButton" %>
       <%= link_to 'Delete Vehicle', vehicle_path(@vehicle.id), method: :delete, class: "myButton" %><br><br>
     </div>
   </div>
 </div>
-<% a = '$10' %>
-<%= link_to pie_chart({"Football" => 10, "Basketball" => 5}), vehicle_repairs_path(@vehicle.id) %>
-<%= pie_chart @vehicle.repairs.group(:type).sum(:repair_cost) %>
+<hr>
+<div class="text-center">
+  <h2><%= @vehicle.name.capitalize %> Repairs and Maintenance Costs</h2>
+  <%= link_to pie_chart(@vehicle.repairs.group(:type).sum(:repair_cost)), vehicle_repairs_path(@vehicle.id) %>
+  <%= link_to 'View Repairs', vehicle_repairs_path(@vehicle.id), class: "myButton" %>
+  <%= link_to 'Add Repair', new_vehicle_repair_path(@vehicle.id), class: "myButton" %><br><br>
+</div>
