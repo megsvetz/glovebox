@@ -10,11 +10,11 @@
         <div id="registration_modal_button" class="myButton">Registration</div>
       <% else %>
       <%= link_to 'Add Registration', new_vehicle_insurance_path(@vehicle.id), class: "myButton", :style => "margin:0%;" %>
-      <% end %> 
+      <% end %>
     </div>
     <div class="col-md-2 col-sm-3 col-xs-12">
       <% if @vehicle.insurance.present? %>
-        <%= link_to 'Insurance', vehicle_insurance_path(@vehicle.id, @vehicle.insurance.id), id:"insurance_modal_button", class: "myButton", :style => "margin:0%;" %>
+        <div id="insurance_modal_button" class="myButton">Insurance</div>
         <% else %>
         <%= link_to 'Add Insurance', new_vehicle_insurance_path(@vehicle.id), class: "myButton", :style => "margin:0%;" %>
       <% end %>
@@ -22,12 +22,12 @@
   </div>
       <hr>
   <div class="row">
-    <div class="col-md-7 text-center"> 
+    <div class="col-md-7 text-center">
       <% if @vehicle.image.present? %>
         <%= link_to image_tag(@vehicle.image.url(:large), :class => "img-thumbnail") %>
       <% else %>
         <img class="img-responsive" src="http://placehold.it/700x300" alt="">
-      <% end %> 
+      <% end %>
     </div><br><br>
 
     <div class="col-md-5 text-center">
