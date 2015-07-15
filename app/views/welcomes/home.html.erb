@@ -1,3 +1,11 @@
+<div>
+  <% flash.each do |key, value| %>
+    <div>
+      <a href="#" data-dismiss="alert">×</a>
+        <%= value %>
+    </div>
+  <% end %>
+</div>
 <div class="road_header text-center">
   <h1>GLOVEBOX</h1>
   <h3>All your vehicle information at your fingertips</h3>
@@ -76,35 +84,43 @@
 <div class="text-center">
   <br>
   <h2 style="font-size:28px;">Contact Us</h2>
-    <form class="" action="/contact" method="POST">
+    <%= form_for @contact, url: contact_path do |f| %>
+    <!-- <form class="" action="/contact" method="POST"> -->
       <div class="row">
         <div class="col-md-3 col-sm-4 col-sm-offset-2 col-md-offset-3">
-          <input class="contact-form-fields" type="text" name="first_name" placeholder="First Name">
+          <%= f.text_field :first_name, class: "contact-form-fields", :placeholder=>"First Name", :required => true %>
+          <!-- <input class="contact-form-fields" type="text" name="first_name" placeholder="First Name"> -->
         </div>
         <div class="col-md-3 col-sm-4">
-          <input class="contact-form-fields" type="text" name="last_name" placeholder="Last Name">
+          <%= f.text_field :last_name, class: "contact-form-fields", :placeholder =>"Last Name", :required => true %>
+          <!-- <input class="contact-form-fields" type="text" name="last_name" placeholder="Last Name"> -->
         </div>
       </div>
       <div class="row">
         <div class="col-md-3 col-sm-4 col-sm-offset-2 col-md-offset-3">
-          <input class="contact-form-fields" type="text" name="email" placeholder="Your Email Address">
+          <%= f.text_field :email, class: "contact-form-fields", :placeholder => "Your Email Address", :required => true %>
+          <!-- <input class="contact-form-fields" type="text" name="email" placeholder="Your Email Address"> -->
         </div>
         <div class="col-md-3 col-sm-4">
-          <input class="contact-form-fields" type="phone" name="phone" placeholder="Your Phone Number">
+          <%= f.text_field :phone, class: "contact-form-fields", :placeholder => "Your Phone Number" %>
+          <!-- <input class="contact-form-fields" type="phone" name="phone" placeholder="Your Phone Number"> -->
         </div>
       </div>
       <div class="row">
         <div class="col-md-6 col-sm-8 col-sm-offset-2 col-md-offset-3">
-          <textarea class="contact-form-fields form-message" name="body" placeholder="Have ideas to improve Glovebox? Let us know how!" type="text"></textarea>
+          <%= f.text_area :message, class: "contact-form-fields", :placeholder => "Have ideas to improve Glovebox> Let us know how!", :required => true%>
+          <!-- <textarea class="contact-form-fields form-message" name="body" placeholder="Have ideas to improve Glovebox? Let us know how!" type="text"></textarea> -->
         </div>
       </div>
       <div class="row">
           <div class="col-md-6 col-sm-8 col-sm-offset-2 col-md-offset-3">
-            <input class="btn btn-default" type="submit" value="Send Now">
-            <a class="btn btn-default" href="/">Cancel</a>
+            <%= f.submit "Send Now", class: "btn btn-default"  %>
+            <!-- <input class="btn btn-default" type="submit" value="Send Now"> -->
+            <a id="clear_form" class="btn btn-default" href="/">Cancel</a>
           </div>
       </div>
-    </form>
+    <!-- </form> -->
+    <% end %>
   <br>
   <hr>
 </div>
