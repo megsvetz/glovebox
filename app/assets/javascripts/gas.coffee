@@ -12,7 +12,6 @@ $(document).ready ->
       lng = data.results[0].geometry.location.lng
       $('.change-me').html('Lat: ' + lat + ', ' + 'Lon: ' + lng + '<br><br>')
       getGas(lat, lng)
-      sendCoord(lat, lng)
     error: (data) ->
       console.log data
 

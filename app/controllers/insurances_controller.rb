@@ -49,7 +49,7 @@ class InsurancesController < ApplicationController
     unless @insurance
       render(text: "Insurance not found.", status: :not_found)
     end
-  end
+  end 
 
   def find_vehicle
     @vehicle = Vehicle.find_by(id: params[:vehicle_id])
