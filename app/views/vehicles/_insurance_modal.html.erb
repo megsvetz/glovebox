@@ -1,0 +1,32 @@
+<div class="modal fade" id="insurance_modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Insurance for <%= @vehicle.name.capitalize %></h4>
+      </div>
+      <div class="modal-body">
+        <% if @insurance.image.present? %>
+          <%= link_to image_tag(@insurance.image.url(:large), :class => "img-thumbnail"), vehicle_path(@insurance.vehicle_id) %>
+        <% else %>
+          <img class="img-responsive" src="http://placehold.it/700x300" alt="">
+        <% end %>
+
+        <div class="col-md-5 text-center">
+          <h1><%= @insurance.company %> </h1>
+          <h2><%= @insurance.policy_number %></h2>
+          <h3><%= @insurance.expiration_date %></h3>
+          <h3><%= @insurance.renewal_date %></h3>
+          <h3>Cost: $ <%= sprintf('%.2f', @insurance.cost) %> </h3>
+          <br>
+          <p><%= link_to 'Edit', edit_vehicle_insurance_path(@insurance.vehicle_id, @insurance.id), :class => "myButton", :style => "margin-right:13%;" %> <%= link_to 'See this Vehicle', vehicle_path(@vehicle.id), :class => "myButton", :method => :get %></p>
+        </div>
+
+      <div class="modal-footer">
+        <button type="button" id="done_button" class="btn btn-default" data-dismiss="modal">Done</button>
+        <button type="button" id="edit_insurance_button" class="btn btn-primary">Edit</button>
+
+        <%= link_to 'Edit', edit_vehicle_insurance_path(@insurance.vehicle_id, @insurance.id), :class => "myButton", :style => "margin-right:13%;" %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
