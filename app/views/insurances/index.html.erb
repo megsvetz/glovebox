@@ -20,8 +20,8 @@
             <td><%= link_to(i.name, vehicle_path(i.id)) %></td>
             <td><%= i.insurance.company %></td>
             <td><%= i.insurance.policy_number %></td>
-            <td><%= i.insurance.expiration_date %></td>
-            <td><%= i.insurance.renewal_date %></td>
+            <td><%= i.insurance.expiration_date.strftime('%b %d, %Y') %></td>
+            <td><%= i.insurance.renewal_date.strftime('%b %d, %Y') %></td>
             <td>$ <%= sprintf('%.2f', i.insurance.cost) %></td>
 
             <td><a href="<%= edit_vehicle_insurance_path(i.id, i.insurance.id) %>" class="btn btn-info"><span class = "glyphicon glyphicon-pencil"></span></a>
