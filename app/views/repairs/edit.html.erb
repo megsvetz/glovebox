@@ -1,9 +1,9 @@
 <div class="container">
-  <h1 class="text-center">Edit Repair for <%= @vehicle.name.capitalize %></h1>
+  <h1 class="text-center">Edit Repair</h1>
   <hr>
   <div style="text-align:center;">
 
-    <%= form_for @repair, url: vehicle_repairs_path(@vehicle) do |f| %>
+    <%= form_for @repair, url: vehicle_repairs_path(@vehicle, @repair.id) do |f| %>
 
       <h3>Type of Vehicle:<br>
         <%= f.select :type, [['Oil Change', 'Oilchange'],['Alignment', 'Alignment'],['Inspection', 'Inspection'], ['Tire Rotation', 'Tirerotation']], {:include_blank => "Select Repair Type"}, :class => "form-control", :style => "width:150px; display:inline-block;"%></h3>
@@ -22,7 +22,7 @@
       <%= f.file_field :repair_image, :class => "form-control", style: "width:250px; display:inline-block;" %>
       <%= f.hidden_field :vehicle_id, value: @vehicle.id %>
       <br><br><br>
-      <p><%= f.submit 'Update', :class => "myButton", :style => "margin-right:13%;" %> <%= link_to 'Cancel', vehicles_path, :class => "myButton", :method => :get %></p>
+      <p><%= f.submit 'Update', :class => "myButton" %> <%= link_to 'Cancel', vehicles_path, :class => "myButton", :method => :get %></p>
       <br><br>
 
     <% end %>
