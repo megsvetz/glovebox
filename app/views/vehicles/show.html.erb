@@ -1,6 +1,6 @@
 <div class="container">
   <h1 class="text-center"><%= @vehicle.name.capitalize %></h1>
-  <hr>
+  <hr><%= link_to 'Back to My Vehicles', vehicles_path, :class => "myButton", :method => :get %><hr>
   <div class="row">
     <div class="col-md-7 text-center"> 
       <% if @vehicle.image.present? %>
