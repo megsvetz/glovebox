@@ -6,20 +6,28 @@
       <%= link_to 'Back to My Vehicles', vehicles_path, :class => "myButton", :style => "margin:0%;", :method => :get %>
     </div>
     <div class="col-md-offset-6 col-md-2 col-sm-offset-2 col-sm-3 col-xs-12">
-      <%= link_to 'View Registration', vehicle_registration_path(@vehicle.id, @vehicle.registration.id), class: "myButton", :style => "margin:0%;" %> 
+      <% if @vehicle.registration.present? %>
+        <div id="registration_modal_button" class="myButton">Registration</div>
+      <% else %>
+      <%= link_to 'Add Registration', new_vehicle_insurance_path(@vehicle.id), class: "myButton", :style => "margin:0%;" %>
+      <% end %>
     </div>
     <div class="col-md-2 col-sm-3 col-xs-12">
-      <%= link_to 'View Insurance', vehicle_insurance_path(@vehicle.id, @vehicle.insurance.id), class: "myButton", :style => "margin:0%;" %>
+      <% if @vehicle.insurance.present? %>
+        <div id="insurance_modal_button" class="myButton">Insurance</div>
+        <% else %>
+        <%= link_to 'Add Insurance', new_vehicle_insurance_path(@vehicle.id), class: "myButton", :style => "margin:0%;" %>
+      <% end %>
     </div>
   </div>
       <hr>
   <div class="row">
-    <div class="col-md-7 text-center"> 
+    <div class="col-md-7 text-center">
       <% if @vehicle.image.present? %>
         <%= link_to image_tag(@vehicle.image.url(:large), :class => "img-thumbnail") %>
       <% else %>
         <img class="img-responsive" src="http://placehold.it/700x300" alt="">
-      <% end %> 
+      <% end %>
     </div><br><br>
 
     <div class="col-md-5 text-center">
@@ -52,3 +60,6 @@
   <%= link_to 'View Repairs', vehicle_repairs_path(@vehicle.id), class: "myButton" %>
   <%= link_to 'Add Repair', new_vehicle_repair_path(@vehicle.id), class: "myButton" %><br><br>
 </div>
+
+<%= render(partial: "vehicles/insurance_modal") %>
+<%= render(partial: "vehicles/registration_modal") %>
