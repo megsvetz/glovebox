@@ -8,6 +8,9 @@ class VehiclesController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
   def new
     @vehicle = Vehicle.new
   end
