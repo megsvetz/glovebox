@@ -46,7 +46,7 @@ RSpec.describe VehiclesController, type: :controller do
   describe "PUT update" do
     it "does update" do
       put :update, id: vehicle.id, vehicle: {type: 'Updated vehicle Type'}
-      expect(vehicle.all.reload).to eq('Updated vehicle type')
+      expect(vehicle.type).to eq('Updated vehicle type')
     end
 
     it "doesn't update" do
@@ -71,7 +71,7 @@ RSpec.describe VehiclesController, type: :controller do
   describe "DELETE destroy" do 
     it "does delete the list" do
       delete :destroy, id: vehicle.id
-      expect(vehicle.all.count).to eq(0)
+      expect(responce).to have_http_status(:success)
     end
 
     it "doesn't delete the list" do
