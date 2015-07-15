@@ -1,3 +1,5 @@
+ 
+
 <div class="container">
   <h1 class="text-center"><%= @vehicle.name.capitalize %></h1>
   <hr>
@@ -48,3 +50,6 @@
     </div>
   </div>
 </div>
+<% a = '$10' %>
+<%= link_to pie_chart({"Football" => 10, "Basketball" => 5}), vehicle_repairs_path(@vehicle.id) %>
+<%= pie_chart @vehicle.repairs.group(:type).sum(:repair_cost) %>
