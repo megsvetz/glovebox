@@ -18,7 +18,7 @@
             <td><%= link_to(r.name, vehicle_path(r.id)) %></td>
             <td><%= r.registration.state %></td>
             <td><%= r.registration.expiration %></td>
-            <td>$ <%= r.registration.cost %></td>
+            <td>$ <%= sprintf('%.2f', r.registration.cost) %></td>
             <td><a href="<%= edit_vehicle_registration_path(r.id, r.registration.id) %>" class="btn btn-info"><span class = "glyphicon glyphicon-pencil"></span></a></td>
             <% end %>
         </tr>

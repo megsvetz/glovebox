@@ -3,7 +3,7 @@
   <h2 class="text-center">Edit</h2>
   <hr>
   <div class="row">
-    <div class="col-md-7 text-center">   
+    <div class="col-md-7 text-center">
       <% if @repair.repair_image.present? %>
         <%= link_to image_tag(@repair.repair_image.url(:large), :class => "img-thumbnail"), vehicle_path(@repair.vehicle_id) %>
       <% else %>
@@ -14,7 +14,7 @@
     <div class="col-md-5 text-center">
       <h3><%= @repair.repair_description %></h3>
       <h3><%= @repair.repair_date %></h3>
-      <h3>Cost: $ <%= @repair.repair_cost %></h3>
+      <h3>Cost: $ <%= sprintf('%.2f', @repair.repair_cost) %></h3>
       <h3><%= @repair.repair_place %></h3>
       <br>
       <p><%= link_to 'Edit', edit_vehicle_repair_path(@repair.vehicle_id, @repair.id), :class => "myButton", :style => "margin-right:13%;" %> <%= link_to 'Cancel', vehicles_path, :class => "myButton", :method => :get %></p>
