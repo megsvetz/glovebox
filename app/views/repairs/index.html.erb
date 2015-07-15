@@ -21,7 +21,7 @@
             <td><%= repair.repair_description %></td>
             <td><%= repair.repair_date %></td>
             <td><%= repair.repair_place %></td>
-            <td>$ <%= repair.repair_cost %></td>
+            <td>$ <%= sprintf('%.2f', repair.repair_cost) %></td>
             <td><%= link_to 'Show', sti_repair_path(@vehicle, repair.type, repair) %></td>
           <% end %>
         </tr>
