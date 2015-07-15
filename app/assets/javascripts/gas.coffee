@@ -4,16 +4,16 @@
 $(document).ready ->
 
   zip_code = $('.test-it-out').data('zipcode')
-  $.ajax 'http://maps.googleapis.com/maps/api/geocode/json?address=' + zip_code + '&sensor=false',
-  type: 'GET'
-  success: (data) ->
-    lat = data.results[0].geometry.location.lat
-    lng = data.results[0].geometry.location.lng
-    $('.change-me').html('Lat: ' + lat + ', ' + 'Lon: ' + lng + '<br><br>')
-    getGas(lat, lng)
-
-  error: (data) ->
-    console.log data
+  $('.test-it-out').click ->
+    $.ajax 'http://maps.googleapis.com/maps/api/geocode/json?address=' + zip_code + '&sensor=false',
+    type: 'GET'
+    success: (data) ->
+      lat = data.results[0].geometry.location.lat
+      lng = data.results[0].geometry.location.lng
+      $('.change-me').html('Lat: ' + lat + ', ' + 'Lon: ' + lng + '<br><br>')
+      getGas(lat, lng)
+    error: (data) ->
+      console.log data
 
   getGas = (lat, lng) ->
     $.ajax 'http://api.mygasfeed.com/stations/radius/' + lat + '/' + lng + '/10/reg/price/5y5b8lmnrb.json',
@@ -33,5 +33,15 @@ $(document).ready ->
             state = data.stations[i].region
             $('.change-me').append '$' + cheapgas + '<br>' + station + '<br>' + address + '<br>' + city + ', ' + state + '<br><br>'
           i++
+      error: (data) ->
+        console.log data
+
+  sendCoord = (lat, lng) ->
+    console.log 'on coord' + lat
+    $.ajax '/gas/coords',
+      type: 'GET'
+      data: {latitude: lat, long: lng}
+      success: (data) ->
+        console.log data
       error: (data) ->
         console.log data
