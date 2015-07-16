@@ -1,0 +1,22 @@
+<h2>Things to expect with Premium Membership</h2>
+<div class="">
+  <div class="">
+    stuf for basic
+  </div>
+  <div class="">
+    stuf for premium
+  </div>
+</div>
+
+<%= form_tag charges_path do %>
+  <article>
+    <label class="amount">
+      <span>Amount: $5.00</span>
+    </label>
+  </article>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="A year's subscription"
+          data-amount="500"></script>
+<% end %>

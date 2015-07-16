@@ -50,6 +50,7 @@ gem "chartkick"
 #gems for the mail contact us form
 gem 'mail_form'
 
+gem 'stripe'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
