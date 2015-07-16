@@ -9,13 +9,13 @@
       <% if @vehicle.registration.present? %>
         <div id="registration_modal_button" class="myButton">Registration</div>
       <% else %>
-      <%= link_to 'Add Registration', new_vehicle_insurance_path(@vehicle.id), class: "myButton", :style => "margin:0%;" %>
+        <%= link_to 'Add Registration', new_vehicle_insurance_path(@vehicle.id), class: "myButton", :style => "margin:0%;" %>
       <% end %>
     </div>
     <div class="col-md-2 col-sm-3 col-xs-12">
       <% if @vehicle.insurance.present? %>
         <div id="insurance_modal_button" class="myButton">Insurance</div>
-        <% else %>
+      <% else %>
         <%= link_to 'Add Insurance', new_vehicle_insurance_path(@vehicle.id), class: "myButton", :style => "margin:0%;" %>
       <% end %>
     </div>
