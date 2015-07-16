@@ -24,3 +24,6 @@ $(document).ready ->
 
   $('#insurance_modal_button').click ->
     $('#insurance_modal').modal({backdrop: 'static', keyboard: false})
+
+
+$(".modal-body").load($(this).data('href'))

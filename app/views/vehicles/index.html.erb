@@ -33,12 +33,12 @@
               <p>
               <div class='text-center'><%= link_to 'See Repairs', vehicle_repairs_path(a.id), class: 'btn btn-default'%></div></p>
               <% if a.insurance.present? %>
-                <p><div class='text-center'><%= link_to 'See Insurance', vehicle_insurance_path(a.id, a.insurance.id ), class: 'btn btn-default', style: 'font-size:.75em' %>
+                <p><div class='text-center'><div id="insurance_modal_button" class="myButton">Insurance</div>
               <% else %>
                 <p><div class='text-center'><%= link_to 'Add Insurance', new_vehicle_insurance_path(a.id), class: 'btn btn-default', style: 'font-size:.75em' %>
               <% end %>
               <% if a.registration.present? %>
-                <%= link_to 'See Registration', vehicle_registration_path(a.id, a.registration.id), class: 'btn btn-default', style: 'font-size:.75em' %></div>
+                <div id="registration_modal_button" class="myButton">Registration</div></div>
               <% else %>
                 <%= link_to 'Add Registration', new_vehicle_registration_path(a.id), class: 'btn btn-default', style: 'font-size:.75em' %></div>
               <% end %>
@@ -56,3 +56,7 @@
     <%= link_to 'New Vehicle', new_vehicle_path, class: 'btn btn-form-submit' %>
   </div>
 <% end %>
+
+
+<%= render(partial: "vehicles/insurance_modal") %>
+<%= render(partial: "vehicles/registration_modal") %> 
