@@ -2,19 +2,23 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Good Job! You completed your goal!</h4>
+        <h4 class="modal-title">Registration for <%= @vehicle.name.capitalize %></h4>
       </div>
       <div class="modal-body">
-        <p>Want to share to our Twitter&hellip;</p>
-        <div id="twitter-error" class="hidden">
-          To post to Twitter, please fill out the text box.
+        <% if @vehicle.registration.image.present? %>
+          <%= link_to image_tag(@vehicle.insurance.image.url(:medium), :class => "img-thumbnail"), vehicle_path(@vehicle.id) %>
+        <% else %>
+          <img class="img-responsive" src="http://placehold.it/700x300" alt="">
+        <% end %>
+
+        <div class="text-center">
+          <h1><%= @vehicle.registration.state %> </h1>
+          <h3><%= @vehicle.registration.expiration %></h3>
+          <h3>Cost: $ <%= sprintf('%.2f', @vehicle.registration.cost) %> </h3>
+          
+          <p><%= link_to 'Edit', edit_vehicle_registration_path(@vehicle.id, @vehicle.registration.id), :class => "myButton", :style => "margin-right:13%;" %> <%= link_to 'See this Vehicle', vehicle_path(@vehicle.id), :class => "myButton", :method => :get %></p>
         </div>
-        <textarea id="twitter_body" rows="4" cols="50" maxlength="140">I completed my goal at KickIt.com!</textarea>
-      </div>
-      <div class="modal-footer">
-        <button type="button" id="no_thanks_button" class="btn btn-default" data-dismiss="modal">No, thanks</button>
-        <button type="button" id="share_button" class="btn btn-primary">Share</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</div>
