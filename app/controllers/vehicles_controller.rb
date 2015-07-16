@@ -5,6 +5,10 @@ class VehiclesController < ApplicationController
     @vehicles = current_user.vehicles.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 9)
   end
 
+  def for_sale
+    @vehicles = Vehicle.where(selling: true)
+  end
+
   def show
   end
 

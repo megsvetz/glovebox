@@ -1,0 +1,28 @@
+<div class='vehicle-header text-center'>Vehicles for Sale</div>
+
+  <hr />
+  <% unless @vehicles.blank? %>
+    <hr>
+    <div class="row">
+      <% @vehicles.each do |vehicle| %>
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail vehicle_show" style="margin-left:auto; margin-right:auto;">
+            <%= link_to(image_tag(vehicle.image.url(:medium)), vehicle_path(vehicle.id)) %>
+            <div class="caption">
+              <div class='vehicle-text'><%= link_to vehcile.make + ' ' + vehicle.model, vehicle_path(vehicle.id) %>
+                <br>
+                Mileage: <%= vehicle.mileage %><br>
+              </div>
+              <br>
+              <p>
+              <div class='text-center'><%= link_to 'See Repairs', vehicle_repairs_path(a.id), class: 'btn btn-default'%></div></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <%= will_paginate @vehicles %>
+</div>
+<% else %>
+  <h3 class="text-center">It appears that there are no vehicles for sale.</h3>
+<% end %>
