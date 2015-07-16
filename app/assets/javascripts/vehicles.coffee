@@ -18,3 +18,9 @@ $(document).ready ->
         $('#vehicle_vin').attr('disabled', 'true')
       error: (data) ->
         alert 'That VIN does not appear to be correct, please enter it again.'
+
+  $('#registration_modal_button').click ->
+    $('#registration_modal').modal({backdrop: 'static', keyboard: false})
+
+  $('#insurance_modal_button').click ->
+    $('#insurance_modal').modal({backdrop: 'static', keyboard: false})
