@@ -26,11 +26,17 @@ $(document).ready ->
         type: 'POST'
         data: contact: {first_name: $('#contact_first_name').val(), last_name: $('#contact_last_name').val(), email: $('#contact_email').val(), phone: $('#contact_phone').val(), message: $('#contact_message').val()}
         success: (data) ->
-          $('#contact_first_name').val('')
-          $('#contact_last_name').val('')
-          $('#contact_email').val('')
-          $('#contact_phone').val('')
-          $('#contact_message').val('')
+          blank_form()
           alert 'Thanks for the email!'
         error: (data) ->
           alert 'Something went wrong, please try again!'
+
+  $('#clear_form').click ->
+    blank_form()
+
+  blank_form = ->
+    $('#contact_first_name').val('')
+    $('#contact_last_name').val('')
+    $('#contact_email').val('')
+    $('#contact_phone').val('')
+    $('#contact_message').val('')
