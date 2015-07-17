@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   root "welcomes#home"
+  resources :charges
   resources :vehicles do
     resources :repairs
     resources :insurances

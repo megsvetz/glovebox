@@ -1,7 +1,11 @@
 class VehiclesController < ApplicationController
   before_action :find_vehicle, only: [:show, :edit, :update, :destroy]
+<<<<<<< HEAD
   before_action :authenticate_user!
   before_action :authenticate_user, only: [:show, :edit, :update, :destory]
+=======
+  before_action :check_membership, only: [:new, :create]
+>>>>>>> d982029a9307525360edae804f369cef30b9b004
 
   def index
     @vehicles = current_user.vehicles.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 9)
@@ -55,6 +59,7 @@ class VehiclesController < ApplicationController
   def find_vehicle
     @vehicle = Vehicle.find_by(id: params[:id])
   end
+<<<<<<< HEAD
 
   def authenticate_user
     if @vehicle.user_id != current_user.id
@@ -62,4 +67,11 @@ class VehiclesController < ApplicationController
     end
   end
 
+=======
+  def check_membership
+    if current_user.basic? && current_user.vehicles.count >= 3
+      redirect_to new_charge_path, notice: "Members with the basic plan are only allowed 3 cars"
+    end
+  end
+>>>>>>> d982029a9307525360edae804f369cef30b9b004
 end
