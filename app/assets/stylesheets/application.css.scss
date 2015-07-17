@@ -179,3 +179,22 @@ padding-right: 10px;
 color: grey;
 float: right;
 }
+
+.basic,
+.premium{
+  border: none;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: #F7F7F6;
+  width: 100%;
+  padding:  0;
+  margin-bottom: 30px;
+}
+
+.premium{
+  background: red;
+  color: white;
+}
+
+.no-padding{
+  padding: 0;
+}
