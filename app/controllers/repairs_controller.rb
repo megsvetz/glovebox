@@ -3,7 +3,7 @@ class RepairsController < ApplicationController
   before_action :set_vehicle
 	before_action :set_repair, only: [:show, :edit, :update, :destroy]
 	before_action :authenticate_user!
-	before_action :authenticate_user, only: [:index, :show, :edit, :update, :destroy]
+	before_action :authenticate_user, only: [:show, :edit, :update, :destroy]
 	# before_action :set_repair_type2, except: [:index, :new]
 
 	def index
@@ -51,6 +51,10 @@ class RepairsController < ApplicationController
 			if @vehicle.user_id != current_user.id
 				redirect_to vehicles_path
 			end
+			unless @vehicle.repairs.find_by(id: params[:id]).present?
+				redirect_to vehicles_path
+			end
+
 		end
 
 	  def set_repair
