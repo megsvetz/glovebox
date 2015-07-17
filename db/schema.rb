@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 20150717160724) do
     t.text     "city"
     t.string   "state"
     t.integer  "membership",             default: 0
+    t.date     "upgrade_date"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

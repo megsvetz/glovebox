@@ -1,28 +1,28 @@
 <div class="modal fade" id="insurance_modal">
   <div class="modal-dialog">
     <div class="modal-content">
-      <% if @vehicle %>
-        <div class="modal-header">
-          <h4 class="modal-title text-center">Insurance for <%= @vehicle.name.capitalize %></h4>
-        </div>
-        <div class="modal-body">
-          <% if @vehicle.insurance.image.present? %>
-            <%= link_to image_tag(@vehicle.insurance.image.url(:medium), :class => "img-thumbnail"), vehicle_path(@vehicle.id) %>
-          <% else %>
-            <img class="img-responsive" src="http://placehold.it/700x300" alt="">
-          <% end %>
-
-          <div class="text-center">
-            <h1><%= @vehicle.insurance.company %> </h1>
-            <h2><%= @vehicle.insurance.policy_number %></h2>
-            <h3><%= @vehicle.insurance.expiration_date %></h3>
-            <h3><%= @vehicle.insurance.renewal_date %></h3>
-            <h3>Cost: $ <%= sprintf('%.2f', @vehicle.insurance.cost) %> </h3>
-            <p><%= link_to 'Edit', edit_vehicle_insurance_path(@vehicle.id, @vehicle.insurance.id), :class => "myButton", :style => "margin-right:13%;" %><button type="button" id="done_button" class="myButton" data-dismiss="modal">  Back</button></p>
+      <% if @vehicle && @vehicle.insurance %>
+          <div class="modal-header">
+            <h4 class="modal-title text-center">Insurance for <%= @vehicle.name.capitalize %></h4>
           </div>
-        </div>
-      <% else %>
-        <div class="modal-body"></div>
+          <div class="modal-body">
+            <% if @vehicle.insurance.image.present? %>
+              <%= link_to image_tag(@vehicle.insurance.image.url(:medium), :class => "img-thumbnail"), vehicle_path(@vehicle.id) %>
+            <% else %>
+              <img class="img-responsive" src="http://placehold.it/700x300" alt="">
+            <% end %>
+
+            <div class="text-center">
+              <h1><%= @vehicle.insurance.company %> </h1>
+              <h2><%= @vehicle.insurance.policy_number %></h2>
+              <h3><%= @vehicle.insurance.expiration_date %></h3>
+              <h3><%= @vehicle.insurance.renewal_date %></h3>
+              <h3>Cost: $ <%= sprintf('%.2f', @vehicle.insurance.cost) %> </h3>
+              <p><%= link_to 'Edit', edit_vehicle_insurance_path(@vehicle.id, @vehicle.insurance.id), :class => "myButton", :style => "margin-right:13%;" %><button type="button" id="done_button" class="myButton" data-dismiss="modal">  Back</button></p>
+            </div>
+          </div>
+        <% else %>
+          <div class="modal-body"></div>
       <% end %>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
