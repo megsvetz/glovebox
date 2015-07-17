@@ -57,7 +57,7 @@ class RegistrationsController < ApplicationController
   end
 
   def authenticate_user
-    if @vehicle.user_id != current_user.id
+    if @vehicle.user_id != current_user.id || @vehicle.registration.id != params[:id]
       redirect_to vehicles_path
     end
   end

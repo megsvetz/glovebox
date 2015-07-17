@@ -50,6 +50,10 @@ gem "chartkick"
 #gems for the mail contact us form
 gem 'mail_form'
 
+group :development, :production do
+  #delayed jobs
+  gem 'delayed_job_active_record'
+end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
