@@ -37,6 +37,9 @@ class RegistrationsController < ApplicationController
   end
 
   def show
+    if params[:layout] == 'false'
+      render('show', layout: false)
+    end
   end
 
   private

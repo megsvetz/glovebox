@@ -10,7 +10,7 @@
       <% @vehicles.each do |a| %>
         <div class="col-sm-6 col-md-4">
           <div class="thumbnail vehicle_show" style="margin-left:auto; margin-right:auto;">
-            <%= link_to(image_tag(a.image.url(:medium)), vehicle_path(a.id)) %>
+            <%= a.image ? link_to(image_tag(a.image.url(:medium)), vehicle_path(a.id)) : link_to(image_tag()) %>
             <div class="caption">
               <div class='vehicle-text'><%= link_to a.make + ' ' + a.model, vehicle_path(a.id) %>
                 <br>
@@ -30,17 +30,16 @@
               </div>
 
               <br>
-              <p>
-              <div class='text-center'><%= link_to 'See Repairs', vehicle_repairs_path(a.id), class: 'btn btn-default'%></div></p>
+              <p><div class='text-center'><%= link_to 'See Repairs', vehicle_repairs_path(a.id), class: 'btn btn-default'%></div></p>
               <% if a.insurance.present? %>
-                <p><div class='text-center'><div id="insurance_modal_button" class="myButton">Insurance</div>
+                <p><div class='text-center'><div class="insurance_modal_button btn myButton" data-vehicle="<%= a.to_json(include: :insurance) %>">Insurance</div>
               <% else %>
-                <p><div class='text-center'><%= link_to 'Add Insurance', new_vehicle_insurance_path(a.id), class: 'btn btn-default', style: 'font-size:.75em' %>
+                <p><div class='text-center'><%= link_to 'Add Insurance', new_vehicle_insurance_path(a.id), class: 'btn myButton', style: 'font-size:.75em' %>
               <% end %>
               <% if a.registration.present? %>
-                <div id="registration_modal_button" class="myButton">Registration</div></div>
+                <div class="registration_modal_button btn myButton" data-vehicle="<%= a.to_json(include: :registration) %>">Registration</div></div>
               <% else %>
-                <%= link_to 'Add Registration', new_vehicle_registration_path(a.id), class: 'btn btn-default', style: 'font-size:.75em' %></div>
+                <%= link_to 'Add Registration', new_vehicle_registration_path(a.id), class: 'btn myButton', style: 'font-size:.75em' %></div>
               <% end %>
               </p>
             </div>
@@ -56,7 +55,6 @@
     <%= link_to 'New Vehicle', new_vehicle_path, class: 'btn btn-form-submit' %>
   </div>
 <% end %>
-
 
 <%= render(partial: "vehicles/insurance_modal") %>
 <%= render(partial: "vehicles/registration_modal") %>
