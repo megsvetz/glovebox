@@ -2,6 +2,7 @@ class RegistrationsController < ApplicationController
   before_action :find_registration, only: [:edit, :update, :show]
   before_action :find_vehicle
   before_action :authenticate_user!
+  before_action :authenticate_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @vehicles = current_user.vehicles
@@ -36,6 +37,9 @@ class RegistrationsController < ApplicationController
   end
 
   def show
+    if params[:layout] == 'false'
+      render('show', layout: false)
+    end
   end
 
   private
@@ -53,6 +57,12 @@ class RegistrationsController < ApplicationController
 
   def find_vehicle
     @vehicle = Vehicle.find_by(id: params[:vehicle_id])
+  end
+
+  def authenticate_user
+    if @vehicle.user_id != current_user.id
+      redirect_to vehicles_path
+    end
   end
 
 end

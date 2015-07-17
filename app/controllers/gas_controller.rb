@@ -1,9 +1,10 @@
 class GasController < ApplicationController
-  def index
+  before_action :authenticate_user!
 
+  def index
   end
 
   def get_coords
-
   end
+  
 end
