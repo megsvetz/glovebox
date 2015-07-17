@@ -55,4 +55,11 @@ $(document).ready ->
   $('#insurance_modal_button_show').click ->
     $('#insurance_modal').modal('show')
 
+  $('#h3_10').click ->
+    $('#num10').toggle ->
+
+  $('.h3_classes').hover ->
+    $('.h3_classes').css('cursor','pointer');
+
+
 # $(".modal-body").load($(this).data('href'))

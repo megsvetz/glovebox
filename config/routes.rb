@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   get '/gas' => 'gas#index'
   get '/gas/coords' => 'gas#get_coords'
-  get '/for_sale' => 'vehicles#for_sale'
+  get '/vehicles/selling' => 'vehicles#selling'
 
   match '/contact', to: 'welcomes#home', via: 'get'
   post '/contact', to: 'welcomes#contact'
