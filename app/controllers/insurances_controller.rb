@@ -2,6 +2,7 @@ class InsurancesController < ApplicationController
   before_action :find_insurance, only: [:edit, :update, :show]
   before_action :find_vehicle
   before_action :authenticate_user!
+  before_action :authenticate_user, only: [:index, :destroy, :edit, :update, :show]
 
   def index
     @vehicles = current_user.vehicles
@@ -52,10 +53,16 @@ class InsurancesController < ApplicationController
     unless @insurance
       render(text: "Insurance not found.", status: :not_found)
     end
-  end 
+  end
 
   def find_vehicle
     @vehicle = Vehicle.find_by(id: params[:vehicle_id])
+  end
+
+  def authenticate_user
+    if @vehicle.user_id != current_user.id
+      redirect_to vehicles_path
+    end
   end
 
 end

@@ -13,7 +13,7 @@
     </div>
     <div class="col-md-5 text-center">
       <h3><%= @repair.repair_description %></h3>
-      <h3><%= @repair.repair_date %></h3>
+      <h3><%= @repair.repair_date.strftime('%b %d, %Y') %></h3>
       <h3>Cost: $ <%= sprintf('%.2f', @repair.repair_cost) %></h3>
       <h3><%= @repair.repair_place %></h3>
       <br>

@@ -6,10 +6,21 @@
       <div class="col-md-2 col-sm-4 col-xs-12">
         <%= link_to 'Back to My Vehicles', vehicles_path, :class => "myButton", :style => "margin:0%;", :method => :get %>
       </div>
-      
+      <div class="col-md-offset-6 col-md-2 col-sm-offset-2 col-sm-3 col-xs-12">
+        <% if @vehicle.registration.present? %>
+          <div id="registration_modal_button" class="myButton">Registration</div>
+        <% else %>
+          <%= link_to 'Add Registration', new_vehicle_insurance_path(@vehicle.id), class: "myButton", :style => "margin:0%;" %>
+        <% end %>
+      </div>
+      <div class="col-md-2 col-sm-3 col-xs-12">
+        <% if @vehicle.insurance.present? %>
+          <div id="insurance_modal_button" class="myButton">Insurance</div>
+        <% else %>
+          <%= link_to 'Add Insurance', new_vehicle_insurance_path(@vehicle.id), class: "myButton", :style => "margin:0%;" %>
+        <% end %>
+      </div>
 
-
-    </div>
   </div>
       <hr>
   <div class="row">
