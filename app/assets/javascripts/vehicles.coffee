@@ -60,4 +60,11 @@ $(document).ready ->
 
 
 
+  $('#h3_10').click ->
+    $('#num10').toggle ->
+
+  $('.h3_classes').hover ->
+    $('.h3_classes').css('cursor','pointer');
+
+
 # $(".modal-body").load($(this).data('href'))

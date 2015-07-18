@@ -4,7 +4,6 @@ class VehiclesController < ApplicationController
   before_action :authenticate_user, only: [:show, :edit, :update, :destory]
   before_action :check_membership, only: [:new, :create]
 
-
   def index
     @vehicles = current_user.vehicles.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 9)
   end
