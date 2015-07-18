@@ -4,6 +4,7 @@
 @import url(http://fonts.googleapis.com/css?family=Oswald);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
 @import url(http://fonts.googleapis.com/css?family=Abril+Fatface);
+@import "lazybox";
 
 body {
   font-family: 'Oswald', sans-serif;
@@ -94,7 +95,8 @@ li a {
   margin-left:5%;
 }
 .vehicle_show {
-  width: 300px;
+  width: 350px;
+  height: 350px;
 }
 .vehicle-header{
   margin-top: 1%;

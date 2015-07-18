@@ -46,6 +46,8 @@ gem 'googlecharts'
 gem 'mattetti-googlecharts'
 
 gem "chartkick"
+#gem for viewing photos
+gem 'lazybox'
 
 #gems for the mail contact us form
 gem 'mail_form'

@@ -54,5 +54,10 @@ $(document).ready ->
 
   $('#insurance_modal_button_show').click ->
     $('#insurance_modal').modal('show')
+    
+  $('a[rel*=lazybox]').lazybox({esc: true, close: true, modal: true, klass: 'class'});
+
+
+
 
 # $(".modal-body").load($(this).data('href'))
