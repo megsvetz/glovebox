@@ -11,7 +11,6 @@
             <% else %>
               <img class="img-responsive" src="http://placehold.it/700x300" alt="">
             <% end %>
-
             <div class="text-center">
               <h1><%= @vehicle.insurance.company %> </h1>
               <h2><%= @vehicle.insurance.policy_number %></h2>
@@ -24,6 +23,7 @@
         <% else %>
           <div class="modal-body"></div>
       <% end %>
+          </div>e
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
