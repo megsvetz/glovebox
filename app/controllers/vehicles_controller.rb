@@ -3,9 +3,11 @@ class VehiclesController < ApplicationController
   before_action :authenticate_user!
   before_action :authenticate_user, only: [:show, :edit, :update, :destory]
   before_action :check_membership, only: [:new, :create]
+  before_action :validate_vehicle, only: [:show, :edit]
+
 
   def index
-    @vehicles = current_user.vehicles.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 9)
+    @vehicles = current_user.vehicles.all.order("created_at ASC").paginate(:page => params[:page], :per_page => 9)
   end
 
   def for_sale
@@ -13,6 +15,7 @@ class VehiclesController < ApplicationController
   end
 
   def show
+    # if current_user.basic?
   end
 
   def edit
@@ -24,6 +27,7 @@ class VehiclesController < ApplicationController
 
   def create
     @vehicle = Vehicle.new(vehicle_params)
+    # @vehicle.image = "/assets/default_car.jpg"
     if @vehicle.save
       redirect_to vehicles_path, notice: "#{@vehicle.type} was successfully created."
     else
@@ -66,6 +70,17 @@ class VehiclesController < ApplicationController
   def check_membership
     if current_user.basic? && current_user.vehicles.count >= 3
       redirect_to new_charge_path, notice: "Members with the basic plan are only allowed 3 cars"
+    end
+  end
+
+  def validate_vehicle
+    @vehicles = current_user.vehicles.all.order("created_at ASC")
+    if current_user.basic? && @vehicles.length > 3
+      @vehicles = [current_user.vehicles.second, current_user.vehicles.third, current_user.vehicles.first]
+    end
+    bool = @vehicles.any? {|vehicle| @vehicle == vehicle }
+    if bool == false
+      redirect_to new_charge_path
     end
   end
 end

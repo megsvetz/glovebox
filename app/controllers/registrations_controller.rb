@@ -5,7 +5,11 @@ class RegistrationsController < ApplicationController
   before_action :authenticate_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @vehicles = current_user.vehicles
+    if current_user.premium?
+      @vehicles = current_user.vehicles.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 9)
+    else
+      @vehicles = [current_user.vehicles.second, current_user.vehicles.third, current_user.vehicles.first]
+    end
   end
 
   def new
