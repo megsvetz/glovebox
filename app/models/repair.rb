@@ -23,7 +23,7 @@ class Repair < ActiveRecord::Base
   def self.modifications
     where(type: 'Modification')
   end
-  def self.otherrepair
+  def self.otherrepairs
     where(type: 'Otherrepair')
   end
 
