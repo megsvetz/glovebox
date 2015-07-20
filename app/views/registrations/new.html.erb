@@ -17,7 +17,7 @@
       <%= f.file_field :image, class: "form-align" %>
       <%= f.hidden_field :vehicle_id, value: @vehicle.id %>
       <br><br><br>
-      <p><%= f.submit "Update Registration", :class => "myButton" %> <%= link_to 'Cancel', vehicles_path, :class => "myButton", :method => :get %></p>
+      <p><%= f.submit "Update Registration", :class => "myButton registration_button" %> <%= link_to 'Cancel', vehicles_path, :class => "myButton", :method => :get %></p>
       <br><br>
 
     <% end %>

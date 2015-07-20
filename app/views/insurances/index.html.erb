@@ -11,6 +11,7 @@
         <th class="text-center">Expiration Date</th>
         <th class="text-center">Renewal Date</th>
         <th class="text-center">Cost</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -18,7 +19,7 @@
         <tr>
           <% if i.insurance.present? %>
             <td><%= link_to(i.name, vehicle_path(i.id)) %></td>
-            <td><%= i.insurance.company %></td>
+            <td><%= link_to(i.insurance.company, vehicle_insurance_path(i.id, i.insurance.id)) %></td>
             <td><%= i.insurance.policy_number %></td>
             <% if i.insurance.expiration_date.present? %>
               <td><%= i.insurance.expiration_date.strftime('%b %d, %Y') %></td>
@@ -30,7 +31,11 @@
             <% else %>
               <td>No renewel date entered.</td>
             <% end %>
-            <td>$ <%= sprintf('%.2f', i.insurance.cost) %></td>
+            <% if i.insurance.cost.present? %>
+              <td>$ <%= sprintf('%.2f', i.insurance.cost) %></td>
+              <% else %>
+              <td>$ 0.00</td>
+            <% end %>
             <td><a href="<%= edit_vehicle_insurance_path(i.id, i.insurance.id) %>" class="btn btn-info"><span class = "glyphicon glyphicon-pencil"></span></a>
             </td>
           <% end %>

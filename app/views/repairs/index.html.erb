@@ -28,7 +28,9 @@
               <td>No repair date entered</td>
             <% end %>
             <td><%= repair.repair_place %></td>
-            <td>$ <%= sprintf('%.2f', repair.repair_cost) %></td>
+            <% if repair.repair_cost.present? %>
+              <td>$ <%= sprintf('%.2f', repair.repair_cost) %></td>
+            <% end %>
             <td><%= link_to 'Show', sti_repair_path(@vehicle, repair.type, repair) %></td>
           <% end %>
           <% total += repair.repair_cost %>

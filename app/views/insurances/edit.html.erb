@@ -2,7 +2,7 @@
   <h1 class="text-center">Edit Insurance for <%= @vehicle.name.capitalize %></h1>
   <hr>
   <div style="text-align:center;">
-    <%= form_for @insurance, url: vehicle_insurance_path, :html => { :multipart => true }  do |f| %>
+    <%= form_for @insurance, url: vehicle_insurance_path(@vehicle.id, @insurance.id), :html => { :multipart => true }  do |f| %>
       <% if @insurance.image.present? %>
         <%= image_tag(@insurance.image.url(:medium)) %>
       <% else %>
@@ -26,7 +26,8 @@
       <br>
       <%= f.file_field :image, style: "display:inline-block;" %>
       <br><br>
-      <p><%= f.submit :class => "myButton", :style => "margin-right:13%;" %> <%= link_to 'Cancel', vehicles_path, :class => "myButton", :method => :get %></p>
+      <p><%= f.submit 'Update', url: vehicle_insurance_path(@vehicle.id, @insurance.id), :class => "myButton", :style => "margin-right:13%;" %> 
+        <%= link_to 'Cancel', vehicles_path, :class => "myButton", :method => :get %></p>
       <br><br>
 
     <% end %>
