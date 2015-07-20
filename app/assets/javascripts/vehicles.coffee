@@ -4,7 +4,8 @@
 $(document).ready ->
   $('#vehicle_vin').change ->
     vin = $('#vehicle_vin').val()
-    $.ajax 'https://api.edmunds.com/v1/api/toolsrepository/vindecoder?vin=' + vin + '&fmt=json&api_key=fppzq3ry7cv83shhqwe4kjn2',
+    api = $('.vin-number').data('api')
+    $.ajax 'https://api.edmunds.com/v1/api/toolsrepository/vindecoder?vin=' + vin + '&fmt=json&api_key=' + api,
       type: 'GET'
       success: (data) ->
         $('#vehicle_make').val(data.styleHolder[0].makeName)
@@ -54,9 +55,11 @@ $(document).ready ->
 
   $('#insurance_modal_button_show').click ->
     $('#insurance_modal').modal('show')
-    
+
+  $('a[rel*=lazybox]').lazybox({esc: true, close: true, modal: true, klass: 'class'});
+
   $('a[rel*=lazybox]').lazybox()
-  
+
   $('a[rel*=lazybox]').lazybox({esc: true, close: true, modal: true, klass: 'class'})
 
   $('#h3_10').click ->
