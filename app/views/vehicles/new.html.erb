@@ -3,7 +3,7 @@
   <hr>
   <div class="form">
     <%= form_for @vehicle do |f| %>
-      <p class='vin-number' data-api="<%=ENV['edmunds_api_key'] %>" ><%= f.text_field :vin, class: "form-control", :placeholder => "Vehicle Vin", :style => "width:100%;" %></p>
+      <p class='vin-number'><%= f.text_field :vin, class: "form-control", :placeholder => "Vehicle Vin", :style => "width:100%;" %></p>
       <%= f.select :type, Vehicle.type, {:include_blank => "Select Vehicle Type"}, style:"margin-bottom:8%;" %>
       <% dates = 1900..Date.today.year %>
       <%= f.select :year, ((Time.zone.now.year - 50)..(Time.zone.now.year + 1)).to_a.reverse, {:include_blank => "Select Vehicle Year"} %>
