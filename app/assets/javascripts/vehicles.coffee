@@ -62,6 +62,36 @@ $(document).ready ->
   $('#h3_10').click ->
     $('#num10').toggle ->
 
+  $('#h3_9').click ->
+    $('#num9').toggle ->
+
+  $('#h3_9').click ->
+    $('#num9').toggle ->
+
+  $('#h3_8').click ->
+    $('#num8').toggle ->
+
+  $('#h3_7').click ->
+    $('#num7').toggle ->
+
+  $('#h3_6').click ->
+    $('#num6').toggle ->
+
+  $('#h3_5').click ->
+    $('#num5').toggle ->
+
+  $('#h3_4').click ->
+    $('#num4').toggle ->
+
+  $('#h3_3').click ->
+    $('#num3').toggle ->
+
+  $('#h3_2').click ->
+    $('#num2').toggle ->
+
+  $('#h3_1').click ->
+    $('#num1').toggle ->
+
   $('.h3_classes').hover ->
     $('.h3_classes').css('cursor','pointer');
 
