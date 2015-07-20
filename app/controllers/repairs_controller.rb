@@ -2,10 +2,12 @@ class RepairsController < ApplicationController
 	before_action :set_repair_type
   before_action :set_vehicle
 	before_action :set_repair, only: [:show, :edit, :update, :destroy]
+	before_action :authenticate_user!
+	before_action :authenticate_user, only: [:show, :edit, :update, :destroy]
 	# before_action :set_repair_type2, except: [:index, :new]
 
 	def index
-		@repairs = @vehicle.repairs.send(repair_type)
+		@repairs = @vehicle.repairs.send(repair_type).order("repair_date DESC")
 	end
 
 	def show
@@ -45,6 +47,16 @@ class RepairsController < ApplicationController
       @vehicle = Vehicle.find_by(id: params[:vehicle_id])
 		end
 
+		def authenticate_user
+			if @vehicle.user_id != current_user.id
+				redirect_to vehicles_path
+			end
+			unless @vehicle.repairs.find_by(id: params[:id]).present?
+				redirect_to vehicles_path
+			end
+
+		end
+
 	  def set_repair
 	    @repair = repair_type_class.find_by(id: params[:id])
 	  end
@@ -57,17 +69,9 @@ class RepairsController < ApplicationController
 			@type = type()
 		end
 
-		# def set_repair_type2
-		# 	@type = type2()
-		# end
-
     def type()
       Repair.types.include?(params[:type]) ? params[:type] : "Repair"
     end
-
-		# def type2()
-		# 	Repair.types.include?(params[:repair][:type]) ? params[:repair][:type] : "All"
-		# end
 
     def repair_type
 			if type() == "Repair"
@@ -78,7 +82,6 @@ class RepairsController < ApplicationController
     end
 
     def repair_params
-
       params.require(type.underscore.to_sym).permit(:type, :repair_description, :repair_date, :repair_cost, :repair_image, :repair_place, :vehicle_id)
     end
 end

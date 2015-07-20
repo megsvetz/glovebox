@@ -1,24 +1,23 @@
 <div class="modal fade" id="registration_modal">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Registration for <%= @vehicle.name.capitalize %></h4>
-      </div>
-      <div class="modal-body">
-        <% if @vehicle.registration.image.present? %>
-          <%= link_to image_tag(@vehicle.insurance.image.url(:medium), :class => "img-thumbnail"), vehicle_path(@vehicle.id) %>
-        <% else %>
-          <img class="img-responsive" src="http://placehold.it/700x300" alt="">
-        <% end %>
-
-        <div class="text-center">
-          <h1><%= @vehicle.registration.state %> </h1>
-          <h3><%= @vehicle.registration.expiration %></h3>
-          <h3>Cost: $ <%= sprintf('%.2f', @vehicle.registration.cost) %> </h3>
-          
-          <p><%= link_to 'Edit', edit_vehicle_registration_path(@vehicle.id, @vehicle.registration.id), :class => "myButton", :style => "margin-right:13%;" %> <%= link_to 'See this Vehicle', vehicle_path(@vehicle.id), :class => "myButton", :method => :get %></p>
+      <% if @vehicle && @vehicle.registration %>
+        <div class="modal-header">
+          <h4 class="modal-title">Registration for <%= @vehicle.name.capitalize %></h4>
         </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
+        <div class="modal-body" >
+          <% if @vehicle.registration.image.present? %>
+            <%= link_to image_tag(@vehicle.registration.image.url(:large)) %>
+          <% else %>
+            <img class="img-responsive" src="http://placehold.it/700x300" alt="">
+          <% end %>
+        </div>
+      <% else %>
+        <div class="modal-body"></div>
+      <% end %>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>

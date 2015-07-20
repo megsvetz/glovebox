@@ -2,7 +2,7 @@
   <h1>All Vehicle Insurances</h1><hr>
     <%= link_to 'Back to My Vehicles', vehicles_path, :class => "myButton", :method => :get %>
   <hr />
-  <% if @vehicle.insurance.present %>
+  <% if @vehicle.insurance.present? %>
     <table class="table table-hover table-striped container">
       <thead>
         <tr>
@@ -21,10 +21,17 @@
               <td><%= link_to(i.name, vehicle_path(i.id)) %></td>
               <td><%= i.insurance.company %></td>
               <td><%= i.insurance.policy_number %></td>
-              <td><%= i.insurance.expiration_date.present? ? i.insurance.expiration_date.strftime('%b %d, %Y') : "" %></td>
-              <td><%= i.insurance.renewal_date.present? ? i.insurance.renewal_date.strftime('%b %d, %Y') : "" %></td>
+              <% if i.insurance.expiration_date.present? %>
+                <td><%= i.insurance.expiration_date.strftime('%b %d, %Y') %></td>
+              <% else %>
+                <td>No expiration date entered</td>
+              <% end %>
+              <% if i.insurance.renewal_date.present? %>
+                <td><%= i.insurance.renewal_date.strftime('%b %d, %Y') %></td>
+              <% else %>
+                <td>No renewel date entered.</td>
+              <% end %>
               <td>$ <%= sprintf('%.2f', i.insurance.cost) %></td>
-
               <td><a href="<%= edit_vehicle_insurance_path(i.id, i.insurance.id) %>" class="btn btn-info"><span class = "glyphicon glyphicon-pencil"></span></a>
               </td>
             <% end %>

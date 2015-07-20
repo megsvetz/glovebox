@@ -22,7 +22,11 @@
             <td><%= link_to(repair.vehicle.name, vehicle_repair_path(repair.vehicle_id, repair.id)) %></td>
             <td><%= repair.type %></td>
             <td><%= repair.repair_description %></td>
-            <td><%= repair.repair_date %></td>
+            <% if repair.repair_date.present? %>
+              <td><%= repair.repair_date.strftime('%b %d, %Y') %></td>
+            <% else %>
+              <td>No repair date entered</td>
+            <% end %>
             <td><%= repair.repair_place %></td>
             <td>$ <%= sprintf('%.2f', repair.repair_cost) %></td>
             <td><%= link_to 'Show', sti_repair_path(@vehicle, repair.type, repair) %></td>
@@ -42,4 +46,3 @@
   <div><%= pie_chart @vehicle.repairs.group(:type).sum(:repair_cost) %></div>
   <hr>
 </div>
-

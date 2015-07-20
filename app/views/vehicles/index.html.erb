@@ -7,45 +7,88 @@
   </div>
     <hr>
     <div class="row">
-      <% @vehicles.each do |a| %>
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail vehicle_show" style="margin-left:auto; margin-right:auto;">
-            <%= link_to(image_tag(a.image.url(:medium)), vehicle_path(a.id)) %>
-            <div class="caption">
-              <div class='vehicle-text'><%= link_to a.make + ' ' + a.model, vehicle_path(a.id) %>
-                <br>
-                <% if a.registration.present? %>
-                  Reg Expires: <%= a.registration.expiration.strftime('%b %d, %Y') %>
-                <% else %>
-                  No Registration Entered!
-                <% end %>
-                <br>
-                <% if a.insurance.present? %>
-                  Insurance Expires: <%= a.insurance.expiration_date.strftime('%b %d, %Y') %>
-                <% else %>
-                  No Insurance Entered!
-                <% end %>
-                <br>
-                Mileage: <%= a.mileage %><br>
-              </div>
+      <% @vehicles.each_with_index do |vehicle, index| %>
+        <% if current_user.basic? && index > 2 %>
+          <div class="col-sm-6 col-md-4">
+            <div class="thumbnail vehicle_show grayed-out" style="margin-left:auto; margin-right:auto;">
+              <a href="#"><%= image_tag(vehicle.image.url(:medium)) %></a>
+              <div class="caption">
+                <div class='vehicle-text'><%= vehicle.make + ' ' + vehicle.model %>
+                  <br>
+                  <% if vehicle.registration.present? %>
+                    Reg Expires: <%= vehicle.registration.expiration.strftime('%b %d, %Y') %>
+                  <% else %>
+                    No Registration Entered!
+                  <% end %>
+                  <br>
+                  <% if vehicle.insurance.present? %>
+                    Insurance Expires: <%= vehicle.insurance.expiration_date.strftime('%b %d, %Y') %>
+                  <% else %>
+                    No Insurance Entered!
+                  <% end %>
+                  <br>
+                  Mileage: <%= vehicle.mileage %><br>
+                </div>
 
-              <br>
-              <p>
-              <div class='text-center'><%= link_to 'See Repairs', vehicle_repairs_path(a.id), class: 'btn btn-default'%></div></p>
-              <% if a.insurance.present? %>
-                <p><div class='text-center'><div id="insurance_modal_button" class="myButton">Insurance</div>
-              <% else %>
-                <p><div class='text-center'><%= link_to 'Add Insurance', new_vehicle_insurance_path(a.id), class: 'btn btn-default', style: 'font-size:.75em' %>
-              <% end %>
-              <% if a.registration.present? %>
-                <div id="registration_modal_button" class="myButton">Registration</div></div>
-              <% else %>
-                <%= link_to 'Add Registration', new_vehicle_registration_path(a.id), class: 'btn btn-default', style: 'font-size:.75em' %></div>
-              <% end %>
-              </p>
+                <br>
+                <p><div class='text-center'><a href="#" class="btn btn-default">See Repairs</a></div></p>
+                <% if vehicle.insurance.present? %>
+                  <p><div class='text-center'><div class="insurance_modal_button btn myButton" data-vehicle="">Insurance</div>
+                <% else %>
+                  <p><div class='text-center'><a href="#" class="btn myButton" style="font-size:.75em">Add Insurance</a>
+                <% end %>
+                <% if vehicle.registration.present? %>
+                  <div class="registration_modal_button btn myButton" data-vehicle="<%= vehicle.to_json(include: :registration) %>">Registration</div></div>
+                <% else %>
+                  <a href="#" class="btn myButton" style="font-size:.75em">Add Registration</a></div>
+                <% end %>
+                </p>
+              </div>
             </div>
           </div>
-        </div>
+        <% else %>
+          <div class="col-sm-6 col-md-4">
+            <div class="thumbnail vehicle_show" style="margin-left:auto; margin-right:auto;">
+              <% if vehicle.image.present? %>
+                <%= image_tag(vehicle.image.url(:medium)) %>
+              <% else %>
+                <%= image_tag("default_car.jpg", :style => "height:auto;width:150px;") %>
+              <% end %>
+              <div class="caption">
+                <div class='vehicle-text'><%= link_to vehicle.make + ' ' + vehicle.model, vehicle_path(vehicle.id) %>
+                  <br>
+                  <% if vehicle.registration.present? %>
+                    Reg Expires: <%= vehicle.registration.expiration.strftime('%b %d, %Y') %>
+                  <% else %>
+                    No Registration Entered!
+                  <% end %>
+                  <br>
+                  <% if vehicle.insurance.present? %>
+                    Insurance Expires: <%= vehicle.insurance.expiration_date.strftime('%b %d, %Y') %>
+                  <% else %>
+                    No Insurance Entered!
+                  <% end %>
+                  <br>
+                  Mileage: <%= vehicle.mileage %><br>
+                </div>
+
+                <br>
+                <p><div class='text-center'><%= link_to 'See Repairs', vehicle_repairs_path(vehicle.id), class: 'btn btn-default'%></div></p>
+                <% if vehicle.insurance.present? %>
+                  <p><div class='text-center'><div class="insurance_modal_button btn myButton" data-vehicle="<%= vehicle.to_json(include: :insurance) %>">Insurance</div>
+                <% else %>
+                  <p><div class='text-center'><%= link_to 'Add Insurance', new_vehicle_insurance_path(vehicle.id), class: 'btn myButton', style: 'font-size:.75em' %>
+                <% end %>
+                <% if vehicle.registration.present? %>
+                  <div class="registration_modal_button btn myButton" data-vehicle="<%= vehicle.to_json(include: :registration) %>">Registration</div></div>
+                <% else %>
+                  <%= link_to 'Add Registration', new_vehicle_registration_path(vehicle.id), class: 'btn myButton', style: 'font-size:.75em' %></div>
+                <% end %>
+                </p>
+              </div>
+            </div>
+          </div>
+        <% end %>
       <% end %>
     </div>
     <%= will_paginate @vehicles %>

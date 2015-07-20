@@ -5,7 +5,9 @@
   <div class="row">
     <div class="col-md-7 text-center">
       <% if @repair.repair_image.present? %>
-        <%= link_to image_tag(@repair.repair_image.url(:large), :class => "img-thumbnail"), vehicle_path(@repair.vehicle_id) %>
+        <%= link_to @repair.repair_image.url, rel: :lazybox do %>
+          <%= image_tag(@repair.repair_image.url(:large), :class => "img-thumbnail") %>
+        <% end %>
       <% else %>
         <img class="img-responsive" src="http://placehold.it/700x300" alt="">
       <% end %>
@@ -13,7 +15,7 @@
     </div>
     <div class="col-md-5 text-center">
       <h3><%= @repair.repair_description %></h3>
-      <h3><%= @repair.repair_date %></h3>
+      <h3><%= @repair.repair_date.strftime('%b %d, %Y') %></h3>
       <h3>Cost: $ <%= sprintf('%.2f', @repair.repair_cost) %></h3>
       <h3><%= @repair.repair_place %></h3>
       <br>
