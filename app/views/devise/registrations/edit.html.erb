@@ -7,7 +7,7 @@
     <div class="field">
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true %>
-    </div>
+    </div><br>
 
     <div class="field">
       <%= f.label :city %><br />
@@ -25,32 +25,40 @@
     </div>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div><br>
     <% end %>
 
     <div class="field">
       <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
       <%= f.password_field :password, autocomplete: "off" %>
-    </div>
+    </div><br>
 
     <div class="field">
       <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
-    </div>
+      <%= f.password_field :password_confirmation, autocomplete: "off" %><br>
+    </div><br><br>
+
+    <div class="field">
+      <p>Your current membership plan is: <%= current_user.membership.capitalize %></p>
+      <% if current_user.basic? %>
+        <div class="">
+          <a href="<%= new_charge_path %>">Upgrade to Premium</a>
+        </div>
+      <% end %>
+      <!-- <%= f.select(:membership, options_for_select(['basic', 'premium']), {})%> -->
+    </div><br><br>
 
     <div class="field">
       <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
       <%= f.password_field :current_password, autocomplete: "off" %>
-    </div>
+    </div><br>
 
     <div class="actions">
-      <%= f.submit "Update" %>
+      <%= f.submit "Update", class: "myButton", style: "margin-top:2%;" %>
+      <%= link_to "Back", :back, class: "myButton", style: "margin-top:2%;" %>
     </div>
   <% end %>
-
+  <hr><br>
   <h3>Cancel my account</h3>
-
-  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-  <%= link_to "Back", :back %>
+  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "myButton", style: "margin-top:2%;" %></p>
 </div>

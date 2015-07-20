@@ -1,41 +1,31 @@
  <div class="container">
   <h1 class="text-center"><%= @vehicle.name.capitalize %></h1>
   <hr>
-  <div class="row">
-    <div class="col-md-2 col-sm-3 col-xs-12">
-      <%= link_to 'Back to My Vehicles', vehicles_path, :class => "myButton", :style => "margin:0%;", :method => :get %>
-    </div>
-    <div class="col-md-offset-6 col-md-2 col-sm-offset-2 col-sm-3 col-xs-12">
-      <% if @vehicle.registration.present? %>
-        <div id="registration_modal_button" class="myButton">Registration</div>
-      <% else %>
-      <%= link_to 'Add Registration', new_vehicle_insurance_path(@vehicle.id), class: "myButton", :style => "margin:0%;" %>
-      <% end %>
-    </div>
-    <div class="col-md-2 col-sm-3 col-xs-12">
-      <% if @vehicle.insurance.present? %>
-        <div id="insurance_modal_button" class="myButton">Insurance</div>
-        <% else %>
-        <%= link_to 'Add Insurance', new_vehicle_insurance_path(@vehicle.id), class: "myButton", :style => "margin:0%;" %>
-      <% end %>
-    </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2 col-sm-4 col-xs-12">
+        <%= link_to 'Back', vehicles_path, :class => "myButton", :style => "margin:0%;", :method => :get %>
+      </div>
   </div>
       <hr>
   <div class="row">
     <div class="col-md-7 text-center">
       <% if @vehicle.image.present? %>
-        <%= link_to image_tag(@vehicle.image.url(:large), :class => "img-thumbnail") %>
+        <%= image_tag(@vehicle.image.url(:large), :class => "img-thumbnail") %>
       <% else %>
-        <img class="img-responsive" src="http://placehold.it/700x300" alt="">
+        <%= image_tag("default_car.jpg", :class => "img-thumbnail") %>
       <% end %>
-    </div><br><br>
+      <br><br>
+      <%= link_to 'Edit Vehicle', edit_vehicle_path(@vehicle.id), class: "myButton" %>
+      <%= link_to 'Delete Vehicle', vehicle_path(@vehicle.id), method: :delete, class: "myButton" %><br>
+    </div>
 
     <div class="col-md-5 text-center">
-      <%=@vehicle.year %> <%= @vehicle.make %> <%= @vehicle.model %><br>
-      Mileage: <%= @vehicle.mileage %><br>
-      Vin: <%= @vehicle.vin %><br>
-      License Plate: <%= @vehicle.license_plate %><br>
-      Registered in <%= @vehicle.state %><br>
+      <h2><%=@vehicle.year %> <%= @vehicle.make %> <%= @vehicle.model %></h2>
+      <h3>Mileage: <%= @vehicle.mileage %></h3>
+      <h4>Vin: <%= @vehicle.vin %></h4>
+      <h3>License Plate: <%= @vehicle.license_plate %></h3>
+      <h4>Registered in <%= @vehicle.state %></h4>
       <% if @vehicle.registration.present? %>
         Reg Expires: <%= @vehicle.registration.expiration %>
       <% else %>
@@ -48,8 +38,25 @@
         No Insurance entered!
       <% end %>
       <br><br>
-      <%= link_to 'Edit Vehicle', edit_vehicle_path(@vehicle.id), class: "myButton" %>
-      <%= link_to 'Delete Vehicle', vehicle_path(@vehicle.id), method: :delete, class: "myButton" %><br><br>
+
+      <div class="container-fluid">
+        <div class="row">
+
+          <% if @vehicle.insurance.present? %>
+            <span id="insurance_modal_button_show" class="myButton" style="display:inline-block;">Insurance</span>
+            <% else %>
+            <%= link_to 'Add Insurance', new_vehicle_insurance_path(@vehicle.id), class: "myButton", :style => "margin-left:0%; display:inline-block;" %>
+          <% end %>
+
+          <% if @vehicle.registration.present? %>
+            <span id="registration_modal_button_show" class="myButton" style="display:inline-block;">Registration</span>
+          <% else %>
+          <%= link_to 'Add Registration', new_vehicle_insurance_path(@vehicle.id), class: "myButton", :style => "margin-right:0%; display:inline-block;" %>
+          <% end %>
+
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

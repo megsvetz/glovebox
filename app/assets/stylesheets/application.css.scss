@@ -4,6 +4,8 @@
 @import url(http://fonts.googleapis.com/css?family=Oswald);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
 @import url(http://fonts.googleapis.com/css?family=Abril+Fatface);
+@import "lazybox";
+@import "vehicles.scss";
 
 body {
   font-family: 'Oswald', sans-serif;
@@ -94,7 +96,8 @@ li a {
   margin-left:5%;
 }
 .vehicle_show {
-  width: 300px;
+  width: 350px;
+  height: 350px;
 }
 .vehicle-header{
   margin-top: 1%;
@@ -108,14 +111,10 @@ li a {
   margin-left:auto;
   margin-right:auto;
 }
-
-
-
 .form {
     display: inline-block;
     text-align: center;
 }
-
 .btn-form-submit,
 .contact-form-fields{
   border: none;
@@ -127,21 +126,16 @@ li a {
   width: 100%;
   margin-bottom: 30px;
 }
-
 .btn-form-submit{
   background: red;
   color: white
 }
-
 input:focus,
 select:focus,
 textarea:focus,
 button:focus {
     outline: none;
 }
-
-
-
 .myButton {
   -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
   -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -181,12 +175,35 @@ button:focus {
   position:relative;
   top:1px;
 }
-
-
 .social_media_buttons {
 padding-top: 10px;
 padding-left: 10px;
 padding-right: 10px;
 color: grey;
 float: right;
+}
+
+.basic,
+.premium{
+  border: none;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: #F7F7F6;
+  width: 100%;
+  padding:  0;
+  margin-bottom: 30px;
+}
+
+.premium{
+  background: red;
+  color: white;
+}
+
+.no-padding{
+  padding: 0;
+}
+
+.grayed-out {
+    opacity: 0.4;
+    filter: alpha(opacity=40); /* msie */
+    background-color: #000;
 }
