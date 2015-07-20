@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     resources :tirerotations, controller: 'repairs', type: 'Tirerotation'
     resources :inspections, controller: 'repairs', type: 'Inspection'
     resources :alignments, controller: 'repairs', type: 'Alignment'
+    resources :modifications, controller: 'repairs', type: 'Modification'
+    resources :otherrepairs, controller: 'repairs', type: 'Otherrepair'
   end
 
   resources :cars, controller: 'vehicles', type: 'Car'
