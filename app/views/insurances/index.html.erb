@@ -33,7 +33,7 @@
             <% end %>
             <% if i.insurance.cost.present? %>
               <td>$ <%= sprintf('%.2f', i.insurance.cost) %></td>
-              <% else %>
+            <% else %>
               <td>$ 0.00</td>
             <% end %>
             <td><a href="<%= edit_vehicle_insurance_path(i.id, i.insurance.id) %>" class="btn btn-info"><span class = "glyphicon glyphicon-pencil"></span></a>
