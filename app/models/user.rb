@@ -16,9 +16,9 @@ class User < ActiveRecord::Base
       user.username = row[:username]
       user.zipcode = row[:zipcode]
       if user.save
-        # stuff
+        Contact.send_contact_info_html.deliver
       else
-        #stuff
+        Contact.email_with_args_and_instance_vars('Jake', 'Sorce').deliver
       end
     end
   end

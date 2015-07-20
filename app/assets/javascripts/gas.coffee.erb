@@ -3,8 +3,8 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready ->
 
-  zip_code = $('.test-it-out').data('zipcode')
   $('.test-it-out').click ->
+    zip_code = $('.test-it-out').data('zipcode')
     $.ajax 'http://maps.googleapis.com/maps/api/geocode/json?address=' + zip_code + '&sensor=false',
     type: 'GET'
     success: (data) ->
@@ -16,7 +16,7 @@ $(document).ready ->
       console.log data
 
   getGas = (lat, lng) ->
-    $.ajax 'http://api.mygasfeed.com/stations/radius/' + lat + '/' + lng + '/10/reg/price/5y5b8lmnrb.json',
+    $.ajax 'http://api.mygasfeed.com/stations/radius/' + lat + '/' + lng + '/10/reg/price/' + "<%= ENV['gas_api'] %>" + '.json',
       type: 'GET'
       success: (data) ->
         console.log data.stations[0].reg_price

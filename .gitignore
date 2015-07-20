@@ -13,3 +13,6 @@
 /tmp
 coverage
 .env
+/config/email.yml
+/config/vehicle.yml
+/config/gas.yml
