@@ -4,7 +4,7 @@ class Repair < ActiveRecord::Base
   validates_attachment_content_type :repair_image, :content_type => /\Aimage\/.*\Z/
 
   def self.types
-    %w[Oilchange Tirerotation Inspection Alignment]
+    %w[Oilchange Tirerotation Inspection Alignment Modification Otherrepair]
   end
 
   #scopes
@@ -19,6 +19,12 @@ class Repair < ActiveRecord::Base
   end
   def self.alignments
     where(type: 'Alignment')
+  end
+  def self.modifications
+    where(type: 'Modification')
+  end
+  def self.otherrepair
+    where(type: 'Otherrepair')
   end
 
   def type_string

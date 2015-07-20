@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   get '/gas' => 'gas#index'
   get '/gas/coords' => 'gas#get_coords'
-  get '/for_sale' => 'vehicles#for_sale'
+  get '/vehicles/selling' => 'vehicles#selling'
 
   match '/contact', to: 'welcomes#home', via: 'get'
   post '/contact', to: 'welcomes#contact'
@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     resources :tirerotations, controller: 'repairs', type: 'Tirerotation'
     resources :inspections, controller: 'repairs', type: 'Inspection'
     resources :alignments, controller: 'repairs', type: 'Alignment'
+    resources :modifications, controller: 'repairs', type: 'Modification'
+    resources :otherrepairs, controller: 'repairs', type: 'Otherrepair'
   end
 
   resources :cars, controller: 'vehicles', type: 'Car'

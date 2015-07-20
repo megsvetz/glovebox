@@ -2,7 +2,7 @@ class InsurancesController < ApplicationController
   before_action :find_insurance, only: [:edit, :update, :show]
   before_action :find_vehicle
   before_action :authenticate_user!
-  before_action :authenticate_user, only: [:index, :destroy, :edit, :update, :show]
+  before_action :authenticate_user, only: [:destroy, :edit, :update, :show]
 
   def index
     @vehicles = current_user.vehicles
@@ -60,7 +60,7 @@ class InsurancesController < ApplicationController
   end
 
   def authenticate_user
-    if @vehicle.user_id != current_user.id
+    if @vehicle.user_id != current_user.id || @vehicle.insurance.id != params[:id].to_i
       redirect_to vehicles_path
     end
   end
