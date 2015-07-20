@@ -19,8 +19,8 @@
       <% @repairs.each do |repair|%>
         <tr>
           <% if repair.present? %>
-            <td><%= link_to(repair.vehicle.name, vehicle_repair_path(repair.vehicle_id, repair.id)) %></td>
-            <td><%= repair.type %></td>
+            <td><%= link_to(repair.vehicle.name, vehicle_path(repair.vehicle_id)) %></td>
+            <td><%= link_to(repair.type, vehicle_repair_path(repair.vehicle_id, repair.id)) %></td>
             <td><%= repair.repair_description %></td>
             <% if repair.repair_date.present? %>
               <td><%= repair.repair_date.strftime('%b %d, %Y') %></td>
@@ -31,7 +31,7 @@
             <% if repair.repair_cost.present? %>
               <td>$ <%= sprintf('%.2f', repair.repair_cost) %></td>
             <% end %>
-            <td><%= link_to 'Show', sti_repair_path(@vehicle, repair.type, repair) %></td>
+            <td><%= link_to 'Edit', sti_repair_path(@vehicle, repair.type, repair, :edit) %></td>
           <% end %>
           <% total += repair.repair_cost %>
         </tr>
