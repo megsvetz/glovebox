@@ -20,7 +20,8 @@
       <br>
       <%= f.file_field :image, :style => " display:inline-block;" %>
       <br><br><br><br>
-      <p><%= f.submit :class => "myButton" %> <%= link_to 'Cancel', vehicles_path, :class => "myButton", :method => :get %></p>
+      <p><%= f.submit :class => "myButton registration_button" %>
+        <%= link_to 'Cancel', vehicles_path, :class => "myButton", :method => :get %></p>
       <br><br>
 
     <% end %>

@@ -22,7 +22,9 @@
             <% else %>
               <td>No expiration set.</td>
             <% end %>
-            <td>$ <%= sprintf('%.2f', r.registration.cost) %></td>
+            <% if r.registration.cost.present? %>
+              <td>$ <%= sprintf('%.2f', r.registration.cost) %></td>
+            <% end %>
             <td><a href="<%= edit_vehicle_registration_path(r.id, r.registration.id) %>" class="btn btn-info"><span class = "glyphicon glyphicon-pencil"></span></a></td>
           <% end %>
         </tr>
