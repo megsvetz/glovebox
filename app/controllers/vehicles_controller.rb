@@ -24,6 +24,7 @@ class VehiclesController < ApplicationController
 
   def create
     @vehicle = Vehicle.new(vehicle_params)
+    # @vehicle.image = "/assets/default_car.jpg"
     if @vehicle.save
       redirect_to vehicles_path, notice: "#{@vehicle.type} was successfully created."
     else

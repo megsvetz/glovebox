@@ -1,11 +1,15 @@
 class Vehicle < ActiveRecord::Base
-  has_one :insurance
-  has_one :registration
+  has_one :insurance, dependent: :destroy
+  has_one :registration, dependent: :destroy
   belongs_to :user
-	has_many :repairs
+	has_many :repairs, dependent: :destroy
 
 	self.inheritance_column = :type
-  has_attached_file :image, style: { large: "500x500>", medium: "150x150>", thumb: "50x50>"}
+
+  has_attached_file :image,
+                    styles: { large: "500x500>", medium: "150x150>", thumb: "50x50>"},
+                    default_url: "default_car.jpg"
+
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
 	def self.type

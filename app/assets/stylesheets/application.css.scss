@@ -201,3 +201,9 @@ float: right;
 .no-padding{
   padding: 0;
 }
+
+.grayed-out {
+    opacity: 0.4;
+    filter: alpha(opacity=40); /* msie */
+    background-color: #000;
+}
