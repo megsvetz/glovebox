@@ -13,7 +13,7 @@
       <% if @vehicle.image.present? %>
         <%= image_tag(@vehicle.image.url(:large), :class => "img-thumbnail") %>
       <% else %>
-        <img class="img-responsive" src="images/car-5.jpg" alt="vehicle">
+        <%= image_tag("default_car.jpg", :class => "img-thumbnail") %>
       <% end %>
       <br><br>
       <%= link_to 'Edit Vehicle', edit_vehicle_path(@vehicle.id), class: "myButton" %>
@@ -38,7 +38,7 @@
         No Insurance entered!
       <% end %>
       <br><br>
-      
+
       <div class="container-fluid">
         <div class="row">
 
@@ -47,13 +47,13 @@
             <% else %>
             <%= link_to 'Add Insurance', new_vehicle_insurance_path(@vehicle.id), class: "myButton", :style => "margin-left:0%; display:inline-block;" %>
           <% end %>
-        
+
           <% if @vehicle.registration.present? %>
             <span id="registration_modal_button_show" class="myButton" style="display:inline-block;">Registration</span>
           <% else %>
           <%= link_to 'Add Registration', new_vehicle_insurance_path(@vehicle.id), class: "myButton", :style => "margin-right:0%; display:inline-block;" %>
           <% end %>
-      
+
         </div>
       </div>
 
