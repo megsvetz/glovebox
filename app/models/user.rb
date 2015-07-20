@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :vehicles
+  has_many :vehicles, dependent: :destroy
   enum membership: [:basic, :premium]
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

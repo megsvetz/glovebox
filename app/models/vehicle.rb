@@ -1,8 +1,8 @@
 class Vehicle < ActiveRecord::Base
-  has_one :insurance
-  has_one :registration
+  has_one :insurance, dependent: :destroy
+  has_one :registration, dependent: :destroy
   belongs_to :user
-	has_many :repairs
+	has_many :repairs, dependent: :destroy
 
 	self.inheritance_column = :type
   has_attached_file :image,
