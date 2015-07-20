@@ -19,12 +19,14 @@ $(document).ready ->
     $.ajax 'http://api.mygasfeed.com/stations/radius/' + lat + '/' + lng + '/10/reg/price/5y5b8lmnrb.json',
       type: 'GET'
       success: (data) ->
+        console.log data.stations[0].reg_price
         #$('.change-me').html('Cheapest gas near you is: $' + cheapgas + '<br>' + station + '<br>' + address )
         gasstations = 10
         i = 0
         while i < gasstations
           cheapgas = data.stations[i].reg_price
-          if cheapgas is 'N/A'
+          updated = data.stations[i].reg_date
+          if cheapgas is 'N/A' or updated is '1 year ago' or updated is '2 years ago' or updated is 'N/A' or updated is '3 months ago' or updated is '2 months ago'
             gasstations += 1
           else
             station = data.stations[i].station

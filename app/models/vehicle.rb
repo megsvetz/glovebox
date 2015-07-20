@@ -52,4 +52,5 @@ class Vehicle < ActiveRecord::Base
 	def talk
 	  raise 'You need to override this method in your sub classes'
 	end
+
 end

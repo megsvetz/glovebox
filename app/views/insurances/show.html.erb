@@ -2,7 +2,7 @@
   <h1 class="text-center">Insurance for <%= @vehicle.name.capitalize %></h1>
   <hr>
   <div class="row">
-    <div class="col-md-7 text-center">   
+    <div class="col-md-7 text-center">
       <% if @insurance.image.present? %>
         <%= link_to image_tag(@insurance.image.url(:large), :class => "img-thumbnail"), vehicle_path(@insurance.vehicle_id) %>
       <% else %>
@@ -13,11 +13,11 @@
     <div class="col-md-5 text-center">
       <h1><%= @insurance.company %> </h1>
       <h2><%= @insurance.policy_number %></h2>
-      <h3><%= @insurance.expiration_date %></h3>
+      <h3><%= @insurance.expiration_date.strftime('%b %d, %Y') %></h3>
       <h3><%= @insurance.renewal_date %></h3>
-      <h3>Cost: $ <%= @insurance.cost %> </h3>
+      <h3>Cost: $ <%= sprintf('%.2f', @insurance.cost) %> </h3>
       <br>
-      <p><%= link_to 'Edit', edit_vehicle_insurance_path(@insurance.vehicle_id, @insurance.id), :class => "myButton", :style => "margin-right:13%;" %> <%= link_to 'Cancel', vehicles_path, :class => "myButton", :method => :get %></p>
+      <p><%= link_to 'Edit', edit_vehicle_insurance_path(@insurance.vehicle_id, @insurance.id), :class => "myButton", :style => "margin-right:13%;" %> <%= link_to 'See this Vehicle', vehicle_path(@vehicle.id), :class => "myButton", :method => :get %></p>
     </div>
   </div>
 </div>

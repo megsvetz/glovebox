@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
   get '/gas' => 'gas#index'
   get '/gas/coords' => 'gas#get_coords'
+  get '/for_sale' => 'vehicles#for_sale'
+
+  match '/contact', to: 'welcomes#home', via: 'get'
+  post '/contact', to: 'welcomes#contact'
 
   devise_for :users
   root "welcomes#home"
