@@ -4,8 +4,7 @@
 $(document).ready ->
   $('#vehicle_vin').change ->
     vin = $('#vehicle_vin').val()
-    api = $('.vin-number').data('api')
-    $.ajax 'https://api.edmunds.com/v1/api/toolsrepository/vindecoder?vin=' + vin + '&fmt=json&api_key=' + api,
+    $.ajax 'https://api.edmunds.com/v1/api/toolsrepository/vindecoder?vin=' + vin + '&fmt=json&api_key=' + "<%= ENV['edmunds_api_key'] %>",
       type: 'GET'
       success: (data) ->
         $('#vehicle_make').val(data.styleHolder[0].makeName)
@@ -64,9 +63,6 @@ $(document).ready ->
 
   $('#h3_10').click ->
     $('#num10').toggle ->
-
-  $('#h3_9').click ->
-    $('#num9').toggle ->
 
   $('#h3_9').click ->
     $('#num9').toggle ->
