@@ -33,7 +33,7 @@
                 <br>
                 <p><div class='text-center'><a href="#" class="btn btn-default">See Repairs</a></div></p>
                 <% if vehicle.insurance.present? %>
-                  <p><div class='text-center'><div class="insurance_modal_button btn myButton" data-vehicle="<%= vehicle.to_json(include: :insurance) %>">Insurance</div>
+                  <p><div class='text-center'><div class="insurance_modal_button btn myButton" data-vehicle="">Insurance</div>
                 <% else %>
                   <p><div class='text-center'><a href="#" class="btn myButton" style="font-size:.75em">Add Insurance</a>
                 <% end %>
