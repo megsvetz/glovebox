@@ -4,19 +4,20 @@
 $(document).ready ->
   $('#vehicle_vin').change ->
     vin = $('#vehicle_vin').val()
-    api = $('.vin-number').data('api')
-    $.ajax 'https://api.edmunds.com/v1/api/toolsrepository/vindecoder?vin=' + vin + '&fmt=json&api_key=' + api,
+    $.ajax 'https://api.edmunds.com/v1/api/toolsrepository/vindecoder?vin=' + vin + '&fmt=json&api_key=' + "<%= ENV['edmunds_api_key'] %>",
       type: 'GET'
       success: (data) ->
         $('#vehicle_make').val(data.styleHolder[0].makeName)
         $('#vehicle_model').val(data.styleHolder[0].modelName)
         $('#vehicle_type').val(data.styleHolder[0].categories.PRIMARY_BODY_TYPE)
         $('#vehicle_year').val(data.styleHolder[0].year)
+        $('#vehicle_name').val(data.styleHolder[0].name)
         $('#vehicle_make').attr('disabled', 'true')
         $('#vehicle_model').attr('disabled', 'true')
         $('#vehicle_type').attr('disabled', 'true')
         $('#vehicle_year').attr('disabled', 'true')
         $('#vehicle_vin').attr('disabled', 'true')
+        $('#vehicle_name').attr('disabled', 'true')
       error: (data) ->
         alert 'That VIN does not appear to be correct, please enter it again.'
 
@@ -64,9 +65,6 @@ $(document).ready ->
 
   $('#h3_10').click ->
     $('#num10').toggle ->
-
-  $('#h3_9').click ->
-    $('#num9').toggle ->
 
   $('#h3_9').click ->
     $('#num9').toggle ->
