@@ -25,7 +25,7 @@
             </ul>
           <li><%= link_to( 'Mechanics', root_path ) %></li>
           <li><%= link_to( 'Gas Stations', gas_path ) %></li>
-          <li><%= link_to( 'Selling Your Vehicle', root_path ) %></li>
+          <li><%= link_to( 'Selling Your Vehicle', vehicles_selling_path ) %></li>
           </li>
           <li class="header-font"><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'header-font' %></li>
         <% else %>

@@ -52,6 +52,10 @@ gem 'lazybox'
 #gems for the mail contact us form
 gem 'mail_form'
 
+gem 'stripe'
+
+gem 'mechanize'
+
 group :development, :production do
   #delayed jobs
   gem 'delayed_job_active_record'
@@ -59,7 +63,6 @@ group :development, :production do
   gem 'sendgrid'
 end
 
-gem 'stripe'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
