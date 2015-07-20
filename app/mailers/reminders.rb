@@ -1,4 +1,4 @@
-class Contact < ApplicationMailer
+class Reminders < ApplicationMailer
   include SendGrid
   default :from => 'GloveBoxTeam@gmail.com'
 

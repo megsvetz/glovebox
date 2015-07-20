@@ -58,6 +58,10 @@ $(document).ready ->
 
   $('a[rel*=lazybox]').lazybox({esc: true, close: true, modal: true, klass: 'class'});
 
+  $('a[rel*=lazybox]').lazybox()
+
+  $('a[rel*=lazybox]').lazybox({esc: true, close: true, modal: true, klass: 'class'})
+
   $('#h3_10').click ->
     $('#num10').toggle ->
 

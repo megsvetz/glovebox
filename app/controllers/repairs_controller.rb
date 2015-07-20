@@ -7,7 +7,7 @@ class RepairsController < ApplicationController
 	# before_action :set_repair_type2, except: [:index, :new]
 
 	def index
-		@repairs = @vehicle.repairs.send(repair_type)
+		@repairs = @vehicle.repairs.send(repair_type).order("repair_date DESC")
 	end
 
 	def show

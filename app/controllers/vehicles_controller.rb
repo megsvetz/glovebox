@@ -33,7 +33,7 @@ class VehiclesController < ApplicationController
 
   def update
     if @vehicle.update(vehicle_params)
-      redirect_to vehicles_path, notice: "#{@vehicle.type} was successfully updated."
+      redirect_to vehicle_path(@vehicle.id), notice: "#{@vehicle.type} was successfully updated."
     else
       render action: 'new'
     end
