@@ -12,17 +12,17 @@
     <div class="field">
       <%= f.label :city %><br />
       <%= f.text_field :city %>
-    </div>
+    </div><br>
 
     <div class="field">
       <%= f.label :state %><br />
       <%= f.text_field :state %>
-    </div>
+    </div><br>
 
      <div class="field">
       <%= f.label :zip_code %><br />
       <%= f.number_field :zip_code %>
-    </div>
+    </div><Br>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div><br>
