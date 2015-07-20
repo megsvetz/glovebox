@@ -4,7 +4,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-2 col-sm-4 col-xs-12">
-        <%= link_to 'Back to My Vehicles', vehicles_path, :class => "myButton", :style => "margin:0%;", :method => :get %>
+        <%= link_to 'Back', vehicles_path, :class => "myButton", :style => "margin:0%;", :method => :get %>
       </div>
   </div>
       <hr>
@@ -41,18 +41,18 @@
       
       <div class="container-fluid">
         <div class="row">
-          
-            <% if @vehicle.registration.present? %>
-              <span id="registration_modal_button_show" class="myButton" style="display:inline-block;">Registration</span>
+
+          <% if @vehicle.insurance.present? %>
+            <span id="insurance_modal_button_show" class="myButton" style="display:inline-block;">Insurance</span>
             <% else %>
-            <%= link_to 'Add Registration', new_vehicle_insurance_path(@vehicle.id), class: "myButton", :style => "margin-right:0%; padding-left:0%; padding-right:0%; display:inline-block;" %>
-            <% end %>
- 
-            <% if @vehicle.insurance.present? %>
-              <span id="insurance_modal_button_show" class="myButton" style="display:inline-block;">Insurance</span>
-              <% else %>
-              <%= link_to 'Add Insurance', new_vehicle_insurance_path(@vehicle.id), class: "myButton", :style => "margin-left:0%; padding-left:0%; padding-right:0%;  display:inline-block;" %>
-            <% end %>
+            <%= link_to 'Add Insurance', new_vehicle_insurance_path(@vehicle.id), class: "myButton", :style => "margin-left:0%; display:inline-block;" %>
+          <% end %>
+        
+          <% if @vehicle.registration.present? %>
+            <span id="registration_modal_button_show" class="myButton" style="display:inline-block;">Registration</span>
+          <% else %>
+          <%= link_to 'Add Registration', new_vehicle_insurance_path(@vehicle.id), class: "myButton", :style => "margin-right:0%; display:inline-block;" %>
+          <% end %>
       
         </div>
       </div>
