@@ -39,9 +39,8 @@ $(document).ready ->
             city = data.stations[i].city
             state = data.stations[i].region
             $('.gas-table').append '<tr><td>$' + cheapgas + '</td><td>' + station + '</td><td>' + address + ',  ' + city + ', ' + state + '</td></tr>'
-            gasLatLon.push({lat: parseFloat(data.stations[i].lat), lng: parseFloat(data.stations[i].lng), name: station})
+            gasLatLon.push({lat: parseFloat(data.stations[i].lat), lng: parseFloat(data.stations[i].lng), name: station, infowindow: station + '  $' + cheapgas + '<br>' + address + '<br>' + city + ', ' + state})
           i++
-        console.log gasLatLon
         buildMap(gasLatLon)
       error: (data) ->
         console.log data
@@ -61,7 +60,14 @@ $(document).ready ->
     handler = Gmaps.build('Google')
     handler.buildMap({ provider: {}, internal: {id: 'map'}}, ->
       markers = handler.addMarkers(latsandlongs)
+      #createSidebar(latsandlongs);
       handler.bounds.extendWith(markers)
       handler.fitMapToBounds()
-      createSidebar(latsandlongs);
     )
+
+  # createSidebar = (json_array) ->
+  #   console.log json_array
+  #   _.each json_array, (json) ->
+  #     $li = $(createSidebarLi(json))
+  #     $li.appendTo '#sidebar_container'
+  #     bindLiToMarker $li, json.marker
