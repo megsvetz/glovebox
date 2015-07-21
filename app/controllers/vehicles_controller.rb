@@ -11,7 +11,7 @@ class VehiclesController < ApplicationController
   end
 
   def show
-    # if current_user.basic?
+    
   end
 
   def edit

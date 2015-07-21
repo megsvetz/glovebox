@@ -64,6 +64,11 @@ RSpec.describe VehiclesController, type: :controller do
       get :show, id: vehicle.id
       expect(response).to have_http_status(:success)
     end
+    it "if Basic user can only see 3 vehicles" do
+      4.times {|v| @auto = FactoryGirl.create(:vehicle, user: @user)}
+      get :show, id: @auto.id
+      expect(response).to have_http_status(:redirect)
+    end
   end
 
   describe "DELETE destroy" do 
