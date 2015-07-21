@@ -3,8 +3,8 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready ->
 
-  $('.test-it-out').click ->
-    zip_code = $('.test-it-out').data('zipcode')
+  $('#get-gas').click ->
+    zip_code = $('#gas_zip').val()
     $.ajax 'http://maps.googleapis.com/maps/api/geocode/json?address=' + zip_code + '&sensor=false',
     type: 'GET'
     success: (data) ->
@@ -16,9 +16,12 @@ $(document).ready ->
       console.log data
 
   getGas = (lat, lng) ->
-    $.ajax 'http://api.mygasfeed.com/stations/radius/' + lat + '/' + lng + '/10/reg/price/' + "<%= ENV['gas_api'] %>" + '.json',
+    distance = $('#distance_zip').val()
+    $.ajax 'http://api.mygasfeed.com/stations/radius/' + lat + '/' + lng + '/' + distance + '/reg/price/' + "<%= ENV['gas_api'] %>" + '.json',
       type: 'GET'
       success: (data) ->
+        $('.gas-table').find("tr:gt(0)").remove()
+        $('.gas-table').removeClass('hidden')
         console.log data.stations[0].reg_price
         #$('.change-me').html('Cheapest gas near you is: $' + cheapgas + '<br>' + station + '<br>' + address )
         gasstations = 10
@@ -33,10 +36,11 @@ $(document).ready ->
             address = data.stations[i].address
             city = data.stations[i].city
             state = data.stations[i].region
-            $('.change-me').append '$' + cheapgas + '<br>' + station + '<br>' + address + '<br>' + city + ', ' + state + '<br><br>'
+            $('.gas-table').append '<tr><td>$' + cheapgas + '</td><td>' + station + '</td><td>' + address + ',  ' + city + ', ' + state + '</td></tr>'
           i++
       error: (data) ->
         console.log data
+        alert 'No data returned, please try again!'
 
   sendCoord = (lat, lng) ->
     console.log 'on coord' + lat
