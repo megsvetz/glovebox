@@ -100,11 +100,8 @@
   </div>
 <% end %>
 
-<% if @vehicle.present? %>
-  <% if @vehicle.insurance.present? %>
-    <%= render(partial: "vehicles/insurance_modal") %>
-  <% end %>
-  <% if @vehicle.registration.present? %>
-    <%= render(partial: "vehicles/registration_modal") %> 
-  <% end %>
+<% unless @vehicle.present? %>
+  <% @vehicle = Vehicle.new %>
 <% end %>
+<%= render(partial: "vehicles/insurance_modal") %>
+<%= render(partial: "vehicles/registration_modal") %> 
