@@ -22,10 +22,12 @@ $(document).ready ->
       success: (data) ->
         $('.gas-table').find("tr:gt(0)").remove()
         $('.gas-table').removeClass('hidden')
-        console.log data.stations[0].reg_price
+        console.log data.stations[0].lat
+        console.log data.stations[0].lng
         #$('.change-me').html('Cheapest gas near you is: $' + cheapgas + '<br>' + station + '<br>' + address )
         gasstations = 10
         i = 0
+        gasLatLon = []
         while i < gasstations
           cheapgas = data.stations[i].reg_price
           updated = data.stations[i].reg_date
@@ -37,7 +39,10 @@ $(document).ready ->
             city = data.stations[i].city
             state = data.stations[i].region
             $('.gas-table').append '<tr><td>$' + cheapgas + '</td><td>' + station + '</td><td>' + address + ',  ' + city + ', ' + state + '</td></tr>'
+            gasLatLon.push({lat: parseFloat(data.stations[i].lat), lng: parseFloat(data.stations[i].lng), name: station})
           i++
+        console.log gasLatLon
+        buildMap(gasLatLon)
       error: (data) ->
         console.log data
         alert 'No data returned, please try again!'
@@ -51,3 +56,12 @@ $(document).ready ->
         console.log data
       error: (data) ->
         console.log data
+
+  buildMap = (latsandlongs) ->
+    handler = Gmaps.build('Google')
+    handler.buildMap({ provider: {}, internal: {id: 'map'}}, ->
+      markers = handler.addMarkers(latsandlongs)
+      handler.bounds.extendWith(markers)
+      handler.fitMapToBounds()
+      createSidebar(latsandlongs);
+    )
