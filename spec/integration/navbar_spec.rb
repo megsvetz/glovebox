@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+
 feature "navbar", :js => true do
   scenario "Navbar contains About, Login, Sign up" do
     visit root_path
@@ -28,4 +29,5 @@ feature "navbar", :js => true do
   end
 
 end
+
 
