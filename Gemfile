@@ -100,9 +100,4 @@ group :development, :test do
 
   gem 'dotenv-rails'
 
-  gem 'capybara'
-
-  gem 'selenium-webdriver' 
-
-  gem 'database_cleaner'
 end
