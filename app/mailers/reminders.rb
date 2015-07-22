@@ -2,31 +2,31 @@ class Reminders < ApplicationMailer
   include SendGrid
   default :from => 'GloveBoxTeam@gmail.com'
 
-  def no_insurance(email_addresses)
-    email_addresses.each do |email|
+  def no_insurance(email_addresses, vehicles)
+    email_addresses.each_with_index do |email, index|
       mail :to => email,
-           :subject => 'No Insurance entered on GloveBox.com'
+           :subject => "#{vehicles[index]} has no Insurance entered on GloveBox.com"
     end
   end
 
-  def no_registration(email_addresses)
-    email_addresses.each do |email|
+  def no_registration(email_addresses, vehicles)
+    email_addresses.each_with_index do |email, index|
       mail :to => email,
-           :subject => 'No Registration entered on GloveBox.com'
+           :subject => "#{vehicles[index]} has no Registration entered on GloveBox.com"
     end
   end
 
-  def expiring_insurance(email_addresses)
-    email_addresses.each do |email|
+  def expiring_insurance(email_addresses, vehicles)
+    email_addresses.uniq.each_with_index do |email, index|
       mail :to => email,
-           :subject => 'Insurance expiring soon!'
+           :subject => "Your #{vehicles[index]} insurance expiring soon!"
     end
   end
 
-  def expiring_registration(email_addresses)
-    email_addresses.each do |email|
+  def expiring_registration(email_addresses, vehicles)
+    email_addresses.uniq.each_with_index do |email, index|
       mail :to => email,
-           :subject => 'Registration expiring soon!'
+           :subject => "Your #{vehicles[index]} registration expiring soon!"
     end
   end
 
