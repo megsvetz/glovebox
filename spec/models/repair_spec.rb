@@ -1,5 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Repair, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+    let(:repair){ FactoryGirl.create(:repair) }
+
+ describe "Repair type" do
+  it "Has a valid type" do
+    repair.type == Oilchange || Tirerotation || Inspection || Alignment || Modification || Otherrepair 
+  end
+ end
+
+
 end
