@@ -18,26 +18,18 @@ class RegistrationsController < ApplicationController
 
   def create
     @registration = Registration.new(registration_params)
-    if @registration.save
-      redirect_to(vehicle_registration_path(@registration.vehicle_id, @registration.id))
-      flash[:notice] = "Registration was added successfully!"
-    else
-      flash[:error]="Registration was not added."
-      render :new
-    end
+    @registration.save
+    redirect_to(vehicle_registration_path(@registration.vehicle_id, @registration.id))
+    flash[:notice] = "Registration was added successfully!"
   end
 
   def edit
   end
 
   def update
-    if @registration.update(registration_params)
-      flash[:notice] = "Registration was successfully updated."
-      redirect_to(vehicle_registration_path(@vehicle.id, @registration.id))
-    else
-      flash[:error] = "Registration was not successfully updated."
-      render :edit
-    end
+    @registration.update(registration_params)
+    flash[:notice] = "Registration was successfully updated."
+    redirect_to(vehicle_registration_path(@vehicle.id, @registration.id))
   end
 
   def show

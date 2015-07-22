@@ -10,15 +10,12 @@ class VehiclesController < ApplicationController
     @vehicles = current_user.vehicles.all.order("created_at ASC").paginate(:page => params[:page], :per_page => 9)
   end
 
-  def for_sale
-    @vehicles = Vehicle.where(selling: true)
-  end
-
   def show
-    # if current_user.basic?
+
   end
 
   def edit
+
   end
 
   def new
@@ -28,19 +25,14 @@ class VehiclesController < ApplicationController
   def create
     @vehicle = Vehicle.new(vehicle_params)
     # @vehicle.image = "/assets/default_car.jpg"
-    if @vehicle.save
-      redirect_to vehicles_path, notice: "#{@vehicle.type} was successfully created."
-    else
-      render action: 'new'
-    end
+    @vehicle.save
+    redirect_to vehicles_path, notice: "#{@vehicle.type} was successfully created."
+
 	end
 
   def update
-    if @vehicle.update(vehicle_params)
-      redirect_to vehicle_path(@vehicle.id), notice: "#{@vehicle.type} was successfully updated."
-    else
-      render action: 'new'
-    end
+    @vehicle.update(vehicle_params)
+    redirect_to vehicle_path(@vehicle.id), notice: "#{@vehicle.type} was successfully updated."
   end
 
   def destroy
