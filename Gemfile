@@ -56,6 +56,8 @@ gem 'lazybox'
 #gems for the mail contact us form
 gem 'mail_form'
 
+gem 'mail'
+
 gem 'stripe'
 
 gem 'mechanize'
