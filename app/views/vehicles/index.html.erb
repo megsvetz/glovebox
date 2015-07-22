@@ -91,7 +91,9 @@
         <% end %>
       <% end %>
       <div class='col-sm-6 col-md-4'>
-        <%= link_to '', new_vehicle_path, class: "btn btn-success btn-lg glyphicon glyphicon-plus text-center add-button" %>
+        <div class='row vehicle_show'>
+          <%= link_to '', new_vehicle_path, class: "btn btn-success btn-lg glyphicon glyphicon-plus text-center add-button" %>
+        </div>
       </div>
     </div>
     <%= will_paginate @vehicles %>
