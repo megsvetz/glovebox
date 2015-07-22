@@ -1,8 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe VehiclesController, type: :controller do
-  let(:vehicle){ FactoryGirl.create(:vehicle)} 
-  let(:user){ FactoryGirl.create(:user) }
+
+  before(:each) do
+    @user = FactoryGirl.create(:user)
+    sign_in @user
+  end
+  let(:vehicle){ FactoryGirl.create(:vehicle, user: @user )}
+
+
+
 
   describe "GET #index" do
     it "returns http success" do
@@ -16,18 +23,18 @@ RSpec.describe VehiclesController, type: :controller do
       get :new
       expect(response).to have_http_status(:success)
     end
+    it "redirects If basic Memebership and too many cars" do
+      4.times {|v| FactoryGirl.create(:vehicle, user: @user)}
+      get :new
+      expect(response).to have_http_status(:redirect)
+    end
   end
 
   describe "POST #create" do
-    it "does create" do 
+    it "does create" do
       post :create, vehicle: {type:''}
       expect(response).to have_http_status(:redirect)
-      expect(vehicle.all.count).to eq(1)
-    end
-
-    it "doesn't create" do
-      post :create, vehicle: {type: nil}
-      expect(vehicle.all.count).to eq(0)
+      expect(Vehicle.all.count).to eq(1)
     end
   end
 
@@ -38,21 +45,17 @@ RSpec.describe VehiclesController, type: :controller do
     end
 
     it "doesn't edit" do
-      get :edit, id: 1
-      expect(response).to have_http_status(:not_found)
+      vehicle.user_id = 80085
+      vehicle.save
+      get :edit, id:  vehicle.id
+      expect(response).to have_http_status(:redirect)
     end
   end
 
   describe "PUT update" do
     it "does update" do
-      put :update, id: vehicle.id, vehicle: {type: 'Updated vehicle Type'}
-      expect(vehicle.type).to eq('Updated vehicle type')
-    end
-
-    it "doesn't update" do
-      put :update, id: vehicle.id, vehicle: {vehicle: nil}
-      expect(flash[:error]).to be_present
-      expect(response).to render_template(:edit)
+      put :update, id: vehicle.id, vehicle: {name: 'Updated vehicle Name'}
+      expect(vehicle.reload.name).to eq('Updated vehicle Name')
     end
   end
 
@@ -61,20 +64,15 @@ RSpec.describe VehiclesController, type: :controller do
       get :show, id: vehicle.id
       expect(response).to have_http_status(:success)
     end
-
-    it "doesn't edit" do
-      get :show, id: 1
-      expect(response).to have_http_status(:not_found)
+    it "if Basic user can only see 3 vehicles" do
+      4.times {|v| @auto = FactoryGirl.create(:vehicle, user: @user)}
+      get :show, id: @auto.id
+      expect(response).to have_http_status(:redirect)
     end
   end
 
-  describe "DELETE destroy" do 
+  describe "DELETE destroy" do
     it "does delete the list" do
-      delete :destroy, id: vehicle.id
-      expect(responce).to have_http_status(:success)
-    end
-
-    it "doesn't delete the list" do
       delete :destroy, id: vehicle.id
       expect(response).to have_http_status(:redirect)
     end

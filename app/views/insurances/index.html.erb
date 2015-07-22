@@ -2,45 +2,49 @@
   <h1>All Vehicle Insurances</h1><hr>
     <%= link_to 'Back to My Vehicles', vehicles_path, :class => "myButton", :method => :get %>
   <hr />
-  <table class="table table-hover table-striped container">
-    <thead>
-      <tr>
-        <th class="text-center">Vehicle</th>
-        <th class="text-center">Company</th>
-        <th class="text-center">Policy Number</th>
-        <th class="text-center">Expiration Date</th>
-        <th class="text-center">Renewal Date</th>
-        <th class="text-center">Cost</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @vehicles.each do |i| %>
+  <% if @vehicle.insurance.present? %>
+    <table class="table table-hover table-striped container">
+      <thead>
         <tr>
-          <% if i.insurance.present? %>
-            <td><%= link_to(i.name, vehicle_path(i.id)) %></td>
-            <td><%= link_to(i.insurance.company, vehicle_insurance_path(i.id, i.insurance.id)) %></td>
-            <td><%= i.insurance.policy_number %></td>
-            <% if i.insurance.expiration_date.present? %>
-              <td><%= i.insurance.expiration_date.strftime('%b %d, %Y') %></td>
-            <% else %>
-              <td>No expiration date entered</td>
-            <% end %>
-            <% if i.insurance.renewal_date.present? %>
-              <td><%= i.insurance.renewal_date.strftime('%b %d, %Y') %></td>
-            <% else %>
-              <td>No renewel date entered.</td>
-            <% end %>
-            <% if i.insurance.cost.present? %>
-              <td>$ <%= sprintf('%.2f', i.insurance.cost) %></td>
-            <% else %>
-              <td>$ 0.00</td>
-            <% end %>
-            <td><a href="<%= edit_vehicle_insurance_path(i.id, i.insurance.id) %>" class="btn btn-info"><span class = "glyphicon glyphicon-pencil"></span></a>
-            </td>
-          <% end %>
+          <th class="text-center">Vehicle</th>
+          <th class="text-center">Company</th>
+          <th class="text-center">Policy Number</th>
+          <th class="text-center">Expiration Date</th>
+          <th class="text-center">Renewal Date</th>
+          <th class="text-center">Cost</th>
+          <th></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @vehicles.each do |i| %>
+          <tr>
+            <% if i.insurance.present? %>
+              <td><%= link_to(i.name, vehicle_path(i.id)) %></td>
+              <td><%= link_to(i.insurance.company, vehicle_insurance_path(i.id, i.insurance.id)) %></td>
+              <td><%= i.insurance.policy_number %></td>
+              <% if i.insurance.expiration_date.present? %>
+                <td><%= i.insurance.expiration_date.strftime('%b %d, %Y') %></td>
+              <% else %>
+                <td>No expiration date entered</td>
+              <% end %>
+              <% if i.insurance.renewal_date.present? %>
+                <td><%= i.insurance.renewal_date.strftime('%b %d, %Y') %></td>
+              <% else %>
+                <td>No renewel date entered.</td>
+              <% end %>
+              <% if i.insurance.cost.present? %>
+                <td>$ <%= sprintf('%.2f', i.insurance.cost) %></td>
+              <% else %>
+                <td>$ 0.00</td>
+              <% end %>
+              <td><a href="<%= edit_vehicle_insurance_path(i.id, i.insurance.id) %>" class="btn btn-info"><span class = "glyphicon glyphicon-pencil"></span></a>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <h3>Please add insurance information for your vehicle.</h3>
+  <% end %>
 </div>

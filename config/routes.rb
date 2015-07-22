@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'mechanics' => 'mechanics#index'
+
   get '/gas' => 'gas#index'
   get '/gas/coords' => 'gas#get_coords'
   get '/vehicles/selling' => 'vehicles#selling'

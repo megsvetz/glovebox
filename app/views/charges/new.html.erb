@@ -1,34 +1,50 @@
-<div class="container">
-  <h2>Things to expect with Premium Membership</h2>
-  <div class="row">
-    <div class="col-sm-6 no-padding">
-      <div class=" basic">
-        <h3>Basic Plan</h3>
-        <ul>
-          <li>2 cars</li>
-        </ul>
-      </div>
-    </div>
-    <div class="col-sm-6 no-padding">
-      <div class="premium">
-        <h3>Premium Plan</h3> - <i>$5.00/year</i>
-        <ul>
-          <li>Unlimited Cars</li>
-        </ul>
-        <%= form_tag charges_path do %>
-        <div class="text-center">
-          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                  data-description="A year's subscription"
-                  data-image="/assets/car.jpg"
-                  data-name="GloveBox"
-                  data-email="<%= current_user.email %>"
-                  data-allow-remember-me=false
-                  data-amount="500"
-                  data-label="Upgrade my Account"></script>
+<div style="background-color:black; color:black"><br><hr>
+  <h2 class="text-center" style="color:white;">Basic Versus Premium Membership:</h2>
+  <br>
+  <div class="container">
+    <div class="col-md-6 col-sm-12" style="height:300px; background-color:#ADADAD;"><br>
+      <div style="border:1px solid black; margin:2%">
+        <div class="container" style="margin:2%">
+          <h5>Basic</h5>
+          <h1>FREE</h1>
+          <ul>
+            <li>Save up to three vehicles</li>
+            <li>Store vehicle details like insurance and registration</li>
+            <li>Maintain and file vehicle repairs</li>
+            <li>Track vehicle repair costs</li>
+          </ul>
+          <br>
         </div>
-        <% end %>
       </div>
     </div>
-  </div>
+
+    <div class="col-md-6 col-sm-12" style="height:300px; background-color:#D91F0F;"><br>
+      <div style="border:1px solid black; margin: 2%;">
+        <div class="container" style="margin:2%;">
+          <h5>Premium</h5>
+          <h6 style="margin-bottom:0%;margin-top:3.1%">ONLY</h6>
+          <h2 style="margin-top:0%;">$5 / year </h2>
+          <h4 style="margin-top:2%;">All the benefits of basic, plus:</h4>
+          <ul>
+            <li>Save an UNLIMITED number of vehicles</li>
+            <li>Recieve reminders for updating insurance and registration</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div><br><br><br>
+  <%= form_tag charges_path do %>
+    <div class="text-center">
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+              data-description="A year's subscription"
+              data-image="/assets/car.jpg"
+              data-name="GloveBox"
+              data-email="<%= current_user.email %>"
+              data-allow-remember-me=false
+              data-amount="500"
+              data-label="Upgrade My Account"></script>
+    </div>
+  <% end %><br><br><br>
+  <hr><br>
 </div>

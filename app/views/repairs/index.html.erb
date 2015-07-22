@@ -30,6 +30,8 @@
             <td><%= repair.repair_place %></td>
             <% if repair.repair_cost.present? %>
               <td>$ <%= sprintf('%.2f', repair.repair_cost) %></td>
+            <% else %>
+              <td><%= repair.repair_cost = 0 %></td>
             <% end %>
             <td><%= link_to 'Edit', sti_repair_path(@vehicle, repair.type, repair, :edit) %></td>
           <% end %>
