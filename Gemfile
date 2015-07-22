@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.2.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
@@ -28,6 +28,8 @@ gem "font-awesome-rails"
 gem 'bootstrap-sass', '~> 3.3.5'
 #used to upload photos/pictures/images/viewablefileintheformatofseeing
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+#Amazon s3 services gem
+gem 'aws-sdk'
 
 gem 'devise'
 
