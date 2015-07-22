@@ -13,7 +13,7 @@ RSpec.describe RegistrationsController, type: :controller do
 
   describe "GET #index" do
     it "returns http success" do
-      get :index , vehicle_id: @vehicle.id
+      get :index , vehicle_id: @vehicle.id 
       expect(response).to have_http_status(:success)
     end
     it "returns http success When Premium user" do
@@ -23,6 +23,7 @@ RSpec.describe RegistrationsController, type: :controller do
       expect(response).to have_http_status(:success)
     end
   end
+
   describe "GET #new" do
     it "returns http success" do
       get :new, vehicle_id: @vehicle.id
@@ -38,16 +39,15 @@ RSpec.describe RegistrationsController, type: :controller do
   end
 
   describe "PUT #update" do
-   it "updated successfully!" do
+    it "updated successfully!" do
      new_state = "new state"
      put :update, vehicle_id: @vehicle.id, id: registration.id, registration: {state: new_state}
      expect(response).to have_http_status(:redirect)
      # updated_registration = registration.reload
      expect(registration.reload.state).to eq(new_state)
      expect(flash[:notice]).to be_present
-   end
-
- end
+    end
+  end
 
   describe "GET #edit" do
     it "Edits registration" do
