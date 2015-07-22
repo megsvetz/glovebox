@@ -27,8 +27,12 @@ RSpec.describe RepairsController, type: :controller do
 
   describe "POST #create" do
     it "created successfully" do
-      post :create, vehicle_id: @vehicle.id, repair: {repair_description:'replaced bearing', repair_date:Faker::Date.between(2.days.ago, Date.today), repair_cost: 2000 }
+      post :create, vehicle_id: @vehicle.id, repair: {repair_description:'replaced bearing', repair_date:Faker::Date.between(2.days.ago, Date.today), repair_cost: 2000, type: "Oilchange" }
       expect(response).to have_http_status(:redirect)
+    end
+    it "won't create with nil type" do
+      post :create, vehicle_id: @vehicle.id, repair: {repair_description:'replaced bearing', repair_date:Faker::Date.between(2.days.ago, Date.today), repair_cost: 2000, type: nil}
+      expect(response).to render_template(:new)
     end
   end
 
@@ -38,6 +42,10 @@ RSpec.describe RepairsController, type: :controller do
      expect(response).to have_http_status(:redirect)
      expect(repair.reload.repair_description).to eq("new repair description")
      expect(flash[:notice]).to be_present
+   end
+   it "does not update with nil type" do
+     put :update, vehicle_id: @vehicle.id, id: repair.id, repair: {type: nil}
+     expect(response).to render_template(:edit)
    end
   end
 
