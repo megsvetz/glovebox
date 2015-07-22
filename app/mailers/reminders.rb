@@ -34,6 +34,8 @@ class Reminders < ApplicationMailer
     end
   end
 
+  # Sample stuff form class about mailers
+
   def send_contact_info
     mail :to => 'GloveBoxTeam@gmail.com',
          :subject => "Welcome Test :-)",
