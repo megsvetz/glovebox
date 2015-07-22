@@ -120,6 +120,7 @@ GEM
     ffi (1.9.10)
     font-awesome-rails (4.3.0.0)
       railties (>= 3.2, < 5.0)
+    geocoder (1.2.9)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
     gmaps4rails (2.1.2)
@@ -303,6 +304,7 @@ DEPENDENCIES
   factory_girl_rails (~> 4.0)
   faker
   font-awesome-rails
+  geocoder
   gmaps4rails
   googlecharts
   jbuilder (~> 2.0)
