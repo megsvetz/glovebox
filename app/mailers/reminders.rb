@@ -5,32 +5,28 @@ class Reminders < ApplicationMailer
   def no_insurance(email_addresses)
     email_addresses.each do |email|
       mail :to => email,
-           :subject => 'No Insurance entered on GloveBox.com',
-           :body => 'Please login at GloveBox.com and enter insurance to more accurately track information about your vehicle!'
+           :subject => 'No Insurance entered on GloveBox.com'
     end
   end
 
   def no_registration(email_addresses)
     email_addresses.each do |email|
       mail :to => email,
-           :subject => 'No Registration entered on GloveBox.com',
-           :body => 'Please login at GloveBox.com and enter registration to more accurately track information about your vehicle!'
+           :subject => 'No Registration entered on GloveBox.com'
     end
   end
 
   def expiring_insurance(email_addresses)
     email_addresses.each do |email|
       mail :to => email,
-           :subject => 'Insurance expiring soon!',
-           :body => 'According to our records your insurance will be expiring within three weeks, please renew as soon as possible enter your new expiration date at GloveBox.com'
+           :subject => 'Insurance expiring soon!'
     end
   end
 
   def expiring_registration(email_addresses)
     email_addresses.each do |email|
       mail :to => email,
-           :subject => 'Registration expiring soon!',
-           :body => 'According to our records your Registration will be expiring within three weeks, please renew as soon as possible enter your new expiration date at GloveBox.com'
+           :subject => 'Registration expiring soon!'
     end
   end
 
