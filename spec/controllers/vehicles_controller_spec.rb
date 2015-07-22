@@ -2,12 +2,14 @@ require 'rails_helper'
 
 RSpec.describe VehiclesController, type: :controller do
 
+
   before(:each) do 
     @user = FactoryGirl.create(:user)
     sign_in @user
   end
   let(:vehicle){ FactoryGirl.create(:vehicle, user: @user )} 
   
+
 
 
 
@@ -31,7 +33,7 @@ RSpec.describe VehiclesController, type: :controller do
   end
 
   describe "POST #create" do
-    it "does create" do 
+    it "does create" do
       post :create, vehicle: {type:''}
       expect(response).to have_http_status(:redirect)
       expect(Vehicle.all.count).to eq(1)
@@ -71,7 +73,7 @@ RSpec.describe VehiclesController, type: :controller do
     end
   end
 
-  describe "DELETE destroy" do 
+  describe "DELETE destroy" do
     it "does delete the list" do
       delete :destroy, id: vehicle.id
       expect(response).to have_http_status(:redirect)

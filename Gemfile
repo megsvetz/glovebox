@@ -43,6 +43,8 @@ gem 'gmaps4rails'
 #charts for repairs
 gem 'googlecharts'
 
+gem 'geocoder'
+
 gem 'mattetti-googlecharts'
 
 gem "chartkick"

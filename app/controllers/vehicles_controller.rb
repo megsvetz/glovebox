@@ -11,12 +11,17 @@ class VehiclesController < ApplicationController
   end
 
   def show
+
     
   end
 
   def edit
     
+
+
   end
+
+
 
   def new
     @vehicle = Vehicle.new
@@ -27,7 +32,7 @@ class VehiclesController < ApplicationController
     # @vehicle.image = "/assets/default_car.jpg"
     @vehicle.save
     redirect_to vehicles_path, notice: "#{@vehicle.type} was successfully created."
-    
+
 	end
 
   def update

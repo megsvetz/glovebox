@@ -12,8 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
 //= require bootstrap-sprockets
-//= require gmaps/google
 //= require underscore
+//= require gmaps/google
 //= require lazybox
+//= require_tree .
+

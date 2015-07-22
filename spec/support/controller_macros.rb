@@ -13,7 +13,7 @@ module ControllerMacros
      allow(controller).to receive(:current_user).and_return(user)
    end
  end
- 
+
   def login_user
     before(:each) do
       @request.env["devise.mapping"] = Devise.mappings[:user]

@@ -13,8 +13,8 @@
     <div class="col-md-5 text-center">
       <h1><%= @insurance.company %> </h1>
       <h2><%= @insurance.policy_number %></h2>
-      <h3><%= @insurance.expiration_date.strftime('%b %d, %Y') %></h3>
-      <h3><%= @insurance.renewal_date %></h3>
+      <h3>Expiration Date: <%= @insurance.expiration_date.strftime('%b %d, %Y') %></h3>
+      <h3>Renewal Date: <%= @insurance.renewal_date.strftime('%b %d, %Y') %></h3>
       <% if @insurance.cost.present? %>
         <h3>Cost: $ <%= sprintf('%.2f', @insurance.cost) %> </h3>
       <% end %>
