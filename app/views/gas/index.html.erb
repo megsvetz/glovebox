@@ -22,20 +22,9 @@
       </thead>
     </table>
   </div>
-</div>
 
-<div class="col-sm-6 pull-right">
-  Map goes here
-  <div id="map"></div>
-
-
-  <script type="text/javascript">
-    handler = Gmaps.build('Google');
-    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-     markers = handler.addMarkers(<%=raw @hash.to_json %>);
-     handler.bounds.extendWith(markers);
-     handler.fitMapToBounds();
-     handler.getMap().setZoom(11);
-    }); 
-  </script>
+  <div class="col-sm-6 pull-right">
+    <div id="map" style='width: 540px; height: 400px;'>
+    </div>
+  </div>
 </div>
