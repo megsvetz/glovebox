@@ -6,16 +6,16 @@ $(document).ready ->
   $('.bio').hover ->
     $(this).css('cursor', 'pointer')
 
-  $('#brad').hover ->
+  $('#brad').click ->
     $('#brad').popover('toggle')
 
-  $('#carter').hover ->
+  $('#carter').click ->
     $('#carter').popover('toggle')
 
-  $('#meg').hover ->
+  $('#meg').click ->
     $('#meg').popover('toggle')
 
-  $('#steve').hover ->
+  $('#steve').click ->
     $('#steve').popover('toggle')
 
   $('#send_button').click ->
