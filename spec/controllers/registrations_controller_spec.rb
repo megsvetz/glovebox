@@ -33,7 +33,7 @@ RSpec.describe RegistrationsController, type: :controller do
 
   describe "POST #create" do
     it "created successfully" do
-      post :create, vehicle_id: @vehicle.id, registration: {state:'California' , expiration: Faker::Date.between(2.days.ago, Date.today), cost: 2000 }
+      post :create, vehicle_id: @vehicle.id, registration: {state:'California' , expiration: Faker::Date.between(2.days.ago, Date.today), cost: 2000, vehicle_id: @vehicle.id }
       expect(response).to have_http_status(:redirect)
     end
   end
