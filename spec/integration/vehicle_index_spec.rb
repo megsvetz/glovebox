@@ -37,7 +37,7 @@ feature "index", :js => true do
     #registration index page
     expect(page).to have_content('All Vehicle Registrations')
     click_link 'Back to My Vehicles'
-    
+
     #check index page for new car created
     expect(page).to have_content('Sentra')
     click_link "#{make} #{model}"
@@ -67,9 +67,13 @@ feature "index", :js => true do
     click_link 'See this Vehicle'
     click_link 'Back'
 
-    click_link 'Insurance'
+    click_button 'Insurance'
+    sleep 5
+    expect(page).to have_content('Geico')
 
-    
+    click_link 'Close'
+
+
 
 
 
