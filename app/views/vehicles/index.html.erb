@@ -33,14 +33,14 @@
                 <br>
                 <p><div class='text-center'><a href="#" class="btn btn-default">See Repairs</a></div></p>
                 <% if vehicle.insurance.present? %>
-                  <p><div class='text-center'><div class="insurance_modal_button btn myButton" data-vehicle="">Insurance</div>
+                  <p><div class="text-center insurance_modal_button btn myButton" data-vehicle="">Insurance</div>
                 <% else %>
-                  <p><div class='text-center'><a href="#" class="btn myButton" style="font-size:.75em">Add Insurance</a>
+                  <p><div class='text-center'><a href="#" class="btn myButton" style="font-size:.75em">Add Insurance</a></div>
                 <% end %>
                 <% if vehicle.registration.present? %>
-                  <div class="registration_modal_button btn myButton" data-vehicle="<%= vehicle.to_json(include: :registration) %>">Registration</div></div>
+                  <p><div class="registration_modal_button btn myButton" data-vehicle="<%= vehicle.to_json(include: :registration) %>">Registration</div></p>
                 <% else %>
-                  <a href="#" class="btn myButton" style="font-size:.75em">Add Registration</a></div>
+                  <div><a href="#" class="btn myButton" style="font-size:.75em">Add Registration</a></div>
                 <% end %>
                 </p>
               </div>
@@ -90,11 +90,19 @@
           </div>
         <% end %>
       <% end %>
-      <div class='col-sm-6 col-md-4'>
-        <div class='row vehicle_show'>
-          <%= link_to '', new_vehicle_path, class: "btn btn-success btn-lg glyphicon glyphicon-plus text-center add-button" %>
+      <% if current_user.basic? && current_user.vehicles.count <= 2 %>
+        <div class='col-sm-6 col-md-4'>
+          <div class='thumbnail row vehicle_show' style='margin-left:auto; margin-right:auto;'>
+            <%= link_to '', new_vehicle_path, class: "btn btn-success btn-lg glyphicon glyphicon-plus text-center add-button" %>
+          </div>
         </div>
-      </div>
+      <% elsif current_user.premium? %>
+         <div class='col-sm-6 col-md-4'>
+          <div class='row vehicle_show'>
+            <%= link_to '', new_vehicle_path, class: "btn btn-success btn-lg glyphicon glyphicon-plus text-center add-button" %>
+          </div>
+        </div>
+      <% end %>
     </div>
     <%= will_paginate @vehicles %>
 </div>
@@ -109,4 +117,4 @@
   <% @vehicle = Vehicle.new %>
 <% end %>
 <%= render(partial: "vehicles/insurance_modal") %>
-<%= render(partial: "vehicles/registration_modal") %> 
+<%= render(partial: "vehicles/registration_modal") %>
