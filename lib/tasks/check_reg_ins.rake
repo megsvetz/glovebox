@@ -8,7 +8,7 @@ task :find_reg_expire => :environment do
       end
     end
   end
-  Reminders.expiring_registration(emails)
+  Reminders.expiring_registration(emails).deliver
 end
 
 task :find_no_reg => :environment do
@@ -19,7 +19,7 @@ task :find_no_reg => :environment do
       emails << vehicle.user.email
     end
   end
-  Reminders.no_registration(emails)
+  Reminders.no_registration(emails).deliver
 end
 
 task :find_ins_expire => :environment do
@@ -32,7 +32,7 @@ task :find_ins_expire => :environment do
       end
     end
   end
-  Reminders.expiring_insurance(emails)
+  Reminders.expiring_insurance(emails).deliver
 end
 
 task :find_no_ins => :environment do
