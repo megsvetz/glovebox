@@ -1,17 +1,20 @@
 Rails.application.configure do
+
   config.paperclip_defaults = {
   :storage => :s3,
   :s3_credentials => {
+    :s3_endpoint => 's3-us-west-2.amazonaws.com',
     :bucket => ENV['S3_BUCKET_NAME'],
     :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
     :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
-  }
+  },
+  :url => ':s3_domain_url',
+  :path => '/:class/:attahment/:id_partition/:style/:filename'
 }
   # Settings specified here will take precedence over those in config/application.rb.
 
   config.serve_static_assets = true
   config.assets.compile = true
-  config.action_mailer.default_url_options = {host: 'gloveboxapp.herokuapp.com'}
 
   # Code is not reloaded between requests.
   config.cache_classes = true
@@ -34,7 +37,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-    address: "smtp.sendgrid.net",
+    address: "smtp.sendgrid.ned",
     port: 587,
     domain: 'heroku.com',
     authentication: "plain",

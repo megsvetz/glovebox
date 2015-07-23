@@ -29,6 +29,7 @@ $(document).ready ->
           blank_form()
           alert 'Thanks for the email!'
         error: (data) ->
+          console.log data
           alert 'Something went wrong, please try again!'
 
   $('#clear_form').click ->

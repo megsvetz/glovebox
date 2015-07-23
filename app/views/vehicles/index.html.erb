@@ -14,7 +14,7 @@
               <% if vehicle.image.present? %>
                 <%= link_to image_tag(vehicle.image.url(:medium), vehicle_path(vehicle.id)) %>
               <% else %>
-                <%= link_to image_tag("default_car.jpg", :style => "height:auto;width:150px;"), vehicle_path(vehicle.id) %>
+                <%= link_to image_tag("default_car.jpg", :style => "height:150px;width:auto;"), vehicle_path(vehicle.id) %>
               <% end %>
               <div class="caption">
                 <div class='vehicle-text'><%= vehicle.make + ' ' + vehicle.model %>
@@ -53,9 +53,9 @@
           <div class="col-sm-6 col-md-4">
             <div class="thumbnail vehicle_show" style="margin-left:auto; margin-right:auto;">
               <% if vehicle.image.present? %>
-                <%= link_to image_tag(vehicle.image.url(:medium), vehicle_path(vehicle.id)) %>
+                <%= link_to image_tag(vehicle.image.url(:medium)), vehicle_path(vehicle.id) %>
               <% else %>
-                <%= link_to image_tag("default_car.jpg", :style => "height:auto;width:150px;"), vehicle_path(vehicle.id) %>
+                <%= link_to image_tag("default_car.jpg", :style => "height:150px;width:auto;"), vehicle_path(vehicle.id) %>
               <% end %>
               <div class="caption">
                 <div class='vehicle-text'><%= link_to vehicle.make + ' ' + vehicle.model, vehicle_path(vehicle.id) %>
