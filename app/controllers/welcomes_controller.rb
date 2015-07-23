@@ -2,6 +2,7 @@ class WelcomesController < ApplicationController
   def home
     @contact = Contact.new
   end
+
   def contact
     @contact = Contact.new(params[:contact])
     @contact.request = request

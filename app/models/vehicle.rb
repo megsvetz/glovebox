@@ -37,23 +37,23 @@ class Vehicle < ActiveRecord::Base
   end
 
   def self.motorcycle
-    where(type: 'motoryclce')
+    where(type: 'Motorcycle')
   end
 
   def self.waverunner
-    where(type: 'waverunner')
+    where(type: 'Waverunner')
   end
 
   def self.dunebuggy
-    where(type: 'dunebuggy')
+    where(type: 'Dunebuggy')
   end
 
   def self.other
-    where(type: 'other')
+    where(type: 'Other')
   end
 
-	def talk
-	  raise 'You need to override this method in your sub classes'
-	end
+	# def talk
+	#   raise 'You need to override this method in your sub classes'
+	# end
 
 end
