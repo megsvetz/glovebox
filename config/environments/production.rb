@@ -11,6 +11,7 @@ Rails.application.configure do
   :url => ':s3_domain_url',
   :path => '/:class/:attahment/:id_partition/:style/:filename'
 }
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   config.serve_static_assets = true

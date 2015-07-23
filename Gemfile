@@ -61,6 +61,8 @@ gem 'mail'
 gem 'stripe'
 
 gem 'mechanize'
+#YELP!
+gem 'yelp', require: 'yelp'
 
 group :development, :production do
   #delayed jobs
