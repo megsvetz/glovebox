@@ -1,13 +1,20 @@
 Rails.application.configure do
+
   config.paperclip_defaults = {
   :storage => :s3,
   :s3_credentials => {
+    :s3_endpoint => 's3-us-west-2.amazonaws.com',
     :bucket => ENV['S3_BUCKET_NAME'],
     :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
     :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
-  }
+  },
+  :url => ':s3_domain_url',
+  :path => '/:class/:attahment/:id_partition/:style/:filename'
 }
   # Settings specified here will take precedence over those in config/application.rb.
+
+  config.serve_static_assets = true
+  config.assets.compile = true
 
   # Code is not reloaded between requests.
   config.cache_classes = true
@@ -30,13 +37,13 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-    address: "smtp.sendgrid.net",
+    address: "smtp.gmail.com",
     port: 587,
-    domain: 'heroku.com',
+    domain: ENV['GMAIL_DOMAIN'],
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: ENV["sendgrid_username"],
-    password: ENV["sendgrid_password"]
+    user_name: ENV["GMAIL_USERNAME"],
+    password: ENV["GMAIL_PASSWORD"]
   }
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application

@@ -6,10 +6,8 @@ RSpec.describe VehiclesController, type: :controller do
     @user = FactoryGirl.create(:user)
     sign_in @user
   end
+
   let(:vehicle){ FactoryGirl.create(:vehicle, user: @user )}
-
-
-
 
   describe "GET #index" do
     it "returns http success" do

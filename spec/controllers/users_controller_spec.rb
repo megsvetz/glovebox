@@ -18,7 +18,7 @@ RSpec.describe UsersController, type: :controller do
 #   end
 
 #   describe "POST #create" do
-#     it "does create the list" do 
+#     it "does create the list" do
 #       post :create, user: {user_title: 'Glovebox'}
 #       expect(response).to have_http_status(:redirect)
 #       expect(List.all.count).to eq(1)
@@ -67,7 +67,7 @@ RSpec.describe UsersController, type: :controller do
 #     end
 #   end
 
-#   describe "DELETE destroy" do 
+#   describe "DELETE destroy" do
 #     it "does delete the list" do
 #       delete :destroy, id: list.id
 #       expect(List.all.count).to eq(0)
@@ -81,4 +81,4 @@ RSpec.describe UsersController, type: :controller do
 
 # end
 
-# end
+end

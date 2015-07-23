@@ -1,5 +1,7 @@
 class Reminders < ApplicationMailer
   include SendGrid
+  #require 'SendGrid'
+
   default :from => 'GloveBoxTeam@gmail.com'
 
   def no_insurance(email_addresses, vehicles)
