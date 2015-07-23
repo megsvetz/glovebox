@@ -28,8 +28,8 @@ class Repair < ActiveRecord::Base
     where(type: 'Otherrepair')
   end
 
-  def type_string
-    raise "override me in the subclass"
-  end
+  # def type_string
+  #   raise "override me in the subclass"
+  # end
 
 end
