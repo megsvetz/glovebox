@@ -3,7 +3,6 @@ class MechanicsController < ApplicationController
 
   def index
     client = Yelp::Client.new({
-      binding.pry
       consumer_key: ENV['config.consumer_key'],
       consumer_secret: ENV['config.consumer_secret'],
       token: ENV['config.token'],
