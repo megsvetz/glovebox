@@ -12,12 +12,6 @@ Rails.application.configure do
   :path => '/:class/:attahment/:id_partition/:style/:filename'
 }
 
-Yelp.client.configure do |config|
- config.consumer_key = ENV['config.cosumer_key']
- config.consumer_secret = ENV['config.consumer_secret']
- config.token = ENV['config.token']
- config.token_secret = ENV['config.token_secret']
-end
   # Settings specified here will take precedence over those in config/application.rb.
 
   config.serve_static_assets = true
