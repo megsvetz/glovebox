@@ -31,13 +31,13 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
 
   config.action_mailer.smtp_settings = {
-    address: ENV ['SENDGRID_ADDRESS'],
+    address: ENV['SENDGRID_ADDRESS'],
     port: 587,
     domain: 'heroku.com',
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: ENV ['SENDGRID_USERNAME'],
-    password: ENV ['SENDGRID_PASSWORD']
+    user_name: ENV['SENDGRID_USERNAME'],
+    password: ENV['SENDGRID_PASSWORD']
   }
 # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
