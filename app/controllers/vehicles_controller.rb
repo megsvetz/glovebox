@@ -18,6 +18,19 @@ class VehiclesController < ApplicationController
 
   end
 
+  def transfer
+    vehicle = Vehicle.find(params[:vehicle])
+    if vehicle.insurance.present?
+      vehicle.insurance.destroy
+    end
+    if vehicle.registration.present?
+      vehicle.registration.destroy
+    end
+    vehicle.user_id = User.find_by(params[email: :new_owner_email]).id
+    vehicle.save
+    redirect_to :back
+  end
+
   def new
     @vehicle = Vehicle.new
   end
@@ -38,6 +51,10 @@ class VehiclesController < ApplicationController
   def destroy
     @vehicle.destroy
     redirect_to vehicles_path
+  end
+
+  def selling
+    @vehicles = current_user.vehicles.all.order("created_at ASC")
   end
 
   private
