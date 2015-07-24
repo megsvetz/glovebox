@@ -14,6 +14,9 @@
       <h4>Date of Repair:<br>
         <%= f.date_select :repair_date, :class => "form-control" %></h4>
       <br>
+      <h4>Vehicle Mileage:</h4><br>
+        <%= f.number_field :mileage, :placeholder => "Vehicle mileage at time of repair", :class => "form-control", style: "width:250px; display:inline-block;" %>
+      <br>
       <h4>Place of Service<br>
         <%= f.text_field :repair_place, :placeholder => "Where was the repair done?", :class => "form-control", style: "width:60%; display:inline-block;" %></h4><br>
       <h4>Cost ($):<br>
