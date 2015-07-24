@@ -11,7 +11,6 @@ class Reminders < ApplicationMailer
     end
   end
 
-
   def no_insurance(email_addresses, vehicles)
     email_addresses.each_with_index do |email, index|
       mail :to => email,
