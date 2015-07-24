@@ -11,6 +11,7 @@ Rails.application.configure do
   :url => ':s3_domain_url',
   :path => '/:class/:attahment/:id_partition/:style/:filename'
 }
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   config.serve_static_assets = true
@@ -37,13 +38,13 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
+    address: ENV['SENDGRID_ADDRESS'],
     port: 587,
-    domain: ENV['GMAIL_DOMAIN'],
+    domain: 'heroku.com',
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: ENV["GMAIL_USERNAME"],
-    password: ENV["GMAIL_PASSWORD"]
+    user_name: ENV['SENDGRID_USERNAME'],
+    password: ENV['SENDGRID_PASSWORD']
   }
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
