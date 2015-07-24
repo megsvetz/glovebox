@@ -1,4 +1,3 @@
-
 task :find_oil_change => :environment do
   @vehicles = Vehicle.all
   emails = []
