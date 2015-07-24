@@ -1,3 +1,21 @@
+
+task :find_oil_change => :environment do
+  @vehicles = Vehicle.all
+  emails = []
+  vehicles = []
+  @vehicles.each do |vehicle|
+    if vehicle.repairs.present?
+      vehicle.repairs.each do |repair|
+        if repair.type == "Oilchange" && repair.repair_date < (Time.now - (13*7*24*60*60))
+          emails << vehicle.user.email
+          vehicles << "#{vehicle.make} #{vehicle.model}"
+        end
+      end
+    end
+  end
+  Reminders.need_oil_change(emails, vehicles).deliver
+end
+
 task :find_reg_expire => :environment do
   @vehicles = Vehicle.all
   emails = []
