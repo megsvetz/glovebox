@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   match '/contact', to: 'welcomes#home', via: 'get'
   post '/contact', to: 'welcomes#contact'
+  post '/transfer_vehicle', to: 'vehicles#transfer'
 
   devise_for :users
   root "welcomes#home"
