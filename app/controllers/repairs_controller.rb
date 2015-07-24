@@ -18,6 +18,11 @@ class RepairsController < ApplicationController
 
 	def update
 		if @repair.update(repair_params)
+			if @repair.mileage?
+				@vehicle = Vehicle.find_by(id: @repair.vehicle_id)
+				@vehicle.mileage = @repair.mileage
+				@vehicle.save
+			end
 		  redirect_to vehicle_repairs_path(@vehicle.id), notice: "#{@type} was successfully updated."
 		else
 		  render action: 'edit'
@@ -35,6 +40,11 @@ class RepairsController < ApplicationController
 
 	def create
 		@repair = @vehicle.repairs.build(repair_params)
+		if @repair.mileage?
+			@vehicle = Vehicle.find_by(id: @repair.vehicle_id)
+			@vehicle.mileage = @repair.mileage
+			@vehicle.save
+		end
     if @repair.save
       redirect_to vehicle_repairs_path(@vehicle.id), notice: "#{@type} was successfully created."
     else
@@ -82,6 +92,6 @@ class RepairsController < ApplicationController
     end
 
     def repair_params
-      params.require(type.underscore.to_sym).permit(:type, :repair_description, :repair_date, :repair_cost, :repair_image, :repair_place, :vehicle_id)
+      params.require(type.underscore.to_sym).permit(:type, :mileage, :repair_description, :repair_date, :repair_cost, :repair_image, :repair_place, :vehicle_id)
     end
 end
