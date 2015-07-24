@@ -75,7 +75,6 @@ task :find_no_ins => :environment do
       unless vehicle.insurance.present?
         emails << vehicle.user.email
         vehicles << "#{vehicle.make} #{vehicle.model}"
-        binding.pry
       end
     end
     Reminders.no_insurance(emails, vehicles).deliver
