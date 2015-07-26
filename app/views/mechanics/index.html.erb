@@ -6,7 +6,7 @@
     <hr />
   </div>
   <% @search.businesses.each do |f| %>
-    <div class='col-sm-4'>
+    <div class='col-sm-4 mechanics_div'>
       <u><%= link_to f.name, f.url %></u><br>
       <%= f.location.display_address[0] %><br>
       <%= f.location.display_address[2] %><br>

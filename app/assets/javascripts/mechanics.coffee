@@ -7,6 +7,7 @@ $(document).ready ->
       type: 'GET'
       data: zip_code: $('#mechanics_zip').val()
       success: (data) ->
+        $('.mechanics_div').html('')
         console.log data
       error: (data) ->
         console.log data
