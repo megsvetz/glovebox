@@ -1,9 +1,15 @@
 class MechanicsController < ApplicationController
 
   def index
-    @zip = current_user.zip_code
+      current_user.zip_code.present? ? @zip = current_user.zip_code : @zip = "94101"
+      parameters = { term: 'auto repair', limit: 9 }
+      @search = client.search(@zip, parameters)
+  end
+
+  def mechanics_update
     parameters = { term: 'auto repair', limit: 9 }
-    @search = client.search(@zip, parameters)
+    @search = client.search(params[:zip_code].to_i, parameters)
+    render(json: @search)
   end
 
   private
