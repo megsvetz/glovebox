@@ -20,14 +20,14 @@
 
           <h4>Transfer to: &nbsp; <%= text_field_tag "new_owner_email", nil, placeholder: "New Owner's GloveBox Email", style: "width: 230px;" %>
           <br>
-          <%= submit_tag "Transfer Ownership", data: {confirm: "Are you sure you want to transfer ownesrhip?" }, class: "btn myButton" %>
+          <%= submit_tag "Transfer Ownership", data: {confirm: "Are you sure you want to transfer ownership?" }, class: "btn myButton" %>
         <% end %>
       <% end %>
     </div>
     <hr>
     <div class="row">
       <h1 class="text-center">Tips for Selling:</h1><br>
-      <div class="col-sm-6 col-lg-6" style="border-right: 1px solid;">
+      <div class="col-sm-6 col-lg-6">
         <h3 id="h3_10" class="h3_classes">10. Do Your Homework...</h3>
         <div id="num10">
           In car sales, there's <i>nothing more valuable than knowledge</i>. Well, maybe one of those inflatable tube men. But other than that, the one thing that can make or break your sale is how much you know about the car. <br><br>
@@ -114,7 +114,7 @@
           If your price is negotiable, inflate it by 10 percent, with a "Best Offer" option. That way the buyer feels like they saved some money and the seller gets the most that they can for their car. It's win-win, which is the best way to approach a transaction in general.
         </div>
       </div>
-      <div class="col-sm-6" pull-left>
+      <div class="col-sm-6" style="border-left: 1px solid;">
         <%= image_tag("http://s3-us-west-1.amazonaws.com/gloveboxapp/car_value.jpeg", style: "max-width:100%;") %>
       </div>
     </div>
