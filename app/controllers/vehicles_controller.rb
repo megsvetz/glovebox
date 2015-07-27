@@ -26,7 +26,7 @@ class VehiclesController < ApplicationController
     if vehicle.registration.present?
       vehicle.registration.destroy
     end
-    vehicle.user_id = User.find_by(params[email: :new_owner_email]).id
+    vehicle.user_id = User.find_by(email: params[:new_owner_email]).id
     vehicle.save
     redirect_to :back
   end
