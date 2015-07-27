@@ -1,27 +1,31 @@
-<div class="container text-center" style="margin-top:8%;margin-bottom:auto;">
-  <h2>Login</h2><br>
+<div class="road_header" style="margin-top:0%;padding:0%;">
+  <div class="container text-center" style="margin-bottom:auto;">
+    <div class="boxxy" style="margin-top:7%; margin-bottom:18%;">
+      <h2>Login</h2><br>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true %>
-    </div><br>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true %>
+        </div><br>
 
-    <div class="field">
-      <%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "off" %>
-    </div><br>
+        <div class="field">
+          <%= f.label :password %><br />
+          <%= f.password_field :password, autocomplete: "off" %>
+        </div><br>
 
-    <% if devise_mapping.rememberable? -%>
-      <div class="field">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
-      </div><br>
-    <% end -%>
+        <% if devise_mapping.rememberable? -%>
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div><br>
+        <% end -%>
 
-    <div class="actions">
-      <%= f.submit "Login", class: "myButton", style: "margin-top:2%;" %>
-    </div><br>
-  <% end %>
+        <div class="actions">
+          <%= f.submit "Login", class: "myButton", style: "margin-top:2%;" %>
+        </div><br>
+      <% end %>
 
+    </div>
+  </div>
 </div>
