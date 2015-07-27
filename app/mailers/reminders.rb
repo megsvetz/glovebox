@@ -27,14 +27,14 @@ class Reminders < ApplicationMailer
   end
 
   def expiring_insurance(email_addresses, vehicles)
-    email_addresses.uniq.each_with_index do |email, index|
+    email_addresses.each_with_index do |email, index|
       mail :to => email,
            :subject => "Your #{vehicles[index]} insurance expiring soon!"
     end
   end
 
   def expiring_registration(email_addresses, vehicles)
-    email_addresses.uniq.each_with_index do |email, index|
+    email_addresses.each_with_index do |email, index|
       mail :to => email,
            :subject => "Your #{vehicles[index]} registration expiring soon!"
     end
