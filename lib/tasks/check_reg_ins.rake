@@ -1,5 +1,5 @@
 task :find_oil_change => :environment do
-  if Time.now.strftime('%d') == '25'
+  if Time.now.strftime('%d') == '28'
     @vehicles = Vehicle.all
     emails = []
     vehicles = []
@@ -18,7 +18,7 @@ task :find_oil_change => :environment do
 end
 
 task :find_reg_expire => :environment do
-  if Time.now.strftime('%d') == '25' || Time.now.strftime('%d') == '10'
+  if Time.now.strftime('%d') == '28' || Time.now.strftime('%d') == '10'
     @vehicles = Vehicle.all
     emails = []
     vehicles = []
@@ -35,7 +35,7 @@ task :find_reg_expire => :environment do
 end
 
 task :find_no_reg => :environment do
-  if Time.now.strftime('%d') == '25' || Time.now.strftime('%d') == '10'
+  if Time.now.strftime('%d') == '28' || Time.now.strftime('%d') == '10'
     @vehicles = Vehicle.all
     emails = []
     vehicles = []
@@ -52,7 +52,7 @@ task :find_no_reg => :environment do
 end
 
 task :find_ins_expire => :environment do
-  if Time.now.strftime('%d') == '25' || Time.now.strftime('%d') == '10'
+  if Time.now.strftime('%d') == '28' || Time.now.strftime('%d') == '10'
     @vehicles = Vehicle.all
     emails = []
     vehicles = []
@@ -69,7 +69,7 @@ task :find_ins_expire => :environment do
 end
 
 task :find_no_ins => :environment do
-  if Time.now.strftime('%d') == '25' || Time.now.strftime('%d') == '10'
+  if Time.now.strftime('%d') == '28' || Time.now.strftime('%d') == '10'
     @vehicles = Vehicle.all
     emails = []
     vehicles = []
