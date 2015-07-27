@@ -12,7 +12,7 @@
 <body>
   <%= render "layouts/navbar_top" %>
   <%= render "layouts/navbar" %>
-  <div class='text-center'><%= flash[:notice] %></div>
+  <div class='alert-danger'><%= flash[:notice] %></div>
   <div style="min-height:630px;">
     <%= yield %>
   </div>
