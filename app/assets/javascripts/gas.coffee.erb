@@ -44,7 +44,7 @@ $(document).ready ->
         buildMap(gasLatLon)
       error: (data) ->
         console.log data
-        alert 'No data returned, please try again!'
+        alert 'How many miles out would you like to search? Please enter a number between 1 - 50.'
 
   sendCoord = (lat, lng) ->
     console.log 'on coord' + lat
