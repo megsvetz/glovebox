@@ -1,23 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe Repair, type: :model do
-<<<<<<< HEAD
-    let(:repair){ FactoryGirl.create(:repair) }
+  let(:repair){ FactoryGirl.create(:repair) }
 
- describe "Repair type" do
-   it "Has a valid type" do
-    repair.type == Oilchange || Tirerotation || Inspection || Alignment || Modification || Otherrepair 
-   end
- end
+  describe "Repair type" do
+    it "Has a valid type" do
+     repair.type == "Oilchange" || "Tirerotation" || "Inspection" || "Alignment" || "Modification" || "Otherrepair"
+    end
+  end
 
- context 'relationships' do
+  context 'relationships' do
     it 'belongs to a vehicle' do
       should belong_to :vehicle
     end
-  end 
+  end
 
-
-=======
   context "associations" do
     it { should belong_to :vehicle}
     it { should validate_presence_of :type}
@@ -105,5 +102,4 @@ RSpec.describe Repair, type: :model do
       end
     end
   end
->>>>>>> 8cf6d1c8bc4941e69662da4dcb0fdce66f350d74
 end

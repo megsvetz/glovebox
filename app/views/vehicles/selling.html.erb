@@ -3,11 +3,9 @@
     <hr />
     <div class='text-center'>
 
-
       <% if current_user.vehicles.present? %>
         <h1 class="text-center">Transfer Vehicle:</h1>
         <h3>Which Vehicle Are You Selling:</h3><br>
-
 
         <% vehicles = current_user.vehicles.all %>
         <% user = current_user %>

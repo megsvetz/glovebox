@@ -11,16 +11,10 @@ class VehiclesController < ApplicationController
   end
 
   def show
-
-    
   end
 
   def edit
-    
-
-
   end
-
 
   def transfer
     vehicle = Vehicle.find(params[:vehicle])
@@ -31,13 +25,12 @@ class VehiclesController < ApplicationController
     if vehicle.registration.present?
       vehicle.registration.destroy
     end
-    vehicle.user_id = User.find_by(params[email: :new_owner_email]).id
-    receiver = User.find_by(params[email: :new_owner_email]).email
+    vehicle.user_id = User.find_by(email: params[:new_owner_email]).id
+    receiver = User.find_by(email: params[:new_owner_email]).email
     vehicle.save
     Reminders.vehicle_transfer(receiver, sender, vehicle).deliver
     redirect_to :back
   end
-
 
   def new
     @vehicle = Vehicle.new
