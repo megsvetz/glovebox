@@ -5,7 +5,7 @@
 
     <%= form_for @repair, url: sti_repair_path(@vehicle, @repair.type, @repair) do |f| %>
 
-      <h3>Type of Vehicle:<br>
+      <h3>Type of Repair:<br>
         <%= f.select :type, [['Oil Change', 'Oilchange'],['Alignment', 'Alignment'],['Inspection', 'Inspection'], ['Tire Rotation', 'Tirerotation'],['Modification', 'Modification'], ['Other Repair', 'Otherrepair']], {:include_blank => "Select Repair Type"}, :class => "form-control", :style => "width:150px; display:inline-block;"%></h3>
       <br>
       <h3>Repair Description:<br>
