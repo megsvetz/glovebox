@@ -1,69 +1,73 @@
-<div class="container text-center">
-  <h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="road_header" style="margin:0%;padding:0%;">
+  <div class="container text-center" style="margin-bottom:auto;">
+    <div class="boxxy" style="width:50%;">
+      <h2>Edit <%= resource_name.to_s.humanize %></h2><hr>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= devise_error_messages! %>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= devise_error_messages! %>
 
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true %>
-    </div><br>
+        <div class="field">
+          <p>Your current membership plan is: <%= current_user.membership.capitalize %></p>
+          <% if current_user.basic? %>
+            <div class="">
+              <a href="<%= new_charge_path %>">Upgrade to Premium</a>
+            </div>
+          <% end %>
+          <!-- <%= f.select(:membership, options_for_select(['basic', 'premium']), {})%> -->
+        </div><hr>
 
-    <div class="field">
-      <%= f.label :city %><br />
-      <%= f.text_field :city %>
-    </div><br>
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true %>
+        </div><br>
 
-    <div class="field">
-      <%= f.label :state %><br />
-      <%= f.text_field :state %>
-    </div><br>
+        <div class="field">
+          <%= f.label :city %><br />
+          <%= f.text_field :city %>
+        </div><br>
 
-     <div class="field">
-      <%= f.label :zip_code %><br />
-      <%= f.number_field :zip_code %>
-    </div><br>
+        <div class="field">
+          <%= f.label :state %><br />
+          <%= f.text_field :state %>
+        </div><br>
 
-    <div class="field">
-      <%= f.label "Receive maintenance reminders for my vehicles: " %>
-      <%= f.check_box :reminder, checked_value: "true", unchecked_value: "false", style:"transform: scale(1.5);-webkit-transform: scale(1.5); margin:1%;" %>
-    </div><br>
+         <div class="field">
+          <%= f.label :zip_code %><br />
+          <%= f.number_field :zip_code %>
+        </div><hr>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div><br>
-    <% end %>
+        <div class="field">
+          <h4 style="black"><%= f.label "Receive maintenance reminders for my vehicles: " %>
+          <%= f.check_box :reminder, checked_value: "true", unchecked_value: "false", style:"transform: scale(1.5);-webkit-transform: scale(1.5); margin:1%;" %></h4>
+        </div><hr>
 
-    <div class="field">
-      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-      <%= f.password_field :password, autocomplete: "off" %>
-    </div><br>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div><br>
+        <% end %>
 
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %><br>
-    </div><br><br>
+        <div class="field">
+          <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+          <%= f.password_field :password, autocomplete: "off" %>
+        </div><br>
 
-    <div class="field">
-      <p>Your current membership plan is: <%= current_user.membership.capitalize %></p>
-      <% if current_user.basic? %>
-        <div class="">
-          <a href="<%= new_charge_path %>">Upgrade to Premium</a>
+        <div class="field">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off" %><br>
+        </div><br><br>
+
+        <div class="field">
+          <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+          <%= f.password_field :current_password, autocomplete: "off" %>
+        </div><br>
+
+        <div class="actions">
+          <%= f.submit "Update", class: "myButton", style: "margin-top:2%;" %>
+          <%= link_to "Back", :back, class: "myButton", style: "margin-top:2%;" %>
         </div>
       <% end %>
-      <!-- <%= f.select(:membership, options_for_select(['basic', 'premium']), {})%> -->
-    </div><br><br>
-
-    <div class="field">
-      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-      <%= f.password_field :current_password, autocomplete: "off" %>
-    </div><br>
-
-    <div class="actions">
-      <%= f.submit "Update", class: "myButton", style: "margin-top:2%;" %>
-      <%= link_to "Back", :back, class: "myButton", style: "margin-top:2%;" %>
+      <hr>
+      <h4 style="color:black">Cancel my account</h5>
+      <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "myButton", style: "margin-top:2%;" %></p>
     </div>
-  <% end %>
-  <hr><br>
-  <h3>Cancel my account</h3>
-  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "myButton", style: "margin-top:2%;" %></p>
+  </div>
 </div>
