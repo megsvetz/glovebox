@@ -1,0 +1,30 @@
+Dear <%= @reciever %>,
+<br>
+<%= @sender %> has transfered ownership of their vehicle to you!
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th class="text-center">VIN</th>
+      <th class="text-center">Year</th>
+      <th class="text-center">Make</th>
+      <th class="text-center">Model</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @vehicle.vin %></td>
+      <td><%= @vehicle.year %></td>
+      <td><%= @vehicle.make %></td>
+      <td><%= @vehicle.model %></td>
+      <% if @vehilce.image.present? %>
+        <td><%= image_tag(@vehicle.image.url(:thumb)) %></td>
+      <% else %>
+        <td><%= image_tag("default_car.jpg", :style => "height:100px; width:auto;") %></td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
+
+-Your GloveBox Team!

@@ -40,6 +40,14 @@ class Reminders < ApplicationMailer
     end
   end
 
+  def vehicle_transfer(receiver, sender, vehicle)
+    @receiver = receiver
+    @sender = sender
+    @vehicle = vehicle
+    mail :to => @receiver,
+         :subject => "Vechicle Ownership Transfer Notification"
+  end
+
   # Sample stuff form class about mailers
 
   def send_contact_info
@@ -66,4 +74,5 @@ class Reminders < ApplicationMailer
     mail :to => "GloveBoxTeam@gmail.com",
          :subject => "test subject"
   end
+
 end
