@@ -4,7 +4,7 @@ feature "home", :js => true do
   scenario "home page contains content" do
     visit root_path
     expect(page).to have_content "GLOVEBOX"
-    expect(page).to have_content "Features of Glovebox"
+    expect(page).to have_content "Features of GloveBox"
     expect(page).to have_content "Basic Versus Premium Membership"
     expect(page).to have_content "The GLOVEBOX Team"
     expect(page).to have_content "Contact Us"
