@@ -20,7 +20,7 @@
         <tr>
           <% if repair.present? %>
             <td><%= link_to(repair.vehicle.name, vehicle_path(repair.vehicle_id)) %></td>
-            <td><%= link_to(repair.type, vehicle_repair_path(repair.vehicle_id, repair.id)) %></td>
+            <td><%= link_to(repair.type_string, vehicle_repair_path(repair.vehicle_id, repair.id)) %></td>
             <td><%= repair.repair_description %></td>
             <% if repair.repair_date.present? %>
               <td><%= repair.repair_date.strftime('%b %d, %Y') %></td>
