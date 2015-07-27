@@ -17,7 +17,8 @@ $(document).ready ->
         $('#vehicle_type').attr('readonly', 'true')
         $('#vehicle_year').attr('readonly', 'true')
         $('#vehicle_vin').attr('readonly', 'true')
-        $('#vehicle_name').attr('readonly', 'true')
+        if $('#vehicle_name').val() isnt ''
+          $('#vehicle_name').attr('readonly', 'true')
       error: (data) ->
         alert 'That VIN does not appear to be correct, please enter it again.'
 
