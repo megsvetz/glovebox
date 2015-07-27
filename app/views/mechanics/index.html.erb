@@ -5,16 +5,18 @@
     <button id='get-mechanic' name="Find Mechanics" value="Find Local Mechanics" style="margin:3%;">Find Local Mechanics</button>
     <hr />
   </div>
-  <% @search.businesses.each do |f| %>
-    <div class='col-sm-4'>
-      <u><%= link_to f.name, f.url %></u><br>
-      <%= f.location.display_address[0] %><br>
-      <%= f.location.display_address[2] %><br>
-      <%= f.display_phone %><br>
-      <%= image_tag(f.rating_img_url_large, size: '100x18') %>
-      <br><br>
-      <i>"<%= f.snippet_text %>"</i>
-      <hr />
-    </div>
-  <% end %>
+  <div class='mechanics_div'>
+    <% @search.businesses.each do |f| %>
+      <div class='col-sm-4'>
+        <u><%= link_to f.name, f.url %></u><br>
+        <%= f.location.display_address[0] %><br>
+        <%= f.location.display_address[2] %><br>
+        <%= f.display_phone %><br>
+        <%= image_tag(f.rating_img_url_large, size: '100x18') %>
+        <br><br>
+        <i>"<%= f.snippet_text %>"</i>
+        <hr />
+      </div>
+    <% end %>
+  </div>
 </div>

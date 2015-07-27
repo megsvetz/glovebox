@@ -1,6 +1,6 @@
 class Reminders < ApplicationMailer
-  #include SendGrid
-  require 'SendGrid'
+  include SendGrid
+  #require 'SendGrid'
 
   default :from => 'GloveBoxTeam@gmail.com'
 

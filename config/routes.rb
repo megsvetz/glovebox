@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  get 'mechanics' => 'mechanics#index'
+  get '/mechanics' => 'mechanics#index'
+  get '/mechanics/update' => 'mechanics#mechanics_update'
 
   get '/gas' => 'gas#index'
   get '/gas/coords' => 'gas#get_coords'

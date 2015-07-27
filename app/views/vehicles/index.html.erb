@@ -96,7 +96,7 @@
       <% if current_user.basic? && current_user.vehicles.count <= 2 %>
         <div class='col-sm-6 col-md-4'>
           <div class='thumbnail row vehicle_show'  style="margin-left:auto; margin-right:auto; max-width:100%;">
-            <%= link_to '', new_vehicle_path, class: "btn btn-success btn-lg glyphicon glyphicon-plus text-center add-button" %>
+            <%= link_to '', new_vehicle_path, class: "text-center btn btn-lg glyphicon glyphicon-plus btn-success add-button", style:"padding-left:auto; padding-right:auto;" %>
           </div>
         </div>
       <% elsif current_user.premium? %>

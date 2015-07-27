@@ -21,9 +21,7 @@ class VehiclesController < ApplicationController
 
   end
 
-<<<<<<< HEAD
 
-=======
   def transfer
     vehicle = Vehicle.find(params[:vehicle])
     if vehicle.insurance.present?
@@ -36,7 +34,7 @@ class VehiclesController < ApplicationController
     vehicle.save
     redirect_to :back
   end
->>>>>>> 8cf6d1c8bc4941e69662da4dcb0fdce66f350d74
+
 
   def new
     @vehicle = Vehicle.new
@@ -45,8 +43,11 @@ class VehiclesController < ApplicationController
   def create
     @vehicle = Vehicle.new(vehicle_params)
     # @vehicle.image = "/assets/default_car.jpg"
-    @vehicle.save
-    redirect_to vehicles_path, notice: "#{@vehicle.type} was successfully created."
+    if @vehicle.save
+      redirect_to vehicles_path, notice: "#{@vehicle.type} was successfully created."
+    else
+      render :new, notice: 'Vehicle not created'
+    end
 
 	end
 
