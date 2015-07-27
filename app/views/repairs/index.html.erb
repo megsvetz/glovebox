@@ -35,13 +35,13 @@
             <% end %>
             <td><%= link_to 'Edit', sti_repair_path(@vehicle, repair.type, repair, :edit) %></td>
           <% end %>
-          <% total += repair.repair_cost %>
+          <% total += repair.repair_cost  %>
         </tr>
       <% end %>
     </tbody>
   </table>
   <br>
-  <p class="pull-right" style="font-size:26px;">Total Cost of All Repairs: $ <%= total %>  </p><%= link_to 'Add New Repair', new_vehicle_repair_path, :class => "myButton pull-left", :method => :get, :style => "margin-top:0; margin-bottom:0; margin-right:12%;display:inline-block" %><br>
+  <p class="pull-right" style="font-size:26px;">Total Cost of All Repairs: $ <%= sprintf('%.2f', total) %>  </p><%= link_to 'Add New Repair', new_vehicle_repair_path, :class => "myButton pull-left", :method => :get, :style => "margin-top:0; margin-bottom:0; margin-right:12%;display:inline-block" %><br>
 </div>
 <div class="text-center container">
   <hr>
