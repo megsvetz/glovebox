@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe RepairsController, type: :controller do
 
+
    before(:each) do
     @user = FactoryGirl.create(:user)
     @vehicle = FactoryGirl.create(:vehicle, user: @user)
@@ -75,3 +76,5 @@ RSpec.describe RepairsController, type: :controller do
   end
 
 end
+
+

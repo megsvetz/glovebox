@@ -89,9 +89,9 @@ ActiveRecord::Schema.define(version: 20150724021936) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
-    t.string   "zip_code"
     t.text     "city"
     t.string   "state"
+    t.string   "zip_code"
     t.integer  "membership",             default: 0
     t.date     "upgrade_date"
     t.boolean  "reminder",               default: false
