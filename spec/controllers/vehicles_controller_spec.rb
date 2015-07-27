@@ -3,17 +3,10 @@ require 'rails_helper'
 RSpec.describe VehiclesController, type: :controller do
 
 
-  before(:each) do 
+  before(:each) do
     @user = FactoryGirl.create(:user)
     sign_in @user
   end
-<<<<<<< HEAD
-  let(:vehicle){ FactoryGirl.create(:vehicle, user: @user )} 
-  
-
-
-=======
->>>>>>> 8cf6d1c8bc4941e69662da4dcb0fdce66f350d74
 
   let(:vehicle){ FactoryGirl.create(:vehicle, user: @user )}
 

@@ -11,16 +11,10 @@ class VehiclesController < ApplicationController
   end
 
   def show
-
-
   end
 
   def edit
-
-
-
   end
-
 
   def transfer
     vehicle = Vehicle.find(params[:vehicle])
@@ -37,7 +31,6 @@ class VehiclesController < ApplicationController
     Reminders.vehicle_transfer(receiver, sender, vehicle).deliver
     redirect_to :back
   end
-
 
   def new
     @vehicle = Vehicle.new
