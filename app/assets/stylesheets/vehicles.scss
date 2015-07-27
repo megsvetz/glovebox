@@ -14,3 +14,18 @@
   margin-left: 35%;
   margin-bottom: 30%;
 }
+
+input:required:after {
+  color: #e32;
+  content: ' *';
+  display:inline;
+}
+
+// input:required {
+//   outline:1px red solid;
+// }
+
+input:required:focus {
+  border: 1px solid red;
+  outline: none;
+}

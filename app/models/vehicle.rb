@@ -10,6 +10,7 @@ class Vehicle < ActiveRecord::Base
                     styles: { large: "500x500>", medium: "150x150>", thumb: "50x50>"}
 
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+  validates :make, :model, :name, :state, :presence => {:message => "empty value found"}
 
 	def self.type
 	  %w(Car Truck Boat Trailer ATV Motorcycle Waverunner Dunebuggy Other)

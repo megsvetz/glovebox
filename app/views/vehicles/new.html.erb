@@ -4,18 +4,19 @@
   <div class="form">
     <%= form_for(@vehicle, multipart: true) do |f| %>
       <p class='vin-number'><%= f.text_field :vin, class: "form-control", :placeholder => "Vehicle Vin", :style => "width:100%;" %></p>
-      <%= f.select :type, Vehicle.type, {:include_blank => "Select Vehicle Type"}, style:"margin-bottom:8%;" %>
+      <%= f.select :type, Vehicle.type, {:include_blank => "Select Vehicle Type"}, style:"margin-bottom:8%;", required: :true %>
       <% dates = 1900..Date.today.year %>
-      <%= f.select :year, ((Time.zone.now.year - 50)..(Time.zone.now.year + 1)).to_a.reverse, {:include_blank => "Select Vehicle Year"} %>
+      <%= f.select :year, ((Time.zone.now.year - 50)..(Time.zone.now.year + 1)).to_a.reverse, {:include_blank => "Select Vehicle Year"}, required: :true %>
       <br><br>
-      <p><%= f.text_field :make, class: "form-control v-make", :placeholder => "Vehicle Make", :style => "width:100%;" %></p>
-      <p><%= f.text_field :model, class: "form-control v-model", :placeholder => "Vehicle Model", :style => "width:100%;" %></p>
-      <p><%= f.text_field :name, class: "form-control", :placeholder => "Vehicle Name", :style => "width:100%;" %></p>
+      <p><%= f.text_field :make, class: "form-control v-make required", :placeholder => "Vehicle Make *", :style => "width:100%;", required: :true %></p>
+      <p><%= f.text_field :model, class: "form-control v-model", :placeholder => "Vehicle Model *", :style => "width:100%;", required: :true %></p>
+      <p><%= f.text_field :name, class: "form-control", :placeholder => "Vehicle Name *", :style => "width:100%;", required: :true %></p>
       <p><%= f.text_field :mileage, class: "form-control", :placeholder => "Vehicle Mileage", :style => "width:100%;" %></p>
       <p><%= f.text_field :license_plate, class: "form-control", :placeholder => "Vehicle License Plate", :style => "width:100%;" %></p>
-      <p><%= f.text_field :state, class: "form-control", :placeholder => "State registered in", :style => "width:100%;" %></p>
-      <p><%= f.file_field :image %></p><br>
+      <p><%= f.text_field :state, class: "form-control", :placeholder => "State registered in *", :style => "width:100%;", required: :true %></p>
+      <p><%= f.file_field :image %></p>
       <%= f.hidden_field :user_id, :value => current_user.id %>
+      <p style="color: #bababa;">* required fields</p>
       <p><%= f.submit :class => "myButton" %> <%= link_to 'Cancel', vehicles_path, :class => "myButton", :method => :get %></p>
     <% end %>
   </div>
