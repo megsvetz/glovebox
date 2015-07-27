@@ -3,11 +3,13 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready ->
   $('#get-mechanic').click ->
+    $("#loading_gif").removeClass('hidden')
     $.ajax '/mechanics/update',
       type: 'GET'
       data: zip_code: $('#mechanics_zip').val()
       success: (data) ->
         #console.log data
+        $("#loading_gif").addClass('hidden')
         $('.mechanics_div').html('')
         console.log data.businesses
         i = 0

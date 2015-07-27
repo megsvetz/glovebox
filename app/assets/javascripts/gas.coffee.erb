@@ -4,6 +4,7 @@
 $(document).ready ->
 
   $('#get-gas').click ->
+    $("#loading_gas").removeClass('hidden')
     zip_code = $('#gas_zip').val()
     $.ajax 'http://maps.googleapis.com/maps/api/geocode/json?address=' + zip_code + '&sensor=false',
     type: 'GET'
@@ -20,6 +21,7 @@ $(document).ready ->
     $.ajax 'http://api.mygasfeed.com/stations/radius/' + lat + '/' + lng + '/' + distance + '/reg/price/' + "<%= ENV['gas_api'] %>" + '.json',
       type: 'GET'
       success: (data) ->
+        $("#loading_gas").addClass('hidden')
         $('.gas-table').find("tr:gt(0)").remove()
         $('.gas-table').removeClass('hidden')
         console.log data.stations[0].lat

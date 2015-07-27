@@ -3,6 +3,7 @@
   <div class="text-center">
     <input id='mechanics_zip' type="field" name="name" placeholder="Zip Code" value="<%= current_user.zip_code %>"></input>
     <button id='get-mechanic' name="Find Mechanics" value="Find Local Mechanics" style="margin:3%;">Find Local Mechanics</button>
+    <%= image_tag('loader.gif', class: "hidden", id: "loading_gif") %>
     <hr />
   </div>
   <div class='mechanics_div'>

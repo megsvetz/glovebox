@@ -3,7 +3,8 @@ require 'rails_helper'
 
 RSpec.describe RegistrationsController, type: :controller do
 
-  before(:each) do
+
+  before(:each) do 
     @user = FactoryGirl.create(:user)
     @vehicle = FactoryGirl.create(:vehicle, user: @user)
     sign_in @user
@@ -13,6 +14,12 @@ RSpec.describe RegistrationsController, type: :controller do
 
   describe "GET #index" do
     it "returns http success" do
+      get :index , vehicle_id: @vehicle.id 
+      expect(response).to have_http_status(:success)
+    end
+    it "returns http success When Premium user" do
+      @user.membership = 1
+      @user.save
       get :index , vehicle_id: @vehicle.id
       expect(response).to have_http_status(:success)
     end
