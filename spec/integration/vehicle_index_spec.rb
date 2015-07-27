@@ -66,20 +66,7 @@ feature "index", :js => true do
     expect(page).to have_content('Geico')
     click_link 'See this Vehicle'
     click_link 'Back'
-
-    click_button 'Insurance'
-    sleep 5
-    expect(page).to have_content('Geico')
-
-    click_link 'Close'
-
-
-
-
-
-
  end
-
 end
 
 

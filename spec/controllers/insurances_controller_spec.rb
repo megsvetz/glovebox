@@ -1,64 +1,69 @@
 require 'rails_helper'
 
-RSpec.describe InsurancesController, type: :controller do
- login_user
 
-  before(:each) do 
-    @vehicle = FactoryGirl.create(:vehicle)
+RSpec.describe InsurancesController, type: :controller do
+
+  before(:each) do
+    @user = FactoryGirl.create(:user)
+    @vehicle = FactoryGirl.create(:vehicle, user: @user)
+    sign_in @user
   end
 
-  let(:insurance) {FactoryGirl.create(:insurance)}
+  let(:insurance) {FactoryGirl.create(:insurance, vehicle: @vehicle)}
 
   describe "GET #index" do
     it "returns http success" do
       get :index , vehicle_id: @vehicle.id
       expect(response).to have_http_status(:success)
     end
+    it "returns http success When Premium user" do
+      @user.membership = 1
+      @user.save
+      get :index , vehicle_id: @vehicle.id
+      expect(response).to have_http_status(:success)
+    end
   end
+
   describe "GET #new" do
     it "returns http success" do
-      get :new, insurance_id: @insurance.id
+      get :new, vehicle_id: @vehicle.id
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "POST #create" do
     it "created successfully" do
-      post :create, insurance_id: @insurance.id, insurance: {policy_number: 232435}
+      post :create, vehicle_id: @vehicle.id, insurance: {policy_number:'ABC123' , company: 'Geico' ,  vehicle_id: @vehicle.id }
       expect(response).to have_http_status(:redirect)
-    end
-
-    it "was NOT created" do
-     post :create, insurance_id: @insurance.id,  insurance: {policy_number: nil}
-     expect(response).to_not have_http_status(:redirect)
-     expect(flash[:error]).to be_present
     end
   end
 
   describe "PUT #update" do
-   it "updated successfully!" do
-     put :update, insurance_id: @insurance.id, id: insurance.id, insurance: {policy_number: 12345}
+    it "updated successfully!" do
+     policy_number = "ABCD1234"
+     put :update, vehicle_id: @vehicle.id, id: insurance.id, insurance: {policy_number: policy_number}
      expect(response).to have_http_status(:redirect)
-     updated_insurance = insurance.reload
-     expect(updated_insurance.policy_number).to eq(12345)
+     # updated_registration = registration.reload
+     expect(insurance.reload.policy_number).to eq(policy_number)
      expect(flash[:notice]).to be_present
-   end
-
-   it "did NOT update!" do
-     put :update, insurance_id: @insurance.id, id: insurance.id, insurance: {policy_number: nil}
-     expect(response).to render_template(:edit)
-     expect(flash[:error]).to be_present
-   end 
- end
+    end
+  end
 
   describe "GET #edit" do
     it "Edits insurance" do
-      get :edit, insurance_id: @insurance.id, id:insurance.id, insurance:{policy_number: 12345}
+      get :edit, vehicle_id: @vehicle.id, id:insurance.id, insurance:{policy_number:'ABCDEFG'}
       expect(response).to have_http_status(:success)
     end
 
+    it "Can only edit your items" do
+      @vehicle.user_id = 80085
+      @vehicle.save
+      get :edit, vehicle_id: @vehicle.id, id:insurance.id, insurance:{policy_number:'NEWABC'}
+      expect(response).to have_http_status(:redirect)
+    end
+
     it 'doesnt edit' do
-      get :edit, insurance_id: @insurance.id, id: 60000 , insurance:{policy_number: 12345}
+      get :edit, vehicle_id: @vehicle.id, id: 60000 , insurance:{policy_number:'NEW'}
       expect(response).to_not have_http_status(:success)
     end
 
@@ -66,7 +71,7 @@ RSpec.describe InsurancesController, type: :controller do
 
   describe "GET #show" do
     it "returns http success" do
-      get :show, insurance_id: @insurance.id, id: insurance.id
+      get :show, vehicle_id: @vehicle.id, id: insurance.id
       expect(response).to have_http_status(:success)
     end
   end

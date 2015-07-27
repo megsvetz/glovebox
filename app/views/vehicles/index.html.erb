@@ -9,12 +9,12 @@
     <div class="row">
       <% @vehicles.each_with_index do |vehicle, index| %>
         <% if current_user.basic? && index > 2 %>
-          <div class="col-sm-6 col-md-4">
-            <div class="thumbnail vehicle_show grayed-out" style="margin-left:auto; margin-right:auto;">
+          <div class="col-sm-6 col-md-4" >
+            <div class="thumbnail vehicle_show grayed-out" style="margin-left:auto; margin-right:auto; max-width:100%;">
               <% if vehicle.image.present? %>
-                <%= link_to image_tag(vehicle.image.url(:medium), vehicle_path(vehicle.id)) %>
+                <%= link_to image_tag(vehicle.image.url(:medium), vehicle_path(vehicle.id)), style: "margin-left:auto; margin-right:auto; max-width:100%;" %>
               <% else %>
-                <%= link_to image_tag("default_car.jpg", :style => "height:auto;width:150px;"), vehicle_path(vehicle.id) %>
+                <%= link_to image_tag("default_car.jpg", :style => "height:150px; width:auto; margin-left:auto; margin-right:auto; max-width:100%;"), vehicle_path(vehicle.id) %>
               <% end %>
               <div class="caption">
                 <div class='vehicle-text'><%= vehicle.make + ' ' + vehicle.model %>
@@ -51,11 +51,11 @@
           </div>
         <% else %>
           <div class="col-sm-6 col-md-4">
-            <div class="thumbnail vehicle_show" style="margin-left:auto; margin-right:auto;">
+            <div class="thumbnail vehicle_show" style="margin-left:auto; margin-right:auto; max-width:100%;">
               <% if vehicle.image.present? %>
-                <%= link_to image_tag(vehicle.image.url(:medium), vehicle_path(vehicle.id)) %>
+                <%= link_to image_tag(vehicle.image.url(:medium), style: "margin-left:auto; margin-right:auto; max-width:100%;"), vehicle_path(vehicle.id) %>
               <% else %>
-                <%= link_to image_tag("default_car.jpg", :style => "height:auto;width:150px;"), vehicle_path(vehicle.id) %>
+                <%= link_to image_tag("default_car.jpg", :style => "height:150px; width:auto; margin-left:auto; margin-right:auto; max-width:100%;"), vehicle_path(vehicle.id) %>
               <% end %>
               <div class="caption">
                 <div class='vehicle-text'><%= link_to vehicle.make + ' ' + vehicle.model, vehicle_path(vehicle.id) %>
@@ -80,12 +80,12 @@
                 <% if vehicle.insurance.present? %>
                   <p><div class='text-center'><div class="insurance_modal_button btn myButton" data-vehicle="<%= vehicle.to_json(include: :insurance) %>">Insurance</div>
                 <% else %>
-                  <p><div class='text-center'><%= link_to 'Add Insurance', new_vehicle_insurance_path(vehicle.id), class: 'btn myButton', style: 'font-size:.75em' %>
+                  <p><div class='text-center'><%= link_to 'Add Insurance', new_vehicle_insurance_path(vehicle.id), class: 'btn myButton', style: 'font-size:.8em; padding-right:3%; padding-left:3%;' %>
                 <% end %>
                 <% if vehicle.registration.present? %>
                   <div class="registration_modal_button btn myButton" data-vehicle="<%= vehicle.to_json(include: :registration) %>">Registration</div></div>
                 <% else %>
-                  <%= link_to 'Add Registration', new_vehicle_registration_path(vehicle.id), class: 'btn myButton', style: 'font-size:.75em' %></div>
+                  <%= link_to 'Add Registration', new_vehicle_registration_path(vehicle.id), class: 'btn myButton', style: 'font-size:.8em; padding-right:3%; padding-left:3%;' %></div>
                 <% end %>
                 </p>
               </div>
@@ -95,13 +95,13 @@
       <% end %>
       <% if current_user.basic? && current_user.vehicles.count <= 2 %>
         <div class='col-sm-6 col-md-4'>
-          <div class='thumbnail row vehicle_show' style='margin-left:auto; margin-right:auto;'>
+          <div class='thumbnail row vehicle_show'  style="margin-left:auto; margin-right:auto; max-width:100%;">
             <%= link_to '', new_vehicle_path, class: "btn btn-success btn-lg glyphicon glyphicon-plus text-center add-button" %>
           </div>
         </div>
       <% elsif current_user.premium? %>
          <div class='col-sm-6 col-md-4'>
-          <div class='thumbnail row vehicle_show' style='margin-left:auto; margin-right:auto;'>
+          <div class='thumbnail row vehicle_show'  style="margin-left:auto; margin-right:auto; max-width:100%;">
             <%= link_to '', new_vehicle_path, class: "btn btn-success btn-lg glyphicon glyphicon-plus text-center add-button" %>
           </div>
         </div>

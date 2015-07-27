@@ -17,7 +17,7 @@
       <% end %>
       <br><br>
       <%= link_to 'Edit Vehicle', edit_vehicle_path(@vehicle.id), class: "myButton" %>
-      <%= link_to 'Delete Vehicle', vehicle_path(@vehicle.id), method: :delete, class: "myButton" %><br>
+      <%= link_to 'Delete Vehicle', vehicle_path(@vehicle.id), data: { confirm: "Are you sure you want to delete this vehicle?"}, method: :delete,  class: "myButton" %><br>
     </div>
 
     <div class="col-md-5 text-center">
@@ -51,7 +51,7 @@
           <% if @vehicle.registration.present? %>
             <span id="registration_modal_button_show" class="myButton" style="display:inline-block;">Registration</span>
           <% else %>
-          <%= link_to 'Add Registration', new_vehicle_insurance_path(@vehicle.id), class: "myButton", :style => "margin-right:0%; display:inline-block;" %>
+          <%= link_to 'Add Registration', new_vehicle_registration_path(@vehicle.id), class: "myButton", :style => "margin-right:0%; display:inline-block;" %>
           <% end %>
 
         </div>

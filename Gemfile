@@ -29,7 +29,7 @@ gem 'bootstrap-sass', '~> 3.3.5'
 #used to upload photos/pictures/images/viewablefileintheformatofseeing
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 #Amazon s3 services gem
-gem 'aws-sdk'
+gem 'aws-sdk', '~> 1.61.0'
 
 gem 'devise'
 
@@ -56,9 +56,13 @@ gem 'lazybox'
 #gems for the mail contact us form
 gem 'mail_form'
 
+gem 'mail'
+
 gem 'stripe'
 
 gem 'mechanize'
+#YELP!
+gem 'yelp', require: 'yelp'
 
 group :development, :production do
   #delayed jobs

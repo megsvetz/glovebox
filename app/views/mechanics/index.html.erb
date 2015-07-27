@@ -1,2 +1,20 @@
-<h1>Mechanics#index</h1>
-<p>Find me in app/views/mechanics/index.html.erb</p>
+<div class="container">
+  <h1 class='page-header text-center'>Car Repair Shops</h1>
+  <div class="text-center">
+    <input id='mechanics_zip' type="field" name="name" placeholder="Zip Code" value="<%= current_user.zip_code %>"></input>
+    <button id='get-mechanic' name="Find Mechanics" value="Find Local Mechanics" style="margin:3%;">Find Local Mechanics</button>
+    <hr />
+  </div>
+  <% @search.businesses.each do |f| %>
+    <div class='col-sm-4'>
+      <u><%= link_to f.name, f.url %></u><br>
+      <%= f.location.display_address[0] %><br>
+      <%= f.location.display_address[2] %><br>
+      <%= f.display_phone %><br>
+      <%= image_tag(f.rating_img_url_large, size: '100x18') %>
+      <br><br>
+      <i>"<%= f.snippet_text %>"</i>
+      <hr />
+    </div>
+  <% end %>
+</div>

@@ -1,7 +1,17 @@
 Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # Settings specified here will take precedence over those in config/application.rb.
-
+  config.paperclip_defaults = {
+  :storage => :s3,
+  :s3_credentials => {
+    :s3_endpoint => 's3-us-west-2.amazonaws.com',
+    :bucket => ENV['S3_BUCKET_NAME'],
+    :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+    :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+  },
+  :url => ':s3_domain_url',
+  :path => '/:class/:attahment/:id_partition/:style/:filename'
+}
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
@@ -18,18 +28,18 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
 
   config.action_mailer.smtp_settings = {
-  address: "smtp.gmail.com",
-  port: 587,
-  domain: ENV["GMAIL_DOMAIN"],
-  authentication: "plain",
-  enable_starttls_auto: true,
-  user_name: ENV["GMAIL_USERNAME"],
-  password: ENV["GMAIL_PASSWORD"]
+    address: ENV['SENDGRID_ADDRESS'],
+    port: 587,
+    domain: 'heroku.com',
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: ENV['SENDGRID_USERNAME'],
+    password: ENV['SENDGRID_PASSWORD']
   }
-
-  # Print deprecation notices to the Rails logger.
+# Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
   # Raise an error on page load if there are pending migrations.
