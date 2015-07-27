@@ -7,7 +7,7 @@ class Reminders < ApplicationMailer
   def need_oil_change(email_addresses, vehicles)
     email_addresses.each_with_index do |email, index|
       mail :to => email,
-           :subject => "#{vehicles[index]} has needs an Oil Change!"
+           :subject => "#{vehicles[index]} needs an Oil Change!"
     end
   end
 
