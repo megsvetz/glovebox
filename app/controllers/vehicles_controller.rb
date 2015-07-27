@@ -31,7 +31,6 @@ class VehiclesController < ApplicationController
     if vehicle.registration.present?
       vehicle.registration.destroy
     end
-<<<<<<< HEAD
     vehicle.user_id = User.find_by(email: params[:new_owner_email]).id
     receiver = User.find_by(email: params[:new_owner_email]).email
     vehicle.save
