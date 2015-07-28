@@ -21,7 +21,9 @@ class ChargesController < ApplicationController
 
     current_user.membership = 1
     current_user.upgrade_date = Date.today
+    current_user.reminder = true
     current_user.save
+
 
   rescue Stripe::CardError => e
     flash[:error] = e.message

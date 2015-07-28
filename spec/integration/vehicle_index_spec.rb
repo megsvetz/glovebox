@@ -18,13 +18,16 @@ feature "index", :js => true do
     click_link "See My Vehicles"
     click_link "New Vehicle"
     #create new vehicle
-    make = 'Nissan'
-    model = 'Sentra'
-    fill_in('Vehicle Make', :with => make)
-    fill_in('Vehicle Model', :with => model)
-    fill_in('Vehicle Name', :with => 'Prescilla')
-    fill_in('Vehicle Mileage', :with => '50,000')
+    select 'Car', :from => "vehicle_type"
+    select 2013, :from => "vehicle_year"
+    fill_in('Vehicle Make *', :with => 'Nissan')
+    fill_in('Vehicle Model *', :with => 'Sentra')
+    fill_in('Vehicle Name *', :with => 'Prescilla')
+    fill_in('State registered in *', :with => 'CA')
+    # fill_in
+    sleep 2
     click_button('Create Vehicle')
+    sleep 2
     #check to make sure you are on the index page
     expect(page).to have_content('Your Vehicles')
     click_link 'See All Vehicle Insurances'
@@ -40,7 +43,7 @@ feature "index", :js => true do
 
     #check index page for new car created
     expect(page).to have_content('Sentra')
-    click_link "#{make} #{model}"
+    click_link "Nissan Sentra"
     #check path to be vehicle show page
     expect(page).to have_content('Repairs and Maintenance Costs')
     click_link 'Back'
@@ -61,11 +64,6 @@ feature "index", :js => true do
     fill_in('Policy Number', :with => 'ABC123')
     fill_in('Cost of Policy', :with => '65.78')
 
-    click_button 'Create Insurance'
-    expect(page).to have_content('Insurance for')
-    expect(page).to have_content('Geico')
-    click_link 'See this Vehicle'
-    click_link 'Back'
  end
 end
 

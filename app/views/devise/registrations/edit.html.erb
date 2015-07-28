@@ -1,6 +1,6 @@
 <div class="road_header" style="margin:0%;padding:0%;">
   <div class="container text-center" style="margin-bottom:auto;">
-    <div class="boxxy" style="width:50%;">
+    <div class="boxxy">
       <h2>Edit <%= resource_name.to_s.humanize %></h2><hr>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -36,10 +36,14 @@
           <%= f.number_field :zip_code %>
         </div><hr>
 
-        <div class="field">
-          <h4 style="black"><%= f.label "Receive maintenance reminders for my vehicles: " %>
-          <%= f.check_box :reminder, checked_value: "true", unchecked_value: "false", style:"transform: scale(1.5);-webkit-transform: scale(1.5); margin:1%;" %></h4>
-        </div><hr>
+        <% if current_user.premium? %>
+
+          <div class="field">
+            <h4 style="black"><%= f.label "Receive maintenance reminders for my vehicles: " %>
+            <%= f.check_box :reminder, checked_value: "true", unchecked_value: "false", style:"transform: scale(1.5);-webkit-transform: scale(1.5); margin:1%;" %></h4>
+          </div><hr>
+
+        <% end %>
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div><br>

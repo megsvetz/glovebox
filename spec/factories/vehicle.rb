@@ -1,8 +1,10 @@
 FactoryGirl.define do
   factory :vehicle do
-    make 'ford'
-    model 'f150'
-    user
-  end
+  state 'utah'
+  make 'ford'
+  model 'f150'
+  name 'test name'
+  user
+ end
 end
 
