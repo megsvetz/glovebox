@@ -19,7 +19,7 @@
       <%= link_to image_tag("papersicon.png", width: "135px", alt: "files"), vehicles_path %><h4 style="font-size:15px;">File Maintenance Records</h4>
     </span>
     <span class="col-sm-4 col-xs-12">
-      <% if current_user.basic? %>
+      <% if current_user && current_user.basic? %>
         <%= link_to image_tag("remindericon.png", width: "135px", alt: "reminder"), new_charge_path %><h4 style="font-size:15px;">Receive Reminders for Maintenance <br><strong>Premium Members Only</strong></h4>
       <% else %>
         <%= link_to image_tag("remindericon.png", width: "135px", alt: "reminder"), edit_user_registration_path %><h4 style="font-size:15px;">Receive Reminders for Maintenance <br><strong>Premium Members Only</strong></h4>
