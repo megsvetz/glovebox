@@ -110,8 +110,8 @@
     </div>
   </div>
   <% if user_signed_in? == false %>
-    <div class="col-xs-offset-5">
-      <%= link_to 'Sign Up', new_user_registration_path, class: "myButton", style: "margin-left: auto; margin-right:auto; font-size: 20px;" %>
+    <div class="text-center">
+      <p><%= link_to 'Sign Up', new_user_registration_path, class: "myButton", style: "margin-left: auto; margin-right:auto; font-size: 20px;" %></p>
     </div>
   <% end %>
   <hr><br>
