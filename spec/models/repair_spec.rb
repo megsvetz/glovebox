@@ -5,7 +5,7 @@ RSpec.describe Repair, type: :model do
 
   describe "Repair type" do
     it "Has a valid type" do
-     repair.type == Oilchange || Tirerotation || Inspection || Alignment || Modification || Otherrepair
+     repair.type == "Oilchange" || "Tirerotation" || "Inspection" || "Alignment" || "Modification" || "Otherrepair"
     end
   end
 

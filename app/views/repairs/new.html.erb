@@ -5,23 +5,27 @@
 
     <%= form_for @repair, url: vehicle_repairs_path(@vehicle) do |f| %>
 
-      <h3>Type of Vehicle:<br>
-        <%= f.select :type, [['Oil Change', 'Oilchange'],['Alignment', 'Alignment'],['Inspection', 'Inspection'], ['Tire Rotation', 'Tirerotation'],['Modification', 'Modification'], ['Other Repair', 'Otherrepair']], {:include_blank => "Select Repair Type"}, :class => "form-control", :style => "width:150px; display:inline-block;", default: :Otherrepair %></h3>
+      <h3>Type of Repair:</h3>
+        <%= f.select :type, [['Oil Change', 'Oilchange'],['Alignment', 'Alignment'],['Inspection', 'Inspection'], ['Tire Rotation', 'Tirerotation'],['Modification', 'Modification'], ['Other Repair', 'Otherrepair']], {:include_blank => "Select Repair Type"}, :class => "form-control", :style => "width:150px; display:inline-block;", default: :Otherrepair %>
       <br>
-      <h3>Repair Description:<br>
-        <%= f.text_area :repair_description, :placeholder => "Description of the repair", :class => "form-control" , :style => "width:250px; display:inline-block;" %></h3>
+      <h3>Repair Description:</h3>
+        <%= f.text_area :repair_description, :placeholder => "Description of the repair", :class => "form-control" , :style => "width:250px; display:inline-block;" %>
       <br>
-      <h4>Date of Repair:<br>
-        <%= f.date_select :repair_date, :class => "form-control" %></h4>
+      <h4>Date of Repair:</h4>
+        <%= f.date_select :repair_date, :class => "form-control" %>
       <br>
       <br>
-      <h4>Vehicle Mileage:</h4><br>
+      <h4>Vehicle Mileage:</h4>
         <%= f.number_field :mileage, :placeholder => "Vehicle mileage at time of repair", :class => "form-control", style: "width:250px; display:inline-block;" %>
       <br>
-      <h4>Place of Service<br>
-        <%= f.text_field :repair_place, :placeholder => "Where was the repair done?", :class => "form-control", style: "width:60%; display:inline-block;" %></h4><br>
-      <h4>Cost ($):<br>
-        <%= f.text_field :repair_cost, :placeholder => "Repair cost", :class => "form-control", :style => "width:150px; display:inline-block" %></h4>
+      <br>
+      <h4>Place of Service:</h4>
+        <%= f.text_field :repair_place, :placeholder => "Where was the repair done?", :class => "form-control", style: "width:60%; display:inline-block;"%>
+      <br>
+      <br>
+      <h4>Cost ($):</h4>
+        <%= f.text_field :repair_cost, :placeholder => "Repair cost", :class => "form-control", :style => "width:150px; display:inline-block" %>
+      <br>
       <br>
       <%= f.file_field :repair_image, :class => "form-control", style: "width:250px; display:inline-block;" %>
       <%= f.hidden_field :vehicle_id, value: @vehicle.id %>

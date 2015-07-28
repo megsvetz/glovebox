@@ -26,9 +26,13 @@ class VehiclesController < ApplicationController
       vehicle.registration.destroy
     end
     vehicle.user_id = User.find_by(email: params[:new_owner_email]).id
-    receiver = User.find_by(email: params[:new_owner_email]).email
-    vehicle.save
-    Reminders.vehicle_transfer(receiver, sender, vehicle).deliver
+    if vehicle.user_id
+      receiver = User.find_by(email: params[:new_owner_email]).email
+      vehicle.save
+      Reminders.vehicle_transfer(receiver, sender, vehicle).deliver
+    else
+      flash[:error] = "Could not find user with email of #{params[:new_owner_email]} on GLOVEBOX %>"
+    end
     redirect_to :back
   end
 

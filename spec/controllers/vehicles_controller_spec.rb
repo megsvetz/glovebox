@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe VehiclesController, type: :controller do
 
-
   before(:each) do
     @user = FactoryGirl.create(:user)
     sign_in @user
