@@ -66,6 +66,7 @@ class VehiclesController < ApplicationController
   end
 
   private
+
   def find_type
     Vehicle.type.include?(params[:type]) ? params[:type] : "Vehicle"
   end
