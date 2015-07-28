@@ -28,9 +28,9 @@
       </span>
     <span class="col-sm-4 col-xs-12">
       <% if user_signed_in? %>
-        <%= link_to image_tag("remindericon.png", width: "135px", alt: "reminder"), vehicles_path %><h4 style="font-size:15px;">Receive Reminders for Maintenance</h4>
+        <%= link_to image_tag("remindericon.png", width: "135px", alt: "reminder"), vehicles_path %><h4 style="font-size:15px;">Receive Reminders for Maintenance<br><strong>Premium Members Only</strong></h4>
       <% else %>
-        <%= image_tag("remindericon.png", width: "135px", alt: "reminder") %><h4 style="font-size:15px;">Receive Reminders for Maintenance and Registration</h4>
+        <%= image_tag("remindericon.png", width: "135px", alt: "reminder") %><h4 style="font-size:15px;">Receive Reminders for Maintenance and Registration - Premium Members Only</h4>
       <% end %>
     </span>
   </div>
@@ -54,7 +54,7 @@
     </tr>
     <tr>
       <td class="arrow"><%= image_tag("arrowicon.png", width: "15%", alt: "arrow") %></td>
-      <td class="sentence"><h4>Receive reminders for oil changes, tire rotations, insurance renewal, registration renewal, etc.</h4></td>
+      <td class="sentence"><h4>Receive reminders for oil changes, tire rotations, insurance renewal, registration renewal, etc.<strong>  &nbsp;-  Premium Members Only</strong></h4></td>
     </tr>
     <tr>
       <td class="arrow"><%= image_tag("arrowicon.png", width: "15%", alt: "arrow") %></td>
