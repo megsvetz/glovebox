@@ -13,7 +13,7 @@ feature "navbar", :js => true do
     click_link "Login"
     expect(find_field("Email").visible?).to eq(true)
     expect(find_field("Password").visible?).to eq(true)
-    expect(find_button("Log in").visible?).to eq(true)
+    expect(find_button("Login").visible?).to eq(true)
   end
   scenario "When click on Sign up goes to Sign up  page" do
     visit root_path

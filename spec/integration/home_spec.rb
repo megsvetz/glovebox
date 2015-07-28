@@ -13,7 +13,7 @@ feature "home", :js => true do
   scenario "gas icon takes unsigned in to login page" do
     visit root_path
     find(:xpath, "//a/img[@alt='gas']/..").click
-    expect(page).to have_content "Log in"
+    expect(page).to have_content "Login"
     expect(page).to have_content "Email"
     expect(page).to have_content "Remember me"
   end
