@@ -10,16 +10,17 @@ RSpec.describe Vehicle, type: :model do
 
   context "class methods" do
     before(:each) do
-      @vehicle_1 = Vehicle.create(type:"Car")
-      @vehicle_2 = Vehicle.create(type:"Truck")
-      @vehicle_3 = Vehicle.create(type:"Boat")
-      @vehicle_4 = Vehicle.create(type:"Trailer")
-      @vehicle_5 = Vehicle.create(type:"ATV")
-      @vehicle_6 = Vehicle.create(type:"Motorcycle")
-      @vehicle_7 = Vehicle.create(type:"Waverunner")
-      @vehicle_8 = Vehicle.create(type:"Dunebuggy")
-      @vehicle_9 = Vehicle.create(type:"Other")
+      @vehicle_1 = Vehicle.create(type:"Car", make: "Nissan", model: "Sentra", name: "Blackie", state:"CA")
+      @vehicle_2 = Vehicle.create(type:"Truck", make: "Nissan", model: "Sentra", name: "Blackie", state:"CA")
+      @vehicle_3 = Vehicle.create(type:"Boat", make: "Nissan", model: "Sentra", name: "Blackie", state:"CA")
+      @vehicle_4 = Vehicle.create(type:"Trailer", make: "Nissan", model: "Sentra", name: "Blackie", state:"CA")
+      @vehicle_5 = Vehicle.create(type:"ATV", make: "Nissan", model: "Sentra", name: "Blackie", state:"CA")
+      @vehicle_6 = Vehicle.create(type:"Motorcycle", make: "Nissan", model: "Sentra", name: "Blackie", state:"CA")
+      @vehicle_7 = Vehicle.create(type:"Waverunner", make: "Nissan", model: "Sentra", name: "Blackie", state:"CA")
+      @vehicle_8 = Vehicle.create(type:"Dunebuggy", make: "Nissan", model: "Sentra", name: "Blackie", state:"CA")
+      @vehicle_9 = Vehicle.create(type:"Other", make: "Nissan", model: "Sentra", name: "Blackie", state:"CA")
     end
+
     describe "self.type" do
       it "ensures types are specific ones" do
         expect(Vehicle.type).to eq(["Car", "Truck", "Boat", "Trailer", "ATV", "Motorcycle", "Waverunner", "Dunebuggy", "Other"])
