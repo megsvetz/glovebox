@@ -13,23 +13,17 @@
     <h2 style="font-size:25px;">Features of GloveBox</h2>
     <br>
     <span class="col-sm-4 col-xs-12">
-      <% if user_signed_in? %>
-        <%= link_to image_tag("caricon.png", width: "135px", alt: "car"), vehicles_path %><h4 style="font-size:15px;">Store Vehicle Information</h4>
-        <% else %>
-        <%= image_tag("caricon.png", width: "135px", alt: "car") %><h4 style="font-size:15px;">Store Vehicle Information</h4>
-        <% end %>
-      </span>
+      <%= link_to image_tag("caricon.png", width: "135px", alt: "car"), vehicles_path %><h4 style="font-size:15px;">Store Vehicle Information</h4>
+    </span>
     <span class="col-sm-4 col-xs-12">
-      <% if user_signed_in? %>
-        <%= link_to image_tag("papersicon.png", width: "135px", alt: "files"), vehicles_path %><h4 style="font-size:15px;">File Maintenance Records</h4>
+      <%= link_to image_tag("papersicon.png", width: "135px", alt: "files"), vehicles_path %><h4 style="font-size:15px;">File Maintenance Records</h4>
+    </span>
+    <span class="col-sm-4 col-xs-12">
+      <% if current_user.basic? %>
+        <%= link_to image_tag("remindericon.png", width: "135px", alt: "reminder"), new_charge_path %><h4 style="font-size:15px;">Receive Reminders for Maintenance <br><strong>Premium Members Only</strong></h4>
       <% else %>
-        <%= image_tag("papersicon.png", width: "135px", alt: "files") %><h4 style="font-size:15px;">File Maintenance Records</h4>
+        <%= link_to image_tag("remindericon.png", width: "135px", alt: "reminder"), edit_user_registration_path %><h4 style="font-size:15px;">Receive Reminders for Maintenance <br><strong>Premium Members Only</strong></h4>
       <% end %>
-      </span>
-    <span class="col-sm-4 col-xs-12">
-      <% if user_signed_in? %>
-        <%= link_to image_tag("remindericon.png", width: "135px", alt: "reminder"), vehicles_path %><h4 style="font-size:15px;">Receive Reminders for Maintenance</h4>
-
     </span>
   </div>
 </div>
@@ -52,7 +46,7 @@
     </tr>
     <tr>
       <td class="arrow"><%= image_tag("arrowicon.png", width: "15%", alt: "arrow") %></td>
-      <td class="sentence"><h4>Receive reminders for oil changes, tire rotations, insurance renewal, registration renewal, etc.</h4></td>
+      <td class="sentence"><h4>Receive reminders for oil changes, tire rotations, insurance renewal, registration renewal, etc.<strong>  &nbsp;-  Premium Members Only</strong></h4></td>
     </tr>
     <tr>
       <td class="arrow"><%= image_tag("arrowicon.png", width: "15%", alt: "arrow") %></td>
