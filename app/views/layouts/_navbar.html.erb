@@ -29,9 +29,10 @@
           </li>
           <li class="header-font"><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'header-font' %></li>
         <% else %>
-          <li><%= link_to( 'About', root_path ) %></li>
+          <li><%= link_to( 'About Us', "/#about-us" ) %></li>
+          <li><%= link_to( 'Contact Us', "/#contact-us" ) %></li>
           <li class="header-font"><%= link_to "Login", new_user_session_path, :class => 'header-font' %></li>
-          <li class="header-font"><%= link_to "Sign up", new_user_registration_path, :class => 'header-font' %></li>
+          <li class="header-font"><%= link_to "Sign Up", "/#membership", :class => 'header-font' %></li>
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->

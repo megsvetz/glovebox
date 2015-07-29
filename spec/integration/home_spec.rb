@@ -26,6 +26,6 @@ feature "home", :js => true do
     expect(find_field("State").visible?).to eq(true)
     expect(find_field("Zip code").visible?).to eq(true)
     expect(find_field("Password").visible?).to eq(true)
-    expect(find_button("Sign up").visible?).to eq(true)
+    expect(find_button("Sign Up").visible?).to eq(true)
   end
 end
