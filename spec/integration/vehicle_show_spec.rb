@@ -3,14 +3,14 @@ require 'rails_helper'
 feature "show", :js => true do
   scenario "show page" do
     visit root_path
-    click_link "Sign up"
+    click_link "Sign Up"
     fill_in('Email', :with => 'email@email.com')
     fill_in('City', :with => 'Salt Lake City')
     fill_in('State', :with => 'Utah')
     fill_in('Zip code', :with => '84115')
     fill_in('Password', :with => 'password')
     fill_in('Password confirmation', :with => 'password')
-    click_button "Sign up"
+    click_button "Sign Up"
     click_link "My Account"
     click_link "Add a Vehicle"
     make = 'Hyundai'
