@@ -9,4 +9,6 @@ RSpec.describe WelcomesController, type: :controller do
     end
   end
 
+  
+
 end
