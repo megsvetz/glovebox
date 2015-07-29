@@ -18,6 +18,8 @@ $(document).ready ->
 
   getGas = (lat, lng) ->
     distance = $('#distance_zip').val()
+    if distance is ''
+      distance = 20
     $.ajax 'http://api.mygasfeed.com/stations/radius/' + lat + '/' + lng + '/' + distance + '/reg/price/' + "<%= ENV['gas_api'] %>" + '.json',
       type: 'GET'
       success: (data) ->
@@ -45,6 +47,7 @@ $(document).ready ->
           i++
         buildMap(gasLatLon)
       error: (data) ->
+        $("#loading_gas").addClass('hidden')
         console.log data
         alert 'How many miles out would you like to search? Please enter a number between 1 - 50.'
 

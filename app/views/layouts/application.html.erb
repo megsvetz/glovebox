@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Glovebox</title>
+  <title>GloveBox</title>
   <%= favicon_link_tag 'favicon.ico' %>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
@@ -10,10 +10,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <!-- <div class='text-center'><h1><%= flash[:notice] %></h1></div> -->
+  <div class='text-center'><h1><%= flash[:notice] %></h1></div>
+  <div class='text-center'><h1><%= flash[:alert] %></h1></div>
+  <div class='text-center'><h1><%= flash[:error] %></h1></div>
   <%= render "layouts/navbar_top" %>
   <%= render "layouts/navbar" %>
-  <div style="min-height:630px;">
+  <div style="min-height:680px;">
     <%= yield %>
   </div>
 <!--   <p class="notice"><%= notice %></p>

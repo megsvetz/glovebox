@@ -19,19 +19,19 @@ class VehiclesController < ApplicationController
   def transfer
     vehicle = Vehicle.find(params[:vehicle])
     sender = User.find_by(id: vehicle.user_id).email
-    if vehicle.insurance.present?
-      vehicle.insurance.destroy
-    end
-    if vehicle.registration.present?
-      vehicle.registration.destroy
-    end
-    vehicle.user_id = User.find_by(email: params[:new_owner_email]).id
-    if vehicle.user_id
+    if User.find_by(email: params[:new_owner_email])
+      vehicle.user_id = User.find_by(email: params[:new_owner_email]).id
+      if vehicle.insurance.present?
+        vehicle.insurance.destroy
+      end
+      if vehicle.registration.present?
+        vehicle.registration.destroy
+      end
       receiver = User.find_by(email: params[:new_owner_email]).email
       vehicle.save
       Reminders.vehicle_transfer(receiver, sender, vehicle).deliver
     else
-      flash[:error] = "Could not find user with email of #{params[:new_owner_email]} on GLOVEBOX %>"
+      flash[:notice] = "Could not find user with email of #{params[:new_owner_email]}."
     end
     redirect_to :back
   end
@@ -66,6 +66,7 @@ class VehiclesController < ApplicationController
   end
 
   private
+
   def find_type
     Vehicle.type.include?(params[:type]) ? params[:type] : "Vehicle"
   end

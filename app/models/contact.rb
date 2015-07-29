@@ -9,7 +9,7 @@ class Contact < MailForm::Base
   # in ActionMailer accepts.
   def headers
     {
-      :subject => "New Glovebox Message from #{first_name} #{last_name}",
+      :subject => "New GloveBox Message from #{first_name} #{last_name}",
       :to => "gloveboxteam@gmail.com",
       :from => %("#{first_name} #{last_name}" <#{email}>)
     }

@@ -1,4 +1,5 @@
 class MechanicsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
       current_user.zip_code.present? ? @zip = current_user.zip_code : @zip = "94101"

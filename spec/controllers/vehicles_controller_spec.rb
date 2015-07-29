@@ -30,7 +30,7 @@ RSpec.describe VehiclesController, type: :controller do
 
   describe "POST #create" do
     it "does create" do
-      post :create, vehicle: {type:''}
+      post :create, vehicle: {model: 'model test', name:'test name ', state: 'utah', make: 'test make', type: 'Car'}
       expect(response).to have_http_status(:redirect)
       expect(Vehicle.all.count).to eq(1)
     end
