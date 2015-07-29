@@ -1,7 +1,7 @@
-<div class="road_header" style="margin:0%;padding:0%;">
-  <div class="container text-center" style="margin-bottom:auto;">
+<div class="road_header" style="margin-top:0%;padding:0%;height:680px;">
+  <div class="container text-center">
     <div class="boxxy">
-      <h2>Sign up</h2><br>
+      <h2>Sign Up</h2><br>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= devise_error_messages! %>
@@ -40,7 +40,7 @@
         </div><br/>
 
         <div class="actions">
-          <p><%= f.submit "Sign up", class: "myButton", style: "margin-top:2%;" %></p>
+          <p><%= f.submit "Sign Up", class: "myButton", style: "margin-top:2%;" %></p>
         </div>
 
       <% end %>

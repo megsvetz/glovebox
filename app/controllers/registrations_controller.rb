@@ -20,8 +20,7 @@ class RegistrationsController < ApplicationController
     @registration = Registration.new(registration_params)
     @registration.save
     flash[:notice] = "Registration was added successfully!"
-    redirect_to(vehicle_registration_path(@vehicle.id, @registration.id))
-
+    redirect_to(vehicle_registration_path(@registration.vehicle_id, @registration.id))
   end
 
   def edit

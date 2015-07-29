@@ -27,7 +27,7 @@
         <%= f.text_field :repair_cost, :placeholder => "Repair cost", :class => "form-control", :style => "width:150px; display:inline-block" %>
       <br>
       <br>
-      <%= f.file_field :repair_image, :class => "form-control", style: "width:250px; display:inline-block;" %>
+      <%= f.file_field :repair_image, style: "width:250px; display:inline-block;" %>
       <%= f.hidden_field :vehicle_id, value: @vehicle.id %>
       <br><br><br>
       <p><%= f.submit :class => "myButton" %> <%= link_to 'Cancel', vehicle_repairs_path(@vehicle.id), :class => "myButton", :method => :get %></p>
