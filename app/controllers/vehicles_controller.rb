@@ -5,7 +5,6 @@ class VehiclesController < ApplicationController
   before_action :check_membership, only: [:new, :create]
   before_action :validate_vehicle, only: [:show, :edit]
 
-
   def index
     @vehicles = current_user.vehicles.all.order("created_at ASC").paginate(:page => params[:page], :per_page => 9)
   end
