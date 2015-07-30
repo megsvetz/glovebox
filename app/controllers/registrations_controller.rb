@@ -27,9 +27,12 @@ class RegistrationsController < ApplicationController
   end
 
   def update
-    @registration.update(registration_params)
-    flash[:notice] = "Registration was successfully updated."
-    redirect_to(vehicle_registration_path(@vehicle.id, @registration.id))
+    if @registration.update(registration_params)
+      flash[:notice] = "Registration was successfully updated."
+      redirect_to(vehicle_registration_path(@vehicle.id, @registration.id))
+    else
+      render action: 'edit'
+    end
   end
 
   def show

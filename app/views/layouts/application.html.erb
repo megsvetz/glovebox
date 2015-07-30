@@ -10,12 +10,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <div class='text-center'><h1><%= flash[:notice] %></h1></div>
-  <div class='text-center'><h1><%= flash[:alert] %></h1></div>
-  <div class='text-center'><h1><%= flash[:error] %></h1></div>
+  <div class='text-center' style='max-width:100%'><h1><%= flash[:notice] %></h1></div>
+  <div class='text-center' style='max-width:100%'><h1><%= flash[:alert] %></h1></div>
+  <div class='text-center' style='max-width:100%'><h1><%= flash[:error] %></h1></div>
   <%= render "layouts/navbar_top" %>
   <%= render "layouts/navbar" %>
-  <div style="min-height:680px;">
+  <div style="min-height:680px;max-width:100%">
     <%= yield %>
   </div>
 <!--   <p class="notice"><%= notice %></p>
