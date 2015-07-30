@@ -46,9 +46,9 @@ class VehiclesController < ApplicationController
     if @vehicle.save
       redirect_to vehicles_path, notice: "#{@vehicle.type} was successfully created."
     else
-      render :new, notice: 'Vehicle not created'
+      flash[:notice] = 'Vehicle not created'
+      render :new
     end
-
 	end
 
   def update

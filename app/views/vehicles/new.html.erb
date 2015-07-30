@@ -14,9 +14,10 @@
       <p><%= f.text_field :mileage, class: "form-control", :placeholder => "Vehicle Mileage", :style => "width:100%;" %></p>
       <p><%= f.text_field :license_plate, class: "form-control", :placeholder => "Vehicle License Plate", :style => "width:100%;" %></p>
       <p><%= f.text_field :state, class: "form-control", :placeholder => "State registered in *", :style => "width:100%;", required: :true %></p>
-      <p><%= f.file_field :image %></p>
       <%= f.hidden_field :user_id, :value => current_user.id %>
-      <p style="color: #bababa;">* required fields</p>
+      <p style="color: #bababa;">* required fields</p><br>
+      <p><%= f.file_field :image %></p>
+      <p style="color:lightgray">(Accepted Image Types: JPG/JPEG/GIF/PNG)</p>
       <p><%= f.submit :class => "myButton" %> <%= link_to 'Cancel', vehicles_path, :class => "myButton", :method => :get %></p>
     <% end %>
   </div>
